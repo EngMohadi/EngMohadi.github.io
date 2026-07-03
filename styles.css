@@ -373,20 +373,12 @@ html[dir="rtl"] .hero-background {
   font-size: 15px;
 }
 
-.public-data-note,
 .demo-note,
 .privacy-note {
   color: #41536a;
   background: #edf7f4;
   border: 1px solid #cfe8df;
   border-radius: 8px;
-}
-
-.public-data-note {
-  max-width: 920px;
-  margin: -8px 0 26px;
-  padding: 12px 14px;
-  font-weight: 800;
 }
 
 .demo-note {

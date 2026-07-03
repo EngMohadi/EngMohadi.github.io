@@ -42,8 +42,6 @@ const content = {
     contactTitle: "لنبنِ منظومة GIS أكثر ذكاءً",
     contactText:
       "متاح للتعاون والاستشارات والشراكات الفنية في مشاريع GIS، التحول الرقمي البلدي، Web GIS Dashboards، التوثيق الميداني، والبنية المكانية للبيانات.",
-    publicDataNote:
-      "نسخة بورتفوليو عامة. تمت إزالة السمات الحساسة، الإحداثيات الدقيقة، المعلومات الشخصية، وطبقات GIS المقيدة.",
     emailButton: "Send Email",
     whatsappButton: "Contact via WhatsApp",
     formName: "الاسم",
@@ -56,8 +54,6 @@ const content = {
     formMessagePlaceholder: "اكتب رسالتك هنا",
     formSubmit: "Send Message",
     privacyNote: "This form opens your email app. No message is stored on this website.",
-    footerDisclaimer:
-      "نسخة بورتفوليو عامة. تمت إزالة السمات الحساسة، الإحداثيات الدقيقة، المعلومات الشخصية، وطبقات GIS المقيدة.",
     footerText: "© 2026 Mohammad Abdalhadi. GIS Portfolio.",
     expertise: [
       {
@@ -245,8 +241,6 @@ const content = {
     contactTitle: "Let’s build smarter GIS systems",
     contactText:
       "Available for collaboration, consulting, and technical partnerships in GIS, smart municipal transformation, Web GIS dashboards, field documentation, and spatial data infrastructure.",
-    publicDataNote:
-      "Public portfolio version. Sensitive attributes, exact coordinates, personal information, and restricted GIS layers are removed.",
     emailButton: "Send Email",
     whatsappButton: "Contact via WhatsApp",
     formName: "Name",
@@ -259,8 +253,6 @@ const content = {
     formMessagePlaceholder: "Write your message here",
     formSubmit: "Send Message",
     privacyNote: "This form opens your email app. No message is stored on this website.",
-    footerDisclaimer:
-      "Public portfolio version. Sensitive attributes, exact coordinates, personal information, and restricted GIS layers are removed.",
     footerText: "© 2026 Mohammad Abdalhadi. GIS Portfolio.",
     expertise: [
       {
