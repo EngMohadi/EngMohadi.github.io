@@ -407,7 +407,61 @@ const content = {
   }
 };
 
-let currentLang = localStorage.getItem("portfolioLanguage") || "ar";
+/*
+  Default language: English for all visitors worldwide, Arabic for visitors in
+  Arab countries. GitHub Pages is a static host (no server-side geolocation) and
+  the CSP blocks external geo-IP APIs, so detection relies on the browser:
+  Arabic browser language or an Arab-country time zone selects Arabic.
+  A language explicitly chosen by the visitor (saved in localStorage) always wins.
+*/
+const ARAB_TIMEZONES = new Set([
+  "Asia/Amman",
+  "Asia/Baghdad",
+  "Asia/Bahrain",
+  "Asia/Beirut",
+  "Asia/Damascus",
+  "Asia/Dubai",
+  "Asia/Gaza",
+  "Asia/Hebron",
+  "Asia/Jerusalem",
+  "Asia/Kuwait",
+  "Asia/Muscat",
+  "Asia/Qatar",
+  "Asia/Aden",
+  "Asia/Riyadh",
+  "Africa/Algiers",
+  "Africa/Cairo",
+  "Africa/Casablanca",
+  "Africa/Djibouti",
+  "Africa/El_Aaiun",
+  "Africa/Khartoum",
+  "Africa/Mogadishu",
+  "Africa/Nouakchott",
+  "Africa/Tripoli",
+  "Africa/Tunis",
+  "Indian/Comoro"
+]);
+
+function detectInitialLanguage() {
+  const saved = localStorage.getItem("portfolioLanguage");
+  if (saved === "ar" || saved === "en") return saved;
+
+  const browserLanguages = navigator.languages || [navigator.language || ""];
+  if (browserLanguages.some((lang) => lang && lang.toLowerCase().startsWith("ar"))) {
+    return "ar";
+  }
+
+  try {
+    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (timeZone && ARAB_TIMEZONES.has(timeZone)) return "ar";
+  } catch (error) {
+    /* Intl time zone lookup unavailable: fall through to English. */
+  }
+
+  return "en";
+}
+
+let currentLang = detectInitialLanguage();
 
 const languageToggle = document.querySelector("#languageToggle");
 const i18nNodes = document.querySelectorAll("[data-i18n]");
