@@ -1,0 +1,56 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Local runtime artifacts
+.server-url
+
+# Environment, secrets, and keys
+.env
+.env.*
+*.secret
+*secret*
+*credentials*
+*.key
+*.pem
+*.p12
+*.pfx
+id_rsa
+id_dsa
+id_ecdsa
+id_ed25519
+
+# Private folders
+private/
+restricted/
+confidential/
+internal/
+raw-data/
+source-data/
+
+# Raw GIS and geospatial data files
+*.shp
+*.shx
+*.dbf
+*.prj
+*.geojson
+*.kml
+*.kmz
+*.gpkg
+*.tif
+*.tiff
+*.las
+*.laz
+
+# Archives and packaged exports
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz

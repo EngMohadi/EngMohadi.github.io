@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mohammad Abdalhadi | GIS Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio website for Mohammad Abdalhadi, GIS Manager and Geomatics Engineering specialist focused on smart municipal transformation, Web GIS dashboards, UAV mapping, 360 street documentation, and municipal spatial data infrastructure."
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests"
+    />
+    <meta property="og:title" content="Mohammad Abdalhadi | GIS Portfolio" />
+    <meta
+      property="og:description"
+      content="GIS, Geomatics, smart municipal transformation, Web GIS dashboards, UAV mapping, and 360 street documentation portfolio."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://engmrhadi-art.github.io/" />
+    <meta property="og:image" content="assets/images/portfolio-03.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Mohammad Abdalhadi | GIS Portfolio" />
+    <meta
+      name="twitter:description"
+      content="A professional GIS portfolio for municipal spatial data infrastructure, dashboards, UAV mapping, and smart transformation."
+    />
+    <meta name="twitter:image" content="assets/images/portfolio-03.png" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="Mohammad Abdalhadi">
+        <span class="brand-mark">GIS</span>
+        <span>
+          <strong data-i18n="navName">محمد عبد الهادي</strong>
+          <small data-i18n="navRole">مدير نظم معلومات جغرافية</small>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Sections">
+        <a href="#projects" data-i18n="navProjects">المشاريع</a>
+        <a href="#case-studies" data-i18n="navCases">دراسات حالة</a>
+        <a href="#services" data-i18n="navServices">الخدمات</a>
+        <a href="#contact" data-i18n="navContact">التواصل</a>
+      </nav>
+      <button class="language-toggle" id="languageToggle" type="button" aria-label="Switch language">
+        English
+      </button>
+    </header>
+
+    <main id="home">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-background" aria-hidden="true"></div>
+        <div class="hero-inner">
+          <p class="eyebrow" data-i18n="heroEyebrow">GIS • Geomatics • Smart Municipal Transformation</p>
+          <h1 id="hero-title" data-i18n="heroTitle">محمد عبد الهادي</h1>
+          <p class="hero-role" data-i18n="heroRole">
+            مدير نظم المعلومات الجغرافية | مهندس جيوماتكس | متخصص في التحول البلدي الذكي
+          </p>
+          <p class="hero-copy" data-i18n="heroCopy">
+            أقود حلولًا مكانية تحول البيانات البلدية إلى خرائط دقيقة، لوحات معلومات تفاعلية، تطبيقات ميدانية، وأنظمة دعم قرار قابلة للاستخدام من قبل البلديات والمؤسسات.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects" data-i18n="ctaProjects">View Projects</a>
+            <a class="btn btn-outline" href="#contact" data-i18n="ctaContact">Contact Me</a>
+            <a
+              class="btn btn-ghost email-contact-link"
+              href="#contact"
+              data-email-link
+              data-i18n="ctaConsult"
+              aria-label="Request GIS consultation by email"
+              >Request GIS Consultation</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section class="section about-section" id="about" aria-labelledby="about-title">
+        <div class="section-heading">
+          <span data-i18n="aboutKicker">About</span>
+          <h2 id="about-title" data-i18n="aboutTitle">خبير GIS يقود التحول المكاني للبلديات</h2>
+        </div>
+        <div class="about-layout">
+          <p data-i18n="aboutText">
+            خبرة عملية في بناء قواعد البيانات الجغرافية، إدارة Web GIS Dashboards، تحليل البنية التحتية، التوثيق الميداني، وربط البيانات الوصفية بالموقع الجغرافي. يركز العمل على تحويل البيانات المتفرقة إلى منظومات رقمية تساعد الإدارات البلدية على التخطيط والمتابعة واتخاذ القرار.
+          </p>
+          <div class="profile-strip" aria-label="Professional focus areas">
+            <span>ArcGIS Server</span>
+            <span>UAV Mapping</span>
+            <span>Street View 360</span>
+            <span>Municipal SDI</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section metrics-section" aria-labelledby="metrics-title">
+        <div class="section-heading">
+          <span data-i18n="metricsKicker">Key Impact Metrics</span>
+          <h2 id="metrics-title" data-i18n="metricsTitle">أرقام مختارة من أثر المشاريع</h2>
+        </div>
+        <div class="metrics-grid">
+          <article class="metric">
+            <strong>63 km</strong>
+            <span data-i18n="metricWastewater">رسم شبكة الصرف الصحي ومكوناتها</span>
+          </article>
+          <article class="metric">
+            <strong>15 km²</strong>
+            <span data-i18n="metricDsm">نماذج DSM عالية الدقة</span>
+          </article>
+          <article class="metric">
+            <strong>8 km²</strong>
+            <span data-i18n="metricUav">تصوير جوي وخرائط UAV</span>
+          </article>
+          <article class="metric">
+            <strong>5,629</strong>
+            <span data-i18n="metricHomes">منزل مربوط مكانيًا على خريطة البلدية</span>
+          </article>
+          <article class="metric">
+            <strong>1,100+</strong>
+            <span data-i18n="metricCrafts">مهنة وحرفة موثقة بنماذج ميدانية</span>
+          </article>
+          <article class="metric">
+            <strong>55 km</strong>
+            <span data-i18n="metricStreet">توثيق طرق بأسلوب Street View</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section expertise-section" aria-labelledby="expertise-title">
+        <div class="section-heading">
+          <span data-i18n="expertiseKicker">Core Expertise</span>
+          <h2 id="expertise-title" data-i18n="expertiseTitle">مجالات الخبرة الأساسية</h2>
+        </div>
+        <div class="expertise-grid" id="expertiseGrid"></div>
+      </section>
+
+      <section class="section projects-section" id="projects" aria-labelledby="projects-title">
+        <div class="section-heading">
+          <span data-i18n="projectsKicker">Selected Projects</span>
+          <h2 id="projects-title" data-i18n="projectsTitle">أقوى المشاريع المختارة</h2>
+        </div>
+        <p class="public-data-note" data-i18n="publicDataNote">
+          Public portfolio version. Sensitive attributes, exact coordinates, personal information, and restricted GIS layers are removed.
+        </p>
+        <div class="projects-grid" id="projectsGrid"></div>
+      </section>
+
+      <section class="section case-section" id="case-studies" aria-labelledby="cases-title">
+        <div class="section-heading">
+          <span data-i18n="casesKicker">Case Studies</span>
+          <h2 id="cases-title" data-i18n="casesTitle">دراسات حالة مختصرة</h2>
+        </div>
+        <div class="case-grid" id="caseGrid"></div>
+      </section>
+
+      <section class="section services-section" id="services" aria-labelledby="services-title">
+        <div class="section-heading">
+          <span data-i18n="servicesKicker">Services</span>
+          <h2 id="services-title" data-i18n="servicesTitle">خدمات مهنية للبلديات والمؤسسات</h2>
+        </div>
+        <div class="services-grid" id="servicesGrid"></div>
+      </section>
+
+      <section class="section gallery-section" aria-labelledby="gallery-title">
+        <div class="section-heading">
+          <span data-i18n="galleryKicker">Visual Gallery</span>
+          <h2 id="gallery-title" data-i18n="galleryTitle">نماذج بصرية داعمة للمشاريع</h2>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </section>
+
+      <section class="contact-section" id="contact" aria-labelledby="contact-title">
+        <div class="contact-content">
+          <span data-i18n="contactKicker">Contact</span>
+          <h2 id="contact-title" data-i18n="contactTitle">لنبنِ منظومة GIS أكثر ذكاءً</h2>
+          <p data-i18n="contactText">
+            متاح للتعاون والاستشارات والشراكات الفنية في مشاريع GIS، التحول الرقمي البلدي، Web GIS Dashboards، التوثيق الميداني، والبنية المكانية للبيانات.
+          </p>
+          <div class="contact-actions">
+            <a
+              id="emailContact"
+              class="btn btn-primary email-contact-link"
+              href="#contact"
+              data-email-link
+              data-i18n="emailButton"
+              aria-label="Send email"
+              >Send Email</a
+            >
+            <a
+              id="whatsappContact"
+              class="btn btn-outline whatsapp-contact-link"
+              href="#contact"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-i18n="whatsappButton"
+              aria-label="Contact via WhatsApp"
+              >Contact via WhatsApp</a
+            >
+          </div>
+          <form class="contact-form" id="contactForm" aria-label="Portfolio contact form">
+            <div class="form-grid">
+              <label>
+                <span data-i18n="formName">Name</span>
+                <input id="contactName" name="name" type="text" autocomplete="name" data-i18n-placeholder="formNamePlaceholder" />
+              </label>
+              <label>
+                <span data-i18n="formEmail">Your Email</span>
+                <input id="contactSenderEmail" name="email" type="email" autocomplete="email" data-i18n-placeholder="formEmailPlaceholder" />
+              </label>
+              <label>
+                <span data-i18n="formSubject">Subject</span>
+                <input id="contactSubject" name="subject" type="text" autocomplete="off" data-i18n-placeholder="formSubjectPlaceholder" />
+              </label>
+              <label class="message-field">
+                <span data-i18n="formMessage">Message</span>
+                <textarea id="contactMessage" name="message" rows="5" autocomplete="off" data-i18n-placeholder="formMessagePlaceholder"></textarea>
+              </label>
+            </div>
+            <p class="privacy-note" data-i18n="privacyNote">This form opens your email app. No message is stored on this website.</p>
+            <button class="btn btn-primary" type="submit" data-i18n="formSubmit" aria-label="Send contact message by email">
+              Send Message
+            </button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p data-i18n="footerDisclaimer">
+        Public portfolio version. Sensitive attributes, exact coordinates, personal information, and restricted GIS layers are removed.
+      </p>
+      <span data-i18n="footerText">© 2026 Mohammad Abdalhadi. GIS Portfolio.</span>
+    </footer>
+
+    <a
+      class="floating-whatsapp whatsapp-contact-link"
+      href="#contact"
+      target="_blank"
+      rel="noopener noreferrer"
+      data-i18n="whatsappButton"
+      aria-label="Contact via WhatsApp"
+      >Contact via WhatsApp</a
+    >
+
+    <script src="app.js"></script>
+  </body>
+</html>
