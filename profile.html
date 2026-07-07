@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Professional Profile | Eng. Mr. Hadi</title>
+    <meta
+      name="description"
+      content="Printable professional profile for a GIS Manager and Geomatics Engineer specializing in municipal GIS dashboards, UAV mapping, spatial databases, and smart municipal transformation."
+    />
+    <link rel="canonical" href="https://engmrhadi-art.github.io/profile.html" />
+    <link rel="stylesheet" href="legacy.css" />
+    <style>
+      body { background: #f5f8fb; }
+      .profile-page { max-width: 980px; margin: 0 auto; padding: 42px 18px 64px; }
+      .profile-sheet { padding: clamp(24px, 4vw, 46px); background: #fff; border: 1px solid var(--line); border-radius: 8px; box-shadow: var(--shadow); }
+      .profile-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 20px; align-items: start; border-bottom: 2px solid var(--line); padding-bottom: 22px; }
+      .profile-top h1 { margin: 0; color: var(--navy); font-size: clamp(34px, 5vw, 56px); }
+      .profile-top p { margin: 10px 0 0; color: #314154; font-size: 18px; }
+      .profile-badge { padding: 12px 14px; color: #fff; background: var(--green-dark); border-radius: 8px; font-weight: 900; }
+      .profile-section { margin-top: 26px; }
+      .profile-section h2 { color: var(--navy); font-size: 22px; }
+      .profile-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+      .profile-card { padding: 16px; border: 1px solid var(--line); border-radius: 8px; background: #f8fbfd; }
+      .profile-card strong { display: block; color: var(--navy); font-size: 24px; }
+      .profile-list { display: grid; gap: 10px; padding-inline-start: 20px; color: #314154; }
+      .profile-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+      @media print {
+        .site-header, .profile-actions { display: none; }
+        body { background: #fff; }
+        .profile-page { padding: 0; }
+        .profile-sheet { border: 0; box-shadow: none; }
+      }
+      @media (max-width: 760px) {
+        .profile-top, .profile-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Back to portfolio home">
+        <span class="brand-mark">GIS</span>
+        <span><strong>Eng. Mr. Hadi</strong><small>Professional Profile</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Profile navigation">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#case-studies">Case Studies</a>
+        <a href="demo.html">Live Demo</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main class="profile-page">
+      <article class="profile-sheet">
+        <div class="profile-top">
+          <div>
+            <p class="eyebrow">GIS Manager | Geomatics Engineer</p>
+            <h1>Mohammad Abdalhadi</h1>
+            <p>
+              I build municipal Web GIS dashboards, spatial databases, field data systems, UAV mapping outputs,
+              and Street View-style documentation that turn municipal data into operational decisions.
+            </p>
+          </div>
+          <div class="profile-badge">Municipal GIS Products</div>
+        </div>
+
+        <section class="profile-section">
+          <h2>High-Value Services</h2>
+          <ul class="profile-list">
+            <li><strong>Municipal GIS Dashboard:</strong> searchable maps, infrastructure layers, KPIs, charts, and printable reports for senior management.</li>
+            <li><strong>Field Data Collection System:</strong> forms, photos, coordinates, team tracking, live dashboards, and weekly reporting workflows.</li>
+            <li><strong>UAV Mapping + DSM + Orthomosaic:</strong> high-resolution aerial products converted into municipal-ready GIS layers.</li>
+          </ul>
+        </section>
+
+        <section class="profile-section">
+          <h2>Selected Impact Metrics</h2>
+          <div class="profile-grid">
+            <div class="profile-card"><strong>5,629</strong><span>houses linked to municipal GIS</span></div>
+            <div class="profile-card"><strong>63 km</strong><span>wastewater network mapped</span></div>
+            <div class="profile-card"><strong>55 km</strong><span>Street View road documentation</span></div>
+            <div class="profile-card"><strong>15 km2</strong><span>DSM coverage produced</span></div>
+            <div class="profile-card"><strong>8 km2</strong><span>UAV orthomosaic coverage</span></div>
+            <div class="profile-card"><strong>1,100+</strong><span>professions and activities documented</span></div>
+          </div>
+        </section>
+
+        <section class="profile-section">
+          <h2>Core Tools</h2>
+          <p>
+            QGIS, ArcGIS, PostGIS, Leaflet, OpenLayers, Lizmap, Chart.js, ArcGIS Field Maps, Survey123,
+            QField, KoboToolbox, UAV workflows, PIX4D, Agisoft Metashape, GCPs, and spatial data QA.
+          </p>
+        </section>
+
+        <section class="profile-section">
+          <h2>Best-Fit Clients</h2>
+          <p>
+            Municipalities, GIS companies, NGOs, infrastructure teams, planning departments, contractors,
+            reconstruction programs, and organizations that need public-safe GIS dashboards and decision support.
+          </p>
+        </section>
+
+        <div class="profile-actions">
+          <a class="btn btn-primary" href="index.html#contact">Request GIS Consultation</a>
+          <a class="btn btn-outline" href="demo.html">View Dashboard Demo</a>
+          <button class="btn btn-ghost" type="button" onclick="window.print()">Print / Save as PDF</button>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

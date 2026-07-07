@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live Demo: Municipal GIS Dashboard | Eng. Mr. Hadi</title>
+    <meta
+      name="description"
+      content="Interactive public demo of a municipal GIS dashboard using sample data only. Toggle layers, search records, view charts, and explore GIS decision-support workflows."
+    />
+    <link rel="canonical" href="https://engmrhadi-art.github.io/demo.html" />
+    <link rel="stylesheet" href="legacy.css" />
+    <link rel="stylesheet" href="demo.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Back to portfolio home">
+        <span class="brand-mark">GIS</span>
+        <span><strong>Eng. Mr. Hadi</strong><small>Municipal GIS Demo</small></span>
+      </a>
+      <nav class="nav-links" aria-label="Demo navigation">
+        <a href="index.html#services">Services</a>
+        <a href="index.html#case-studies">Case Studies</a>
+        <a href="profile.html">Profile</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="demo-hero">
+        <p class="eyebrow">Live Demo</p>
+        <h1>Municipal GIS Dashboard</h1>
+        <p>
+          A lightweight Web GIS demo using fake sample data only. It shows how municipal layers,
+          complaints, facilities, charts, and search can become a decision-support dashboard.
+        </p>
+        <p class="demo-note">This demo uses sample data only and does not represent real municipal records.</p>
+      </section>
+
+      <section class="demo-shell" aria-label="Interactive municipal GIS dashboard">
+        <aside class="demo-panel">
+          <label class="demo-search">
+            Search sample records
+            <input id="demoSearch" type="search" placeholder="Try: water, lighting, facility..." autocomplete="off" />
+          </label>
+
+          <div class="layer-controls" aria-label="Layer controls">
+            <label><input type="checkbox" data-layer="neighborhoods" checked /> Neighborhoods</label>
+            <label><input type="checkbox" data-layer="roads" checked /> Roads</label>
+            <label><input type="checkbox" data-layer="buildings" checked /> Buildings</label>
+            <label><input type="checkbox" data-layer="complaints" checked /> Citizen Complaints</label>
+            <label><input type="checkbox" data-layer="facilities" checked /> Municipal Facilities</label>
+          </div>
+
+          <button class="btn btn-primary" id="printDemo" type="button">Print / Export Placeholder</button>
+        </aside>
+
+        <section class="demo-main">
+          <div class="stats-grid" id="statsGrid"></div>
+          <div class="map-and-chart">
+            <div class="fake-map" id="fakeMap" role="img" aria-label="Sample municipal GIS map"></div>
+            <div class="chart-card">
+              <h2>Complaint Categories</h2>
+              <canvas id="complaintsChart" width="420" height="260" aria-label="Sample complaints chart"></canvas>
+            </div>
+          </div>
+          <div class="results-card">
+            <h2>Sample Records</h2>
+            <div id="demoResults"></div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script src="demo.js"></script>
+  </body>
+</html>

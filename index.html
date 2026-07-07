@@ -3,240 +3,332 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mohammad Abdalhadi | GIS Portfolio</title>
+    <title>Mohammad Abdelhadi | Remote GIS Consultant, UAV Image Processing &amp; Web GIS Dashboards</title>
     <meta
       name="description"
-      content="Portfolio website for Mohammad Abdalhadi, GIS Manager and Geomatics Engineering specialist focused on smart municipal transformation, Web GIS dashboards, UAV mapping, 360 street documentation, and municipal spatial data infrastructure."
+      content="Remote GIS consultant, Web GIS dashboard developer, and UAV image processing specialist. Drone image processing, orthomosaic production, DSM generation, GIS-ready aerial imagery, municipal UAV mapping, spatial databases, and photogrammetry processing — delivered remotely."
     />
+    <link rel="canonical" href="https://engmrhadi-art.github.io/" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; img-src 'self' data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests"
+      content="default-src 'self'; img-src 'self' data:; script-src 'self'; style-src 'self' 'unsafe-inline'; object-src 'none'; base-uri 'self'; form-action 'self' mailto:; upgrade-insecure-requests"
     />
-    <meta property="og:title" content="Mohammad Abdalhadi | GIS Portfolio" />
+    <meta property="og:title" content="Mohammad Abdelhadi | Remote GIS Consultant, UAV Image Processing &amp; Web GIS Dashboards" />
     <meta
       property="og:description"
-      content="GIS, Geomatics, smart municipal transformation, Web GIS dashboards, UAV mapping, and 360 street documentation portfolio."
+      content="I build GIS dashboards, spatial databases, and smart municipal systems — and process raw UAV images into high-resolution orthomosaic maps and DSM outputs ready for GIS and Web GIS dashboards. Remote UAV processing service for municipalities, engineering firms, and NGOs."
     />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://engmrhadi-art.github.io/" />
-    <meta property="og:image" content="assets/images/portfolio-03.png" />
+    <meta property="og:image" content="assets/images/work/roads-transport-dashboard.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Mohammad Abdalhadi | GIS Portfolio" />
+    <meta name="twitter:title" content="Mohammad Abdelhadi | Remote GIS Consultant, UAV Image Processing &amp; Web GIS Dashboards" />
     <meta
       name="twitter:description"
-      content="A professional GIS portfolio for municipal spatial data infrastructure, dashboards, UAV mapping, and smart transformation."
+      content="Remote GIS consulting, UAV image processing, orthomosaic production, DSM generation, Web GIS dashboards, municipal spatial databases, and infrastructure GIS mapping."
     />
-    <meta name="twitter:image" content="assets/images/portfolio-03.png" />
+    <meta name="twitter:image" content="assets/images/work/roads-transport-dashboard.jpg" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "name": "Mohammad Abdelhadi",
+            "jobTitle": "GIS Manager, Geomatics Engineer, Remote GIS Consultant",
+            "url": "https://engmrhadi-art.github.io/",
+            "address": { "@type": "PostalAddress", "addressLocality": "Al-Bureij, Gaza", "addressCountry": "PS" },
+            "alumniOf": ["Universiti Teknologi Malaysia", "Islamic University of Gaza"],
+            "knowsAbout": [
+              "Remote GIS Consulting",
+              "UAV Image Processing",
+              "Drone Image Processing",
+              "Orthomosaic Production",
+              "DSM Generation",
+              "Photogrammetry Processing",
+              "Web GIS Dashboard Development",
+              "Municipal GIS",
+              "Spatial Database Design",
+              "Infrastructure GIS Mapping",
+              "Geomatics Engineering",
+              "Field Data Collection GIS",
+              "Smart Municipality GIS",
+              "Damage Assessment GIS"
+            ]
+          },
+          {
+            "@type": "ProfessionalService",
+            "name": "Remote GIS Consulting, UAV Image Processing, and Web GIS Development",
+            "url": "https://engmrhadi-art.github.io/",
+            "serviceType": [
+              "UAV Image Processing and Orthomosaic Production",
+              "DSM Generation from UAV Imagery",
+              "Web GIS Dashboard Development",
+              "Municipal Spatial Database Design",
+              "Infrastructure GIS Mapping",
+              "Field Data Collection Systems",
+              "Damage Assessment and Emergency GIS"
+            ],
+            "areaServed": "Worldwide (remote)"
+          }
+        ]
+      }
+    </script>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header class="site-header" aria-label="Main navigation">
-      <a class="brand" href="#home" aria-label="Mohammad Abdalhadi">
-        <span class="brand-mark">GIS</span>
-        <span>
-          <strong data-i18n="navName">محمد عبد الهادي</strong>
-          <small data-i18n="navRole">مدير نظم معلومات جغرافية</small>
+    <div class="grid-overlay" aria-hidden="true"></div>
+
+    <header class="site-header" id="siteHeader">
+      <a class="brand" href="#home" aria-label="Mohammad Abdelhadi - home">
+        <span class="brand-mark" aria-hidden="true">MA</span>
+        <span class="brand-text">
+          <strong data-i18n="hero.name">Mohammad Abdelhadi</strong>
+          <small data-i18n="hero.roleShort">Remote GIS Consultant</small>
         </span>
       </a>
-      <nav class="nav-links" aria-label="Sections">
-        <a href="#projects" data-i18n="navProjects">المشاريع</a>
-        <a href="#case-studies" data-i18n="navCases">دراسات حالة</a>
-        <a href="#services" data-i18n="navServices">الخدمات</a>
-        <a href="#contact" data-i18n="navContact">التواصل</a>
+      <nav class="nav-links" id="navLinks" aria-label="Site sections">
+        <a href="#value" data-i18n="nav.value">How I Help</a>
+        <a href="#services" data-i18n="nav.services">Services</a>
+        <a href="#uav" data-i18n="nav.uav">UAV Processing</a>
+        <a href="#projects" data-i18n="nav.projects">Projects</a>
+        <a href="#gallery" data-i18n="nav.gallery">Gallery</a>
+        <a href="#process" data-i18n="nav.process">Process</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
       </nav>
-      <button class="language-toggle" id="languageToggle" type="button" aria-label="Switch language">
-        English
-      </button>
+      <div class="header-actions">
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">العربية</button>
+        <a class="btn btn-primary btn-sm" href="#contact" data-i18n="nav.hire">Hire Me Remotely</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </header>
 
     <main id="home">
+      <!-- 1. HERO -->
       <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-background" aria-hidden="true"></div>
         <div class="hero-inner">
-          <p class="eyebrow" data-i18n="heroEyebrow">GIS • Geomatics • Smart Municipal Transformation</p>
-          <h1 id="hero-title" data-i18n="heroTitle">محمد عبد الهادي</h1>
-          <p class="hero-role" data-i18n="heroRole">
-            مدير نظم المعلومات الجغرافية | مهندس جيوماتكس | متخصص في التحول البلدي الذكي
+          <p class="hero-eyebrow reveal">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span data-i18n="hero.badge">Available for Remote Projects</span>
           </p>
-          <p class="hero-copy" data-i18n="heroCopy">
-            أقود حلولًا مكانية تحول البيانات البلدية إلى خرائط دقيقة، لوحات معلومات تفاعلية، تطبيقات ميدانية، وأنظمة دعم قرار قابلة للاستخدام من قبل البلديات والمؤسسات.
-          </p>
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects" data-i18n="ctaProjects">View Projects</a>
-            <a class="btn btn-outline" href="#contact" data-i18n="ctaContact">Contact Me</a>
+          <h1 id="hero-title" class="reveal" data-i18n-html="hero.titleHtml"></h1>
+          <p class="hero-name reveal"><strong data-i18n="hero.name">Mohammad Abdelhadi</strong> — <span data-i18n="hero.role"></span></p>
+          <p class="hero-copy reveal" data-i18n="hero.copy"></p>
+          <p class="hero-copy hero-uav-note reveal" data-i18n="hero.uavNote"></p>
+          <div class="hero-actions reveal">
+            <a class="btn btn-primary" href="#contact" data-i18n="hero.ctaHire">Hire Me Remotely</a>
+            <a class="btn btn-outline" href="#projects" data-i18n="hero.ctaProjects">View GIS Projects</a>
             <a
-              class="btn btn-ghost email-contact-link"
-              href="#contact"
-              data-email-link
-              data-i18n="ctaConsult"
-              aria-label="Request GIS consultation by email"
-              >Request GIS Consultation</a
+              class="btn btn-outline"
+              href="assets/downloads/Mohammad_Abdelhadi_GIS_Remote_Work_Portfolio_EN.docx"
+              download
+              data-i18n="hero.ctaDownload"
+              >Download Portfolio</a
             >
+            <button class="btn btn-ghost whatsapp-contact-link" type="button" data-i18n="hero.ctaWhatsapp">Send via WhatsApp</button>
           </div>
+          <div class="hero-metrics" id="heroMetrics" role="list" aria-label="Key experience metrics"></div>
         </div>
       </section>
 
-      <section class="section about-section" id="about" aria-labelledby="about-title">
-        <div class="section-heading">
-          <span data-i18n="aboutKicker">About</span>
-          <h2 id="about-title" data-i18n="aboutTitle">خبير GIS يقود التحول المكاني للبلديات</h2>
+      <!-- 2. REMOTE WORK VALUE -->
+      <section class="section" id="value" aria-labelledby="value-title">
+        <div class="section-heading reveal">
+          <span class="kicker" data-i18n="sections.value.kicker"></span>
+          <h2 id="value-title" data-i18n="sections.value.title"></h2>
+          <p data-i18n="sections.value.text"></p>
         </div>
-        <div class="about-layout">
-          <p data-i18n="aboutText">
-            خبرة عملية في بناء قواعد البيانات الجغرافية، إدارة Web GIS Dashboards، تحليل البنية التحتية، التوثيق الميداني، وربط البيانات الوصفية بالموقع الجغرافي. يركز العمل على تحويل البيانات المتفرقة إلى منظومات رقمية تساعد الإدارات البلدية على التخطيط والمتابعة واتخاذ القرار.
-          </p>
-          <div class="profile-strip" aria-label="Professional focus areas">
-            <span>ArcGIS Server</span>
-            <span>UAV Mapping</span>
-            <span>Street View 360</span>
-            <span>Municipal SDI</span>
-          </div>
-        </div>
+        <div class="value-grid" id="valueGrid"></div>
       </section>
 
-      <section class="section metrics-section" aria-labelledby="metrics-title">
-        <div class="section-heading">
-          <span data-i18n="metricsKicker">Key Impact Metrics</span>
-          <h2 id="metrics-title" data-i18n="metricsTitle">أرقام مختارة من أثر المشاريع</h2>
-        </div>
-        <div class="metrics-grid">
-          <article class="metric">
-            <strong>63 km</strong>
-            <span data-i18n="metricWastewater">رسم شبكة الصرف الصحي ومكوناتها</span>
-          </article>
-          <article class="metric">
-            <strong>15 km²</strong>
-            <span data-i18n="metricDsm">نماذج DSM عالية الدقة</span>
-          </article>
-          <article class="metric">
-            <strong>8 km²</strong>
-            <span data-i18n="metricUav">تصوير جوي وخرائط UAV</span>
-          </article>
-          <article class="metric">
-            <strong>5,629</strong>
-            <span data-i18n="metricHomes">منزل مربوط مكانيًا على خريطة البلدية</span>
-          </article>
-          <article class="metric">
-            <strong>1,100+</strong>
-            <span data-i18n="metricCrafts">مهنة وحرفة موثقة بنماذج ميدانية</span>
-          </article>
-          <article class="metric">
-            <strong>55 km</strong>
-            <span data-i18n="metricStreet">توثيق طرق بأسلوب Street View</span>
-          </article>
-        </div>
-      </section>
-
-      <section class="section expertise-section" aria-labelledby="expertise-title">
-        <div class="section-heading">
-          <span data-i18n="expertiseKicker">Core Expertise</span>
-          <h2 id="expertise-title" data-i18n="expertiseTitle">مجالات الخبرة الأساسية</h2>
-        </div>
-        <div class="expertise-grid" id="expertiseGrid"></div>
-      </section>
-
-      <section class="section projects-section" id="projects" aria-labelledby="projects-title">
-        <div class="section-heading">
-          <span data-i18n="projectsKicker">Selected Projects</span>
-          <h2 id="projects-title" data-i18n="projectsTitle">أقوى المشاريع المختارة</h2>
-        </div>
-        <div class="projects-grid" id="projectsGrid"></div>
-      </section>
-
-      <section class="section case-section" id="case-studies" aria-labelledby="cases-title">
-        <div class="section-heading">
-          <span data-i18n="casesKicker">Case Studies</span>
-          <h2 id="cases-title" data-i18n="casesTitle">دراسات حالة مختصرة</h2>
-        </div>
-        <div class="case-grid" id="caseGrid"></div>
-      </section>
-
-      <section class="section services-section" id="services" aria-labelledby="services-title">
-        <div class="section-heading">
-          <span data-i18n="servicesKicker">Services</span>
-          <h2 id="services-title" data-i18n="servicesTitle">خدمات مهنية للبلديات والمؤسسات</h2>
+      <!-- 3. SERVICES -->
+      <section class="section section-alt" id="services" aria-labelledby="services-title">
+        <div class="section-heading reveal">
+          <span class="kicker" data-i18n="sections.services.kicker"></span>
+          <h2 id="services-title" data-i18n="sections.services.title"></h2>
+          <p data-i18n="sections.services.text"></p>
         </div>
         <div class="services-grid" id="servicesGrid"></div>
       </section>
 
-      <section class="section gallery-section" aria-labelledby="gallery-title">
-        <div class="section-heading">
-          <span data-i18n="galleryKicker">Visual Gallery</span>
-          <h2 id="gallery-title" data-i18n="galleryTitle">نماذج بصرية داعمة للمشاريع</h2>
+      <!-- 4. UAV IMAGE PROCESSING -->
+      <section class="section section-uav" id="uav" aria-labelledby="uav-title">
+        <div class="section-heading reveal">
+          <span class="kicker" data-i18n="sections.uav.kicker"></span>
+          <h2 id="uav-title" data-i18n="sections.uav.title"></h2>
+          <p data-i18n="sections.uav.text"></p>
         </div>
+        <div class="uav-intro reveal">
+          <p data-i18n="uav.intro"></p>
+          <div class="uav-cta-row">
+            <button class="btn btn-primary uav-cta" type="button" data-i18n="uav.cta">Process My UAV Images</button>
+            <button class="btn btn-outline uav-cta" type="button" data-i18n="uav.ctaSecondary">Request UAV Processing Service</button>
+          </div>
+        </div>
+        <div class="uav-grid" id="uavGrid"></div>
+      </section>
+
+      <!-- 5. FEATURED PROJECTS / CASE STUDIES -->
+      <section class="section" id="projects" aria-labelledby="projects-title">
+        <div class="section-heading reveal">
+          <span class="kicker" data-i18n="sections.projects.kicker"></span>
+          <h2 id="projects-title" data-i18n="sections.projects.title"></h2>
+          <p data-i18n="sections.projects.text"></p>
+        </div>
+        <div class="case-grid" id="caseGrid"></div>
+      </section>
+
+      <!-- 6. PROOF / METRICS -->
+      <section class="section section-dark" id="metrics" aria-labelledby="metrics-title">
+        <div class="section-heading reveal">
+          <span class="kicker" data-i18n="sections.metrics.kicker"></span>
+          <h2 id="metrics-title" data-i18n="sections.metrics.title"></h2>
+        </div>
+        <div class="metrics-grid" id="metricsGrid"></div>
+      </section>
+
+      <!-- 7. GALLERY -->
+      <section class="section" id="gallery" aria-labelledby="gallery-title">
+        <div class="section-heading reveal">
+          <span class="kicker" data-i18n="sections.gallery.kicker"></span>
+          <h2 id="gallery-title" data-i18n="sections.gallery.title"></h2>
+          <p class="confidential-note" data-i18n="sections.gallery.note"></p>
+        </div>
+        <div class="gallery-filters" id="galleryFilters" role="tablist" aria-label="Gallery categories"></div>
         <div class="gallery-grid" id="galleryGrid"></div>
       </section>
 
+      <!-- 8. PROCESS -->
+      <section class="section section-alt" id="process" aria-labelledby="process-title">
+        <div class="section-heading reveal">
+          <span class="kicker" data-i18n="sections.process.kicker"></span>
+          <h2 id="process-title" data-i18n="sections.process.title"></h2>
+          <p data-i18n="sections.process.text"></p>
+        </div>
+        <ol class="process-grid" id="processGrid"></ol>
+      </section>
+
+      <!-- 9. WHY HIRE ME -->
+      <section class="section" id="why" aria-labelledby="why-title">
+        <div class="section-heading reveal">
+          <span class="kicker" data-i18n="sections.why.kicker"></span>
+          <h2 id="why-title" data-i18n="sections.why.title"></h2>
+        </div>
+        <div class="why-layout">
+          <div class="why-list" id="whyList"></div>
+          <aside class="why-aside reveal" aria-label="Remote roles and experience summary">
+            <h3 data-i18n="aside.rolesTitle"></h3>
+            <ul id="rolesList"></ul>
+            <h3 data-i18n="aside.expTitle"></h3>
+            <ul id="expList"></ul>
+            <h3 data-i18n="aside.eduTitle"></h3>
+            <ul id="eduList"></ul>
+          </aside>
+        </div>
+      </section>
+
+      <!-- 10. CONTACT / PROJECT INQUIRY -->
       <section class="contact-section" id="contact" aria-labelledby="contact-title">
-        <div class="contact-content">
-          <span data-i18n="contactKicker">Contact</span>
-          <h2 id="contact-title" data-i18n="contactTitle">لنبنِ منظومة GIS أكثر ذكاءً</h2>
-          <p data-i18n="contactText">
-            متاح للتعاون والاستشارات والشراكات الفنية في مشاريع GIS، التحول الرقمي البلدي، Web GIS Dashboards، التوثيق الميداني، والبنية المكانية للبيانات.
-          </p>
-          <div class="contact-actions">
-            <a
-              id="emailContact"
-              class="btn btn-primary email-contact-link"
-              href="#contact"
-              data-email-link
-              data-i18n="emailButton"
-              aria-label="Send email"
-              >Send Email</a
-            >
-            <a
-              id="whatsappContact"
-              class="btn btn-outline whatsapp-contact-link"
-              href="#contact"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-i18n="whatsappButton"
-              aria-label="Contact via WhatsApp"
-              >Contact via WhatsApp</a
-            >
+        <div class="contact-inner">
+          <div class="contact-copy reveal">
+            <span class="kicker" data-i18n="contact.kicker"></span>
+            <h2 id="contact-title" data-i18n="contact.title"></h2>
+            <p data-i18n="contact.sub"></p>
+            <p class="confidential-note" data-i18n="contact.confidential"></p>
+            <ul class="contact-facts" id="contactFacts"></ul>
+            <div class="contact-actions">
+              <button class="btn btn-primary whatsapp-contact-link" type="button" data-i18n="contact.btnWhatsapp">Send via WhatsApp</button>
+              <button class="btn btn-outline telegram-contact-link" type="button" data-i18n="contact.btnTelegram" hidden>Send via Telegram</button>
+              <button class="btn btn-outline email-contact-link" type="button" data-i18n="contact.btnEmail">Send Email Inquiry</button>
+              <a
+                class="btn btn-ghost"
+                href="assets/downloads/Mohammad_Abdelhadi_GIS_Remote_Work_Portfolio_EN.docx"
+                download
+                data-i18n="contact.btnDownload"
+                >Download Portfolio</a
+              >
+            </div>
           </div>
-          <form class="contact-form" id="contactForm" aria-label="Portfolio contact form">
+          <form class="contact-form reveal" id="contactForm" novalidate aria-label="Project inquiry form">
+            <h3 data-i18n="contact.form.title"></h3>
             <div class="form-grid">
               <label>
-                <span data-i18n="formName">Name</span>
-                <input id="contactName" name="name" type="text" autocomplete="name" data-i18n-placeholder="formNamePlaceholder" />
+                <span data-i18n="contact.form.name"></span>
+                <input id="fName" name="name" type="text" autocomplete="name" required data-i18n-placeholder="contact.form.namePh" />
               </label>
               <label>
-                <span data-i18n="formEmail">Your Email</span>
-                <input id="contactSenderEmail" name="email" type="email" autocomplete="email" data-i18n-placeholder="formEmailPlaceholder" />
+                <span data-i18n="contact.form.org"></span>
+                <input id="fOrg" name="organization" type="text" autocomplete="organization" data-i18n-placeholder="contact.form.orgPh" />
               </label>
               <label>
-                <span data-i18n="formSubject">Subject</span>
-                <input id="contactSubject" name="subject" type="text" autocomplete="off" data-i18n-placeholder="formSubjectPlaceholder" />
+                <span data-i18n="contact.form.country"></span>
+                <input id="fCountry" name="country" type="text" autocomplete="country-name" required data-i18n-placeholder="contact.form.countryPh" />
               </label>
-              <label class="message-field">
-                <span data-i18n="formMessage">Message</span>
-                <textarea id="contactMessage" name="message" rows="5" autocomplete="off" data-i18n-placeholder="formMessagePlaceholder"></textarea>
+              <label>
+                <span data-i18n="contact.form.reply"></span>
+                <input id="fReply" name="reply" type="text" autocomplete="off" required data-i18n-placeholder="contact.form.replyPh" />
+              </label>
+              <label>
+                <span data-i18n="contact.form.method"></span>
+                <select id="fMethod" name="method" required></select>
+              </label>
+              <label>
+                <span data-i18n="contact.form.service"></span>
+                <select id="fService" name="service" required></select>
+              </label>
+              <label class="full">
+                <span data-i18n="contact.form.description"></span>
+                <textarea id="fDescription" name="description" rows="5" required data-i18n-placeholder="contact.form.descriptionPh"></textarea>
+              </label>
+              <label class="full">
+                <span data-i18n="contact.form.link"></span>
+                <input id="fLink" name="link" type="text" autocomplete="off" data-i18n-placeholder="contact.form.linkPh" />
+              </label>
+              <label class="full consent-row">
+                <input id="fConsent" name="consent" type="checkbox" required />
+                <span data-i18n="contact.form.consent"></span>
               </label>
             </div>
-            <p class="privacy-note" data-i18n="privacyNote">This form opens your email app. No message is stored on this website.</p>
-            <button class="btn btn-primary" type="submit" data-i18n="formSubmit" aria-label="Send contact message by email">
-              Send Message
-            </button>
+            <p class="privacy-note" data-i18n="contact.form.privacy"></p>
+            <p class="form-alert" id="formAlert" role="status" aria-live="polite" hidden></p>
+            <button class="btn btn-primary" id="formSubmit" type="submit" data-i18n="contact.form.submit">Send Inquiry</button>
           </form>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <span data-i18n="footerText">© 2026 Mohammad Abdalhadi. GIS Portfolio.</span>
+      <span data-i18n="footer.text"></span>
+      <nav aria-label="Footer links">
+        <a href="#value" data-i18n="nav.value"></a>
+        <a href="#services" data-i18n="nav.services"></a>
+        <a href="#uav" data-i18n="nav.uav"></a>
+        <a href="#projects" data-i18n="nav.projects"></a>
+        <a href="#contact" data-i18n="nav.contact"></a>
+      </nav>
     </footer>
 
-    <a
+    <button
       class="floating-whatsapp whatsapp-contact-link"
-      href="#contact"
-      target="_blank"
-      rel="noopener noreferrer"
-      data-i18n="whatsappButton"
-      aria-label="Contact via WhatsApp"
-      >Contact via WhatsApp</a
+      type="button"
+      aria-label="Send via WhatsApp"
+      >WhatsApp</button
     >
 
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
+      <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close preview">&times;</button>
+      <button class="lightbox-nav prev" id="lightboxPrev" type="button" aria-label="Previous image">&#8249;</button>
+      <figure>
+        <img id="lightboxImage" src="" alt="" />
+        <figcaption id="lightboxCaption"></figcaption>
+      </figure>
+      <button class="lightbox-nav next" id="lightboxNext" type="button" aria-label="Next image">&#8250;</button>
+    </div>
+
+    <script src="locales/en.js"></script>
+    <script src="locales/ar.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

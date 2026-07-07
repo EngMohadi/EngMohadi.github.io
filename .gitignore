@@ -13,6 +13,7 @@ desktop.ini
 # Environment, secrets, and keys
 .env
 .env.*
+!.env.example
 *.secret
 *secret*
 *credentials*

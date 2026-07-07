@@ -1,55 +1,63 @@
-# GIS Portfolio Website
+# Mohammad Abdelhadi — Remote GIS Portfolio (Business V2)
 
-Static bilingual portfolio website for a GIS / Geomatics Engineering specialist focused on smart municipal transformation, Web GIS dashboards, UAV mapping, 360 Street View documentation, and municipal spatial data infrastructure.
+Premium, conversion-focused, English-only portfolio website for a Remote GIS Consultant / Geomatics Engineer. Built as a static site (no build step) with a dark geospatial theme, targeting remote work, freelance contracts, consulting, and international GIS / Web GIS projects.
 
-## Privacy Approach
+Content source of truth: `Mohammad_Abdelhadi_GIS_Remote_Work_Portfolio_EN.docx` (all copy, metrics, case studies, and gallery images were extracted from it).
 
-- The public interface does not visibly display the owner email address.
-- Email and WhatsApp links are generated at runtime from separated JavaScript parts.
-- The contact form opens the visitor's email app with a prepared message; no message is stored by this static site.
-- This approach reduces casual scraping, but it does not make the destination email perfectly secret. Static websites cannot fully hide destination contact details from advanced scrapers.
-- For stronger privacy, replace `mailto:` with a backend or trusted contact-form service.
+## Structure
 
-## Public GIS Data Safety
+| File / folder | Purpose |
+|---|---|
+| `index.html` | Single-page portfolio: hero, remote value, service packages, UAV processing service, case studies, proof metrics, gallery, process, why-hire-me, project inquiry form |
+| `styles.css` | Premium dark theme (CSS variables, glassmorphism cards, grid overlay, responsive, RTL support) |
+| `app.js` | Rendering engine, EN/AR language switch, gallery filters, lightbox, inquiry form logic, obfuscated contact actions |
+| `locales/en.js`, `locales/ar.js` | All visible site text per language — edit these to change content |
+| `.env.example` | Placeholder env vars for a future backend that would truly hide contact details |
+| `assets/images/work/` | 36 web-optimized project images extracted from the Word portfolio |
+| `assets/downloads/` | Downloadable portfolio DOCX (replace with a PDF for smaller size if desired) |
+| `demo.html`, `demo.js`, `demo.css` | Sample-data live dashboard demo (legacy styling) |
+| `profile.html` | Printable professional profile (legacy styling) |
+| `case-studies/` | Legacy standalone case-study pages (superseded by in-page case studies; kept for old links) |
+| `legacy.css` | Old stylesheet kept only for the legacy sub-pages above |
 
-This public portfolio version must not include raw GIS data, exact coordinates, personal information, restricted infrastructure layers, or sensitive attributes.
+## Editing content and translations
 
-Do not commit or publish raw GIS files such as:
+All visible text lives in `locales/en.js` (English) and `locales/ar.js` (Arabic). Each file is one object with the same structure (`hero`, `valueCards`, `services`, `uav`, `caseStudies`, `proofMetrics`, `galleryCaptions`, `processSteps`, `whyItems`, `contact.form`, …). Edit the matching key in both files — no HTML changes needed. The language toggle in the header switches EN (LTR) / AR (RTL) and remembers the choice in localStorage; English is the default.
 
-- `.shp`, `.shx`, `.dbf`, `.prj`
-- `.geojson`, `.kml`, `.kmz`, `.gpkg`
-- `.tif`, `.tiff`, `.las`, `.laz`
+## Contact privacy
 
-Before publishing, manually review all images and dashboard screenshots for:
+- The phone number and email are never displayed in the UI and are not stored as plain text in the code; they are base64-encoded (reversed) in `app.js` and decoded only when a visitor clicks a contact button.
+- This defeats casual scraping, but true hiding requires a backend or serverless function — see `.env.example` for the variables such a backend would use.
+- To enable the "Send via Telegram" button, set your public Telegram username in `CONTACT.telegramUser` inside `app.js`; it stays hidden while empty.
+- The inquiry form validates input, then opens WhatsApp / Telegram / the visitor's email app with the composed message. Nothing is stored on the site.
 
-- EXIF/GPS metadata
-- exact coordinates
-- private asset identifiers
-- personal information
-- restricted infrastructure details
-- sensitive damage-assessment attributes
+## Run locally
 
-## GitHub Pages Deployment
-
-This is a static site and can be deployed with GitHub Pages.
-
-Typical deployment steps:
+Any static server works, e.g.:
 
 ```bash
-git status
-git add .
-git commit -m "Improve portfolio privacy before GitHub Pages deployment"
-git push
+python -m http.server 8000
+# then open http://localhost:8000/
 ```
 
-Then enable GitHub Pages from the repository settings and select the branch/folder used for deployment.
+## Deploy (GitHub Pages)
 
-## Indexing
+```bash
+git init && git add . && git commit -m "Premium remote GIS portfolio"
+git remote add origin <your-repo-url>
+git push -u origin main
+```
 
-`robots.txt` currently blocks indexing by default. Update it only after the owner confirms that the public portfolio should be indexed by search engines.
+Then enable GitHub Pages (Settings → Pages → deploy from `main` branch, root folder). Update `canonical`, `og:url`, and `sitemap.xml` URLs if the site is served from a different domain.
+
+## Privacy and data safety
+
+- Email and WhatsApp links are assembled at runtime from separated parts (reduces casual scraping only — a static site cannot fully hide contact details).
+- The contact form opens the visitor's email app; nothing is stored on the site.
+- Do not commit raw GIS data (`.shp`, `.geojson`, `.gpkg`, `.tif`, …) — already blocked by `.gitignore`.
+- Before publishing new screenshots, review them for EXIF/GPS metadata, exact coordinates, personal information, and restricted infrastructure details.
+- Gallery carries the note: "For confidentiality reasons, some visuals may use masked or sample data."
 
 ## Licensing
 
-Code may be licensed under MIT only if the owner explicitly agrees.
-
-Images, maps, GIS outputs, dashboard screenshots, project materials, and municipal documentation are All Rights Reserved. They should not be treated as open-source assets.
+Code may be licensed under MIT only if the owner explicitly agrees. Images, maps, GIS outputs, dashboard screenshots, and municipal documentation are All Rights Reserved.
