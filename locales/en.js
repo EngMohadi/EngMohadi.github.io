@@ -503,7 +503,6 @@ window.I18N.en = {
     sub: "Send your project details. I can help you turn raw data, UAV images, infrastructure layers, or municipal records into GIS dashboards, orthomosaic maps, DSM outputs, and decision-ready systems.",
     confidential: "For professional confidentiality, direct contact details are not publicly displayed. Please use the secure project inquiry form.",
     facts: [
-      ["Location", "Al-Bureij, Gaza, Palestine"],
       ["Availability", "Remote GIS consulting and project-based work"],
       ["Languages", "Arabic, English"]
     ],
