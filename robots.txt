@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://engmohad.github.io/sitemap.xml
+Sitemap: https://engmohadi.github.io/sitemap.xml
