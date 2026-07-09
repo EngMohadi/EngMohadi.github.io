@@ -27,7 +27,7 @@ const IMG = "assets/images/work/";
    ------------------------------------------------------------ */
 const CONTACT = {
   e: "bW9jLmxpYW1nQGlkYWhybWduZQ==",
-  p: "MDM1ODUzNzY1Mjc5",
+  p: "MDM1ODUzNzY1MDc5",
   telegramUser: ""
 };
 
