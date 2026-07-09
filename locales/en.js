@@ -545,7 +545,7 @@ window.I18N.en = {
       submit: "Send Inquiry",
       sending: "Preparing your message…",
       successWhatsapp: "WhatsApp is opening with your inquiry — press Send there to deliver it.",
-      successTelegram: "Your inquiry was copied to the clipboard and Telegram is opening — paste it in the chat to deliver it.",
+      successTelegram: "Telegram is opening with your inquiry prepared — press Send there to deliver it.",
       successEmail: "Your email app is opening with the inquiry prefilled — press Send there to deliver it.",
       errorRequired: "Please fill the required fields marked below.",
       errorConsent: "Please confirm the consent checkbox before sending.",

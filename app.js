@@ -383,7 +383,7 @@ function fillSelect(select, options, placeholderLabel) {
   ph.selected = true;
   select.appendChild(ph);
   options.forEach(([value, label]) => {
-    if (value === "telegram" && !CONTACT.telegramUser) return;
+    if (value === "telegram" && !hasTelegramTarget()) return;
     const opt = el("option", "", label);
     opt.value = value;
     select.appendChild(opt);
@@ -415,9 +415,20 @@ function openEmail(subject, body) {
   window.location.href = "mailto:" + email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
 }
 
-function openTelegram() {
-  if (!CONTACT.telegramUser) return;
-  window.open("https://t.me/" + CONTACT.telegramUser, "_blank", "noopener");
+function hasTelegramTarget() {
+  return Boolean(CONTACT.telegramUser || CONTACT.p);
+}
+
+function getTelegramUrl(text) {
+  const target = CONTACT.telegramUser
+    ? CONTACT.telegramUser.replace(/^@/, "")
+    : "+" + decodeTarget(CONTACT.p);
+  return "https://t.me/" + target + "?text=" + encodeURIComponent(text);
+}
+
+function openTelegram(text) {
+  if (!hasTelegramTarget()) return;
+  window.open(getTelegramUrl(text), "_blank", "noopener");
 }
 
 function wireContactButtons() {
@@ -428,8 +439,8 @@ function wireContactButtons() {
     btn.addEventListener("click", () => openEmail("Remote GIS Project Inquiry", buildQuickMessage()));
   });
   document.querySelectorAll(".telegram-contact-link").forEach((btn) => {
-    btn.hidden = !CONTACT.telegramUser;
-    btn.addEventListener("click", openTelegram);
+    btn.hidden = !hasTelegramTarget();
+    btn.addEventListener("click", () => openTelegram(buildQuickMessage()));
   });
 }
 
@@ -536,8 +547,7 @@ form.addEventListener("submit", (event) => {
         openWhatsApp(message);
         showAlert(t("contact.form.successWhatsapp"), "success");
       } else if (data.method === "telegram") {
-        if (navigator.clipboard) navigator.clipboard.writeText(message).catch(() => {});
-        openTelegram();
+        openTelegram(message);
         showAlert(t("contact.form.successTelegram"), "success");
       } else {
         openEmail("Remote GIS Project Inquiry — " + data.name, message);
