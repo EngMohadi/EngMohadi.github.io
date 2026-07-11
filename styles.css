@@ -133,20 +133,45 @@ h1, h2, h3 {
 }
 
 .brand-mark {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
   display: grid;
   place-items: center;
-  width: 42px;
-  height: 42px;
-  border-radius: 10px;
+  flex: 0 0 58px;
+  width: 58px;
+  min-width: 58px;
+  height: 40px;
+  border-radius: 9px;
   font-weight: 800;
   font-size: 15px;
   color: #06121f;
   background:
-    linear-gradient(145deg, #ce1126 0 27%, transparent 27%),
-    linear-gradient(to bottom, #000000 0 33.33%, #ffffff 33.33% 66.66%, #007a3d 66.66% 100%);
+    linear-gradient(to bottom, #000000 0 33.333%, #ffffff 33.333% 66.666%, #009639 66.666% 100%);
   border: 1px solid rgba(255, 255, 255, 0.5);
   box-shadow: 0 6px 18px rgba(34, 211, 238, 0.2);
-  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.75);
+  text-shadow:
+    0 1px 7px rgba(255, 255, 255, 0.95),
+    0 -1px 7px rgba(255, 255, 255, 0.85);
+}
+
+.brand-mark::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  z-index: -1;
+  width: 48%;
+  background: #ed2e38;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+}
+
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(6, 18, 31, 0.16);
 }
 
 .brand-text {
