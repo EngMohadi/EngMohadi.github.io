@@ -26,7 +26,7 @@ const IMG = "assets/images/work/";
    all Telegram buttons/options until you set it, e.g. "your_username".
    ------------------------------------------------------------ */
 const CONTACT = {
-  e: "bW9jLmxpYW1nQGlkYWhybWduZQ==",
+  e: "bW9jLmxpYW1nQGlkYWhvbWduZQ==",
   p: "MDM1ODUzNzY1MDc5",
   telegramUser: ""
 };
@@ -87,6 +87,11 @@ const UMBRELLA_FILTERS = { uav: ["ortho", "dsm", "aerial"] };
 let currentLang = (() => {
   const saved = localStorage.getItem("portfolioLanguage");
   return saved === "ar" || saved === "en" ? saved : "en";
+})();
+
+let currentTheme = (() => {
+  const saved = localStorage.getItem("portfolioTheme");
+  return saved === "light" || saved === "dark" ? saved : "dark";
 })();
 
 function L() {
@@ -412,7 +417,12 @@ function openWhatsApp(text) {
 
 function openEmail(subject, body) {
   const email = decodeTarget(CONTACT.e);
-  window.location.href = "mailto:" + email + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+  const encodedSubject = encodeURIComponent(subject);
+  const encodedBody = encodeURIComponent(body);
+  const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(email)}&su=${encodedSubject}&body=${encodedBody}`;
+  const mailtoUrl = "mailto:" + email + "?subject=" + encodedSubject + "&body=" + encodedBody;
+  const opened = window.open(gmailUrl, "_blank", "noopener");
+  if (!opened) window.location.href = mailtoUrl;
 }
 
 function hasTelegramTarget() {
@@ -541,23 +551,21 @@ form.addEventListener("submit", (event) => {
   const originalLabel = formSubmit.textContent;
   formSubmit.textContent = t("contact.form.sending");
 
-  setTimeout(() => {
-    try {
-      if (data.method === "whatsapp") {
-        openWhatsApp(message);
-        showAlert(t("contact.form.successWhatsapp"), "success");
-      } else if (data.method === "telegram") {
-        openTelegram(message);
-        showAlert(t("contact.form.successTelegram"), "success");
-      } else {
-        openEmail("Remote GIS Project Inquiry — " + data.name, message);
-        showAlert(t("contact.form.successEmail"), "success");
-      }
-    } finally {
-      formSubmit.disabled = false;
-      formSubmit.textContent = originalLabel;
+  try {
+    if (data.method === "whatsapp") {
+      openWhatsApp(message);
+      showAlert(t("contact.form.successWhatsapp"), "success");
+    } else if (data.method === "telegram") {
+      openTelegram(message);
+      showAlert(t("contact.form.successTelegram"), "success");
+    } else {
+      openEmail("Remote GIS Project Inquiry — " + data.name, message);
+      showAlert(t("contact.form.successEmail"), "success");
     }
-  }, 350);
+  } finally {
+    formSubmit.disabled = false;
+    formSubmit.textContent = originalLabel;
+  }
 });
 
 /* ============================================================
@@ -626,9 +634,24 @@ document.querySelector("#langToggle").addEventListener("click", () => {
   applyLanguage(currentLang === "en" ? "ar" : "en");
 });
 
+function applyTheme(theme) {
+  currentTheme = theme;
+  localStorage.setItem("portfolioTheme", theme);
+  document.documentElement.dataset.theme = theme;
+  const toggle = document.querySelector("#themeToggle");
+  if (!toggle) return;
+  toggle.textContent = theme === "light" ? "Dark" : "Light";
+  toggle.setAttribute("aria-pressed", String(theme === "light"));
+}
+
+document.querySelector("#themeToggle")?.addEventListener("click", () => {
+  applyTheme(currentTheme === "light" ? "dark" : "light");
+});
+
 /* ============================================================
    Boot
    ============================================================ */
 applyLanguage(currentLang);
+applyTheme(currentTheme);
 wireContactButtons();
 wireUavCtas();
