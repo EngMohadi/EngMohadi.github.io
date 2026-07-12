@@ -41,7 +41,7 @@ window.I18N.en = {
     { value: "535 km", label: "road axes and street numbering support" },
     { value: "28,145", label: "buildings and facilities documented" },
     { value: "275 km", label: "Street View road documentation" },
-    { value: "6,000", label: "GIS trainees across 3,950 training hours" },
+    { value: "1,200", label: "GIS trainees across 790 training hours" },
     { value: "42.5 km²", label: "high-resolution UAV mapping at 7 cm GSD" }
   ],
 
@@ -405,8 +405,8 @@ window.I18N.en = {
     { value: "400 km", label: "water network assets mapped" },
     { value: "315 km", label: "sewer network assets mapped" },
     { value: "275 km", label: "Street View documentation" },
-    { value: "3,950", label: "professional GIS training hours delivered" },
-    { value: "6,000", label: "GIS trainees" },
+    { value: "790", label: "professional GIS training hours delivered" },
+    { value: "1,200", label: "GIS trainees" },
     { value: "3", label: "operational municipal roles: engineer, analyst, GIS manager" }
   ],
 
@@ -493,7 +493,7 @@ window.I18N.en = {
     edu: [
       "<b>M.Sc. Geomatics Engineering</b> — Universiti Teknologi Malaysia (UTM) | 2011–2013",
       "<b>B.Sc. Civil Engineering</b> — Islamic University of Gaza (IUG) | 2001–2007",
-      "Professional GIS trainer: 3,950 hours / 6,000 trainees"
+      "Professional GIS trainer: 790 hours / 1,200 trainees"
     ]
   },
 
