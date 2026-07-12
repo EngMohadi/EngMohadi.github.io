@@ -36,13 +36,13 @@ window.I18N.en = {
 
   heroMetrics: [
     { value: "15+", label: "years of GIS, engineering, and surveying experience" },
-    { value: "80 km", label: "water network assets mapped" },
-    { value: "63 km", label: "sewer network assets mapped" },
-    { value: "107 km", label: "road axes and street numbering support" },
-    { value: "5,629", label: "buildings and facilities documented" },
-    { value: "55 km", label: "Street View road documentation" },
-    { value: "1,200", label: "GIS trainees across 790 training hours" },
-    { value: "8.5 km²", label: "high-resolution UAV mapping at 7 cm GSD" }
+    { value: "400 km", label: "water network assets mapped" },
+    { value: "315 km", label: "sewer network assets mapped" },
+    { value: "535 km", label: "road axes and street numbering support" },
+    { value: "28,145", label: "buildings and facilities documented" },
+    { value: "275 km", label: "Street View road documentation" },
+    { value: "6,000", label: "GIS trainees across 3,950 training hours" },
+    { value: "42.5 km²", label: "high-resolution UAV mapping at 7 cm GSD" }
   ],
 
   sections: {
@@ -281,7 +281,7 @@ window.I18N.en = {
     ],
     expTitle: "My UAV Mapping Experience",
     expItems: [
-      "8.5 km² UAV mapping coverage",
+      "42.5 km² UAV mapping coverage",
       "7 cm GSD aerial imagery",
       "5 cm orthomosaic output experience",
       "DSM outputs at approximately 14 cm resolution",
@@ -348,7 +348,7 @@ window.I18N.en = {
       tags: ["Water assets", "Failure analysis", "Maintenance orders", "Service maps"]
     },
     {
-      title: "Bureij Street View Documentation — 55 km",
+      title: "Bureij Street View Documentation — 275 km",
       sub: "Offline/online street-level municipal documentation | 2026",
       year: "2026",
       image: "street-view-02.jpg",
@@ -356,7 +356,7 @@ window.I18N.en = {
       solution: "Implemented a Street View-style documentation project for roads and neighborhoods, usable offline and ready for online deployment.",
       role: "Handled planning, documentation, spatial linking, output organization, and conversion into a usable municipal reference.",
       value: "A street visual archive that documents properties and infrastructure and cuts field visits.",
-      tags: ["Street View", "55 km coverage", "Visual archive", "Offline-ready"]
+      tags: ["Street View", "275 km coverage", "Visual archive", "Offline-ready"]
     },
     {
       title: "City-Wide 360° Panoramic Documentation",
@@ -366,8 +366,8 @@ window.I18N.en = {
       problem: "Planning teams needed broad visual coverage that supports desktop verification without repeated field visits.",
       solution: "Captured images from 60 m elevation points, spatially linked them, and processed them into panoramic outputs covering the city.",
       role: "Selected capture locations, processed outputs, linked data spatially, and prepared the results for planning and monitoring use.",
-      value: "11 km² of spatially linked panoramic coverage for planning and desktop verification.",
-      tags: ["360° panoramas", "11 km² coverage", "Spatial linking", "Planning support"]
+      value: "55 km² of spatially linked panoramic coverage for planning and desktop verification.",
+      tags: ["360° panoramas", "55 km² coverage", "Spatial linking", "Planning support"]
     },
     {
       title: "Municipal Spatial Database & Asset Registry",
@@ -377,7 +377,7 @@ window.I18N.en = {
       problem: "Municipal information was fragmented across departments without clear relationships between assets, maps, and services.",
       solution: "Built and updated an integrated GIS database covering buildings, facilities, infrastructure networks, streets, and service assets.",
       role: "Designed tables and relationships, managed updates, linked descriptive data to spatial layers, and prepared the database for dashboards and field apps.",
-      value: "5,629 buildings, 107 km of roads, 1,100+ businesses, and water/sewer networks in one registry.",
+      value: "28,145 buildings, 535 km of roads, 5,500+ businesses, and water/sewer networks in one registry.",
       tags: ["Spatial database", "Asset registry", "Buildings & roads", "Utilities"]
     },
     {
@@ -395,18 +395,18 @@ window.I18N.en = {
 
   proofMetrics: [
     { value: "15+", label: "years of practical GIS, engineering, and surveying experience" },
-    { value: "11 km²", label: "panoramic coverage for Al-Bureij and surroundings" },
-    { value: "8.5 km²", label: "UAV mapping at 7 cm ground resolution" },
+    { value: "55 km²", label: "panoramic coverage for Al-Bureij and surroundings" },
+    { value: "42.5 km²", label: "UAV mapping at 7 cm ground resolution" },
     { value: "5 cm", label: "orthomosaic ground resolution achieved" },
     { value: "14 cm", label: "DSM output resolution" },
-    { value: "1,100+", label: "professions and businesses documented in field forms" },
-    { value: "5,629", label: "buildings and houses linked to the municipal map" },
-    { value: "107 km", label: "road axes and street numbering support" },
-    { value: "80 km", label: "water network assets mapped" },
-    { value: "63 km", label: "sewer network assets mapped" },
-    { value: "55 km", label: "Street View documentation" },
-    { value: "790", label: "professional GIS training hours delivered" },
-    { value: "1,200", label: "GIS trainees" },
+    { value: "5,500+", label: "professions and businesses documented in field forms" },
+    { value: "28,145", label: "buildings and houses linked to the municipal map" },
+    { value: "535 km", label: "road axes and street numbering support" },
+    { value: "400 km", label: "water network assets mapped" },
+    { value: "315 km", label: "sewer network assets mapped" },
+    { value: "275 km", label: "Street View documentation" },
+    { value: "3,950", label: "professional GIS training hours delivered" },
+    { value: "6,000", label: "GIS trainees" },
     { value: "3", label: "operational municipal roles: engineer, analyst, GIS manager" }
   ],
 
@@ -441,7 +441,7 @@ window.I18N.en = {
     "uav-7cm-01.jpg": "High-resolution UAV orthomosaic output for municipal GIS — 7 cm GSD — 09/2023",
     "uav-7cm-02.jpg": "High-resolution UAV orthomosaic output for municipal GIS — 7 cm GSD — 09/2023",
     "uav-7cm-03.jpg": "UAV orthomosaic imagery at 7 cm ground resolution — 09/2023",
-    "dsm-14cm-coverage.jpg": "DSM product generated from UAV imagery — 14 cm over 8.3 km² — 09/2023",
+    "dsm-14cm-coverage.jpg": "DSM product generated from UAV imagery — 14 cm over 41.5 km² — 09/2023",
     "dsm-wadi-gaza-01.jpg": "DSM product generated from UAV imagery — Wadi Gaza corridor — 09/2023",
     "dsm-wadi-gaza-02.jpg": "DSM product generated from UAV imagery — Wadi Gaza corridor — 09/2023",
     "dsm-agricultural.jpg": "DSM product generated from UAV imagery — agricultural area — 09/2023",
@@ -493,7 +493,7 @@ window.I18N.en = {
     edu: [
       "<b>M.Sc. Geomatics Engineering</b> — Universiti Teknologi Malaysia (UTM) | 2011–2013",
       "<b>B.Sc. Civil Engineering</b> — Islamic University of Gaza (IUG) | 2001–2007",
-      "Professional GIS trainer: 790 hours / 1,200 trainees"
+      "Professional GIS trainer: 3,950 hours / 6,000 trainees"
     ]
   },
 
