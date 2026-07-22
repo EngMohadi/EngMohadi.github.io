@@ -655,3 +655,31 @@ applyLanguage(currentLang);
 applyTheme(currentTheme);
 wireContactButtons();
 wireUavCtas();
+
+/* ============================================================
+   A Message from Gaza modal
+   ============================================================ */
+const gazaMessageOpen = document.querySelector("#gazaMessageOpen");
+const gazaMessageModal = document.querySelector("#gazaMessageModal");
+const gazaMessageClose = document.querySelector("#gazaMessageClose");
+let gazaMessageReturnFocus = null;
+
+function openGazaMessage() {
+  gazaMessageReturnFocus = document.activeElement;
+  gazaMessageModal.hidden = false;
+  document.body.classList.add("modal-open");
+  gazaMessageClose.focus();
+}
+
+function closeGazaMessage() {
+  gazaMessageModal.hidden = true;
+  document.body.classList.remove("modal-open");
+  gazaMessageReturnFocus?.focus();
+}
+
+gazaMessageOpen?.addEventListener("click", openGazaMessage);
+gazaMessageClose?.addEventListener("click", closeGazaMessage);
+gazaMessageModal?.querySelector("[data-gaza-close]")?.addEventListener("click", closeGazaMessage);
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && gazaMessageModal && !gazaMessageModal.hidden) closeGazaMessage();
+});

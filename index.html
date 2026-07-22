@@ -80,13 +80,13 @@
     <div class="grid-overlay" aria-hidden="true"></div>
 
     <header class="site-header" id="siteHeader">
-      <a class="brand" href="#home" aria-label="Mohammad Abdelhadi - home">
-        <span class="brand-mark" aria-hidden="true">MA</span>
-        <span class="brand-text">
+      <div class="brand">
+        <button class="brand-mark" id="gazaMessageOpen" type="button" aria-label="Read A Message from Gaza" title="A Message from Gaza">MA</button>
+        <a class="brand-text" href="#home" aria-label="Mohammad Abdelhadi - home">
           <strong data-i18n="hero.name">Mohammad Abdelhadi</strong>
           <small data-i18n="hero.roleShort">Remote GIS Consultant</small>
-        </span>
-      </a>
+        </a>
+      </div>
       <nav class="nav-links" id="navLinks" aria-label="Site sections">
         <a href="#value" data-i18n="nav.value">How I Help</a>
         <a href="#services" data-i18n="nav.services">Services</a>
@@ -317,6 +317,31 @@
       aria-label="Send via WhatsApp"
       >WhatsApp</button
     >
+
+    <div class="gaza-modal" id="gazaMessageModal" role="dialog" aria-modal="true" aria-labelledby="gazaMessageTitle" hidden>
+      <div class="gaza-modal-backdrop" data-gaza-close></div>
+      <article class="gaza-modal-panel">
+        <button class="gaza-modal-close" id="gazaMessageClose" type="button" aria-label="Close A Message from Gaza">&times;</button>
+        <header class="gaza-modal-header">
+          <p class="gaza-modal-kicker">Personal statement</p>
+          <h2 id="gazaMessageTitle">A Message from Gaza</h2>
+          <p class="gaza-coordinates">Bureij, Gaza &middot; 31.470351&deg; N, 34.385839&deg; E</p>
+        </header>
+        <div class="gaza-image-grid" aria-label="Gaza documentation images">
+          <img src="assets/images/gaza-image1.png" alt="War-damaged residential buildings in Gaza" />
+          <img src="assets/images/gaza-image2.png" alt="Satellite view of a residential area before destruction" />
+          <img src="assets/images/gaza-image3.png" alt="Satellite view documenting destruction in the same area" />
+        </div>
+        <div class="gaza-message-copy">
+          <p>Since October 2023, my life has changed forever. Like hundreds of thousands of Palestinians in Gaza, I lost my home, my work, and my primary source of income as a result of the devastating war that has torn apart our communities and destroyed the livelihoods of countless families.</p>
+          <p>I am not only sharing my professional experience through this portfolio. I am sharing my determination to rebuild my future through my knowledge, skills, and hard work. Despite everything that has happened, I remain committed to contributing, learning, and creating value wherever I can.</p>
+          <p>Behind every project in this portfolio is a story of resilience. Continuing to work is not merely a career goal for me; it is a way to support my family and preserve hope in the face of unimaginable circumstances.</p>
+          <p>I kindly ask you not to forget Gaza. Speak about Gaza. Stand with its people. Support the right of civilians to live, work, learn, and dream of a better future.</p>
+          <p>Your support, whether through professional opportunities, collaboration, or simply raising awareness, can make a meaningful difference.</p>
+          <strong>Do not forget Gaza.</strong>
+        </div>
+      </article>
+    </div>
 
     <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image preview" hidden>
       <button class="lightbox-close" id="lightboxClose" type="button" aria-label="Close preview">&times;</button>

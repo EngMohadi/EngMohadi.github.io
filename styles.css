@@ -138,13 +138,15 @@ h1, h2, h3 {
   isolation: isolate;
   display: grid;
   place-items: center;
-  flex: 0 0 58px;
-  width: 58px;
-  min-width: 58px;
-  height: 40px;
-  border-radius: 9px;
+  flex: 0 0 29px;
+  width: 29px;
+  min-width: 29px;
+  height: 20px;
+  padding: 0;
+  border-radius: 5px;
   font-weight: 800;
-  font-size: 15px;
+  font: 800 8px/1 inherit;
+  cursor: pointer;
   color: #06121f;
   background:
     linear-gradient(to bottom, #000000 0 33.333%, #ffffff 33.333% 66.666%, #009639 66.666% 100%);
@@ -178,6 +180,88 @@ h1, h2, h3 {
   display: flex;
   flex-direction: column;
   line-height: 1.25;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.gaza-modal[hidden] { display: none; }
+
+.gaza-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+}
+
+.gaza-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 9, 18, 0.84);
+  backdrop-filter: blur(8px);
+}
+
+.gaza-modal-panel {
+  position: relative;
+  width: min(920px, 100%);
+  max-height: min(88vh, 900px);
+  overflow-y: auto;
+  padding: clamp(22px, 4vw, 42px);
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
+}
+
+.gaza-modal-close {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  float: right;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  color: var(--text);
+  background: var(--surface);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.gaza-modal-kicker,
+.gaza-coordinates { color: var(--muted); }
+.gaza-modal-kicker { margin: 0 0 6px; text-transform: uppercase; font-size: 12px; font-weight: 800; letter-spacing: 0.12em; }
+.gaza-modal-header h2 { margin: 0; font-size: clamp(28px, 5vw, 48px); letter-spacing: 0; }
+.gaza-coordinates { margin: 8px 0 0; }
+
+.gaza-image-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr 1fr;
+  gap: 8px;
+  margin: 26px 0;
+}
+
+.gaza-image-grid img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.gaza-message-copy { max-width: 72ch; }
+.gaza-message-copy p { margin: 0 0 16px; color: var(--muted); }
+.gaza-message-copy strong { display: block; margin-top: 24px; color: var(--text); font-size: 22px; }
+body.modal-open { overflow: hidden; }
+
+@media (max-width: 640px) {
+  .gaza-modal { padding: 10px; }
+  .gaza-modal-panel { max-height: 94vh; padding: 20px; }
+  .gaza-image-grid { grid-template-columns: 1fr 1fr; }
+  .gaza-image-grid img { height: 130px; }
+  .gaza-image-grid img:first-child { grid-column: 1 / -1; height: 180px; }
 }
 
 .brand-text strong {
@@ -1072,6 +1156,10 @@ h1, h2, h3 {
   margin: 0 auto;
 }
 
+.contact-inner > * {
+  min-width: 0;
+}
+
 .contact-copy h2 {
   font-size: clamp(28px, 3.6vw, 42px);
   font-weight: 800;
@@ -1514,6 +1602,18 @@ h1, h2, h3 {
 }
 
 @media (max-width: 760px) {
+  .contact-facts li {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .contact-facts li span,
+  .contact-actions .btn {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
   .nav-links {
     position: fixed;
     top: 70px;
