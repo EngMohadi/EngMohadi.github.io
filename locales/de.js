@@ -754,6 +754,27 @@ window.I18N.de = {
       "privacy": "Dieses Formular bereitet eine Nachricht in der von Ihnen ausgewählten App vor. Auf dieser Website werden keine Daten gespeichert."
     }
   },
+  "support": {
+    "kicker": "Direkte Unterstützung",
+    "title": "Unterstützen Sie meine Arbeit und unseren Wiederaufbau",
+    "intro": "Durch den Krieg in Gaza habe ich mein Zuhause, meine Arbeit und meine wichtigste Einkommensquelle verloren. Ihre Unterstützung kann meiner Familie und mir helfen, den täglichen Grundbedarf zu decken, erreichbar zu bleiben, weiterzuarbeiten und konkrete Schritte zum Wiederaufbau unseres Lebens zu unternehmen.",
+    "instructions": "Für eine direkte finanzielle Unterstützung können Sie USDT über das Tron-Netzwerk (TRC20) senden, indem Sie den QR-Code scannen oder die angezeigte Wallet-Adresse kopieren.",
+    "warningTitle": "Wichtig",
+    "warning": "Bitte senden Sie USDT ausschließlich über das TRC20-Netzwerk. Prüfen Sie vor der Bestätigung sorgfältig, ob Währung, Netzwerk und Wallet-Adresse korrekt sind. Bei Verwendung eines anderen Netzwerks können die Mittel nicht gutgeschrieben werden oder verloren gehen. Auch Binance weist darauf hin, dass Sende- und Empfangsnetzwerk übereinstimmen müssen.",
+    "impact": "Ihre Unterstützung hilft, die Belastungen für meine Familie und mich zu verringern, und ermöglicht mir, meine berufliche Arbeit in GIS, Web GIS, Kartografie, räumlicher Analyse und Dashboard-Entwicklung fortzusetzen.",
+    "otherWays": "Sie können mich auch unterstützen, indem Sie mich beauftragen, meine Dienstleistungen empfehlen, mein Portfolio teilen oder bei beruflichen und humanitären Projekten mit mir zusammenarbeiten.",
+    "thanks": "Vielen Dank, dass Sie meine Arbeit unterstützen, an der Seite meiner Familie stehen und Gaza nicht vergessen.",
+    "donationTitle": "USDT-Spenden — Nur über das TRC20-Netzwerk",
+    "currencyLabel": "Währung",
+    "networkLabel": "Netzwerk",
+    "platformLabel": "Empfangsplattform",
+    "addressLabel": "Wallet-Adresse",
+    "copyWallet": "Wallet-Adresse kopieren",
+    "copied": "Wallet-Adresse wurde kopiert.",
+    "copyFailed": "Kopieren fehlgeschlagen. Bitte wählen Sie die Adresse aus und kopieren Sie sie manuell.",
+    "hire": "Beauftragen Sie mich",
+    "qrAlt": "QR-Code für eine USDT-Einzahlung über das Tron-TRC20-Netzwerk auf Binance"
+  },
   "footer": {
     "text": "© 2026 Mohammad Abdelhadi – Remote-GIS-Berater und Web-GIS-Entwickler."
   }

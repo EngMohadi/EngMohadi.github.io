@@ -553,6 +553,28 @@ window.I18N.en = {
     }
   },
 
+  support: {
+    kicker: "Direct Support",
+    title: "Support My Work and Recovery",
+    intro: "The war in Gaza has resulted in the loss of my home, my work, and my primary source of income. Your support can help my family and me meet essential daily needs, remain connected, continue working, and take practical steps toward rebuilding our lives.",
+    instructions: "To provide direct financial support, you may send USDT through the Tron network (TRC20) by scanning the QR code or copying the wallet address shown.",
+    warningTitle: "Important",
+    warning: "Please send USDT using the TRC20 network only. Before confirming the transaction, carefully verify that the selected currency, network, and wallet address are correct. Using a different network may result in the funds not being credited or being lost. Binance likewise instructs users to ensure that the sending and receiving networks match.",
+    impact: "Your support will help reduce the hardship facing my family and me and enable me to continue developing my professional work in GIS, Web GIS, mapping, spatial analysis, and dashboard development.",
+    otherWays: "You can also support me by hiring me, referring my services, sharing my portfolio, or collaborating with me on professional and humanitarian projects.",
+    thanks: "Thank you for supporting my work, standing with my family, and not forgetting Gaza.",
+    donationTitle: "USDT Donations — TRC20 Network Only",
+    currencyLabel: "Currency",
+    networkLabel: "Network",
+    platformLabel: "Receiving platform",
+    addressLabel: "Wallet address",
+    copyWallet: "Copy Wallet Address",
+    copied: "Wallet address copied.",
+    copyFailed: "Copy failed. Please select and copy the address manually.",
+    hire: "Hire Me",
+    qrAlt: "USDT deposit QR code for the Tron TRC20 network on Binance"
+  },
+
   footer: {
     text: "© 2026 Mohammad Abdelhadi — Remote GIS Consultant & Web GIS Developer."
   }

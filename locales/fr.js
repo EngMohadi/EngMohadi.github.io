@@ -754,6 +754,27 @@ window.I18N.fr = {
       "privacy": "Ce formulaire prépare un message dans l'application que vous choisissez. Rien n'est stocké sur ce site Web."
     }
   },
+  "support": {
+    "kicker": "Soutien direct",
+    "title": "Soutenez mon travail et notre reconstruction",
+    "intro": "La guerre à Gaza m’a fait perdre mon domicile, mon travail et ma principale source de revenus. Votre soutien peut nous aider, ma famille et moi, à répondre à nos besoins quotidiens essentiels, à rester connectés, à continuer de travailler et à prendre des mesures concrètes pour reconstruire notre vie.",
+    "instructions": "Pour apporter un soutien financier direct, vous pouvez envoyer des USDT via le réseau Tron (TRC20) en scannant le code QR ou en copiant l’adresse du portefeuille affichée.",
+    "warningTitle": "Important",
+    "warning": "Veuillez envoyer des USDT uniquement via le réseau TRC20. Avant de confirmer la transaction, vérifiez attentivement la devise, le réseau et l’adresse du portefeuille. L’utilisation d’un autre réseau peut empêcher le crédit des fonds ou entraîner leur perte. Binance demande également de vérifier que les réseaux d’envoi et de réception correspondent.",
+    "impact": "Votre soutien contribuera à réduire les difficultés auxquelles ma famille et moi sommes confrontés et me permettra de poursuivre mon travail professionnel en GIS, Web GIS, cartographie, analyse spatiale et développement de tableaux de bord.",
+    "otherWays": "Vous pouvez également me soutenir en faisant appel à mes services, en me recommandant, en partageant mon portfolio ou en collaborant avec moi sur des projets professionnels et humanitaires.",
+    "thanks": "Merci de soutenir mon travail, d’être aux côtés de ma famille et de ne pas oublier Gaza.",
+    "donationTitle": "Dons en USDT — Réseau TRC20 uniquement",
+    "currencyLabel": "Devise",
+    "networkLabel": "Réseau",
+    "platformLabel": "Plateforme de réception",
+    "addressLabel": "Adresse du portefeuille",
+    "copyWallet": "Copier l’adresse du portefeuille",
+    "copied": "Adresse du portefeuille copiée.",
+    "copyFailed": "La copie a échoué. Veuillez sélectionner et copier l’adresse manuellement.",
+    "hire": "Faites appel à mes services",
+    "qrAlt": "Code QR de dépôt USDT via le réseau Tron TRC20 sur Binance"
+  },
   "footer": {
     "text": "© 2026 Mohammad Abdelhadi — Consultant GIS à distance et développeur Web GIS."
   }

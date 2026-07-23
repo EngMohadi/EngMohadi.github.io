@@ -754,6 +754,27 @@ window.I18N.es = {
       "privacy": "Este formulario prepara un mensaje en la aplicación que elijas. No se almacena nada en este sitio web."
     }
   },
+  "support": {
+    "kicker": "Apoyo directo",
+    "title": "Apoye mi trabajo y nuestra recuperación",
+    "intro": "La guerra en Gaza ha provocado la pérdida de mi hogar, mi trabajo y mi principal fuente de ingresos. Su apoyo puede ayudarnos a mi familia y a mí a cubrir las necesidades diarias esenciales, mantenernos conectados, continuar trabajando y dar pasos prácticos para reconstruir nuestras vidas.",
+    "instructions": "Para brindar apoyo financiero directo, puede enviar USDT mediante la red Tron (TRC20), escaneando el código QR o copiando la dirección de la cartera que aparece.",
+    "warningTitle": "Importante",
+    "warning": "Envíe USDT únicamente mediante la red TRC20. Antes de confirmar la transacción, compruebe cuidadosamente que la moneda, la red y la dirección de la cartera sean correctas. El uso de una red diferente puede hacer que los fondos no se acrediten o se pierdan. Binance también indica que las redes de envío y recepción deben coincidir.",
+    "impact": "Su apoyo ayudará a reducir las dificultades que afrontamos mi familia y yo, y me permitirá continuar desarrollando mi trabajo profesional en GIS, Web GIS, cartografía, análisis espacial y desarrollo de paneles.",
+    "otherWays": "También puede apoyarme contratándome, recomendando mis servicios, compartiendo mi portafolio o colaborando conmigo en proyectos profesionales y humanitarios.",
+    "thanks": "Gracias por apoyar mi trabajo, acompañar a mi familia y no olvidar Gaza.",
+    "donationTitle": "Donaciones en USDT — Solo red TRC20",
+    "currencyLabel": "Moneda",
+    "networkLabel": "Red",
+    "platformLabel": "Plataforma receptora",
+    "addressLabel": "Dirección de la cartera",
+    "copyWallet": "Copiar dirección de la cartera",
+    "copied": "Dirección de la cartera copiada.",
+    "copyFailed": "No se pudo copiar. Seleccione y copie la dirección manualmente.",
+    "hire": "Contráteme",
+    "qrAlt": "Código QR para depositar USDT mediante la red Tron TRC20 en Binance"
+  },
   "footer": {
     "text": "© 2026 Mohammad Abdelhadi — Consultor remoto GIS y desarrollador web GIS."
   }

@@ -118,6 +118,9 @@ function translateStaticNodes() {
   document.querySelectorAll("[data-i18n-html]").forEach((node) => {
     node.innerHTML = t(node.dataset.i18nHtml);
   });
+  document.querySelectorAll("[data-i18n-alt]").forEach((node) => {
+    node.alt = t(node.dataset.i18nAlt);
+  });
   document.querySelectorAll("[data-i18n-placeholder]").forEach((node) => {
     node.placeholder = t(node.dataset.i18nPlaceholder);
   });
@@ -676,6 +679,9 @@ wireUavCtas();
 const gazaMessageOpen = document.querySelector("#gazaMessageOpen");
 const gazaMessageModal = document.querySelector("#gazaMessageModal");
 const gazaMessageClose = document.querySelector("#gazaMessageClose");
+const copyWalletAddress = document.querySelector("#copyWalletAddress");
+const walletCopyStatus = document.querySelector("#walletCopyStatus");
+const walletAddress = "TSiCsu4HfGLsgosJoKaLVBu31GAhrCbVTy";
 let gazaMessageReturnFocus = null;
 
 function openGazaMessage() {
@@ -693,7 +699,27 @@ function closeGazaMessage() {
 
 gazaMessageOpen?.addEventListener("click", openGazaMessage);
 gazaMessageClose?.addEventListener("click", closeGazaMessage);
-gazaMessageModal?.querySelector("[data-gaza-close]")?.addEventListener("click", closeGazaMessage);
+gazaMessageModal?.querySelectorAll("[data-gaza-close]").forEach((node) => {
+  node.addEventListener("click", closeGazaMessage);
+});
+
+copyWalletAddress?.addEventListener("click", async () => {
+  try {
+    await navigator.clipboard.writeText(walletAddress);
+    walletCopyStatus.textContent = t("support.copied");
+  } catch {
+    const input = document.createElement("textarea");
+    input.value = walletAddress;
+    input.setAttribute("readonly", "");
+    input.style.position = "fixed";
+    input.style.opacity = "0";
+    document.body.appendChild(input);
+    input.select();
+    const copied = document.execCommand("copy");
+    input.remove();
+    walletCopyStatus.textContent = t(copied ? "support.copied" : "support.copyFailed");
+  }
+});
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && gazaMessageModal && !gazaMessageModal.hidden) closeGazaMessage();
 });

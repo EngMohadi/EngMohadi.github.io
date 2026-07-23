@@ -330,24 +330,47 @@
     <div class="gaza-modal" id="gazaMessageModal" role="dialog" aria-modal="true" aria-labelledby="gazaMessageTitle" hidden>
       <div class="gaza-modal-backdrop" data-gaza-close></div>
       <article class="gaza-modal-panel">
-        <button class="gaza-modal-close" id="gazaMessageClose" type="button" aria-label="Close A Message from Gaza">&times;</button>
+        <button class="gaza-modal-close" id="gazaMessageClose" type="button" aria-label="Close support information">&times;</button>
         <header class="gaza-modal-header">
-          <p class="gaza-modal-kicker">Personal statement</p>
-          <h2 id="gazaMessageTitle">A Message from Gaza</h2>
-          <p class="gaza-coordinates">Gaza &middot; 31.470351&deg; N, 34.385839&deg; E</p>
+          <p class="gaza-modal-kicker" data-i18n="support.kicker"></p>
+          <h2 id="gazaMessageTitle" data-i18n="support.title"></h2>
         </header>
-        <div class="gaza-image-grid" aria-label="Gaza documentation images">
-          <img src="assets/images/gaza-image1.png" alt="War-damaged residential buildings in Gaza" />
-          <img src="assets/images/gaza-image2.png" alt="Satellite view of a residential area before destruction" />
-          <img src="assets/images/gaza-image3.png" alt="Satellite view documenting destruction in the same area" />
-        </div>
-        <div class="gaza-message-copy">
-          <p>Since October 2023, my life has changed forever. Like hundreds of thousands of Palestinians in Gaza, I lost my home, my work, and my primary source of income as a result of the devastating war that has torn apart our communities and destroyed the livelihoods of countless families.</p>
-          <p>I am not only sharing my professional experience through this portfolio. I am sharing my determination to rebuild my future through my knowledge, skills, and hard work. Despite everything that has happened, I remain committed to contributing, learning, and creating value wherever I can.</p>
-          <p>Behind every project in this portfolio is a story of resilience. Continuing to work is not merely a career goal for me; it is a way to support my family and preserve hope in the face of unimaginable circumstances.</p>
-          <p>I kindly ask you not to forget Gaza. Speak about Gaza. Stand with its people. Support the right of civilians to live, work, learn, and dream of a better future.</p>
-          <p>Your support, whether through professional opportunities, collaboration, or simply raising awareness, can make a meaningful difference.</p>
-          <strong>Do not forget Gaza.</strong>
+        <div class="support-layout">
+          <div class="gaza-message-copy">
+            <p data-i18n="support.intro"></p>
+            <p data-i18n="support.instructions"></p>
+            <aside class="support-warning">
+              <strong data-i18n="support.warningTitle"></strong>
+              <p data-i18n="support.warning"></p>
+            </aside>
+            <p data-i18n="support.impact"></p>
+            <p data-i18n="support.otherWays"></p>
+            <p class="support-thanks" data-i18n="support.thanks"></p>
+            <a class="btn btn-primary support-hire" href="#contact" data-gaza-close data-i18n="support.hire"></a>
+          </div>
+
+          <section class="wallet-card" aria-labelledby="walletCardTitle">
+            <h3 id="walletCardTitle" data-i18n="support.donationTitle"></h3>
+            <div class="wallet-qr-frame">
+              <img
+                class="wallet-qr-image"
+                src="assets/images/usdt-trc20-binance-qr.jpg"
+                alt="USDT deposit QR code for the Tron TRC20 network"
+                data-i18n-alt="support.qrAlt"
+              />
+            </div>
+            <dl class="wallet-details">
+              <div><dt data-i18n="support.currencyLabel"></dt><dd>USDT</dd></div>
+              <div><dt data-i18n="support.networkLabel"></dt><dd>Tron (TRC20)</dd></div>
+              <div><dt data-i18n="support.platformLabel"></dt><dd>Binance</dd></div>
+              <div class="wallet-address-row">
+                <dt data-i18n="support.addressLabel"></dt>
+                <dd id="walletAddress">TSiCsu4HfGLsgosJoKaLVBu31GAhrCbVTy</dd>
+              </div>
+            </dl>
+            <button class="btn btn-outline wallet-copy" id="copyWalletAddress" type="button" data-i18n="support.copyWallet"></button>
+            <p class="wallet-copy-status" id="walletCopyStatus" role="status" aria-live="polite"></p>
+          </section>
         </div>
       </article>
     </div>
@@ -362,11 +385,11 @@
       <button class="lightbox-nav next" id="lightboxNext" type="button" aria-label="Next image">&#8250;</button>
     </div>
 
-    <script src="locales/en.js?v=20260723-1"></script>
-    <script src="locales/ar.js?v=20260723-1"></script>
-    <script src="locales/fr.js?v=20260723-1"></script>
-    <script src="locales/de.js?v=20260723-1"></script>
-    <script src="locales/es.js?v=20260723-1"></script>
-    <script src="app.js?v=20260723-1"></script>
+    <script src="locales/en.js?v=20260723-2"></script>
+    <script src="locales/ar.js?v=20260723-2"></script>
+    <script src="locales/fr.js?v=20260723-2"></script>
+    <script src="locales/de.js?v=20260723-2"></script>
+    <script src="locales/es.js?v=20260723-2"></script>
+    <script src="app.js?v=20260723-2"></script>
   </body>
 </html>

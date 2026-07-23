@@ -204,7 +204,7 @@ h1, h2, h3 {
 
 .gaza-modal-panel {
   position: relative;
-  width: min(920px, 100%);
+  width: min(1040px, 100%);
   max-height: min(88vh, 900px);
   overflow-y: auto;
   padding: clamp(22px, 4vw, 42px);
@@ -231,37 +231,123 @@ h1, h2, h3 {
   cursor: pointer;
 }
 
-.gaza-modal-kicker,
-.gaza-coordinates { color: var(--muted); }
+.gaza-modal-kicker { color: var(--muted); }
 .gaza-modal-kicker { margin: 0 0 6px; text-transform: uppercase; font-size: 12px; font-weight: 800; letter-spacing: 0.12em; }
 .gaza-modal-header h2 { margin: 0; font-size: clamp(28px, 5vw, 48px); letter-spacing: 0; }
-.gaza-coordinates { margin: 8px 0 0; }
 
-.gaza-image-grid {
+.support-layout {
   display: grid;
-  grid-template-columns: 1.1fr 1fr 1fr;
-  gap: 8px;
-  margin: 26px 0;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr);
+  gap: clamp(24px, 4vw, 48px);
+  align-items: start;
+  margin-top: 26px;
 }
 
-.gaza-image-grid img {
-  width: 100%;
-  height: 190px;
-  object-fit: cover;
-  border-radius: 4px;
-}
-
-.gaza-message-copy { max-width: 72ch; }
+.gaza-message-copy { max-width: 68ch; }
 .gaza-message-copy p { margin: 0 0 16px; color: var(--muted); }
-.gaza-message-copy strong { display: block; margin-top: 24px; color: var(--text); font-size: 22px; }
+.support-thanks { color: var(--text) !important; font-weight: 700; }
+.support-hire { margin-top: 6px; }
+
+.support-warning {
+  margin: 22px 0;
+  padding: 16px;
+  border-inline-start: 3px solid #f3ba2f;
+  background: rgba(243, 186, 47, 0.08);
+}
+
+.support-warning strong {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text);
+}
+
+.support-warning p { margin: 0; }
+
+.wallet-card {
+  padding: 20px;
+  background: var(--surface-strong);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.wallet-card h3 {
+  margin: 0 0 16px;
+  font-size: 18px;
+  letter-spacing: 0;
+}
+
+.wallet-qr-frame {
+  position: relative;
+  overflow: hidden;
+  width: min(100%, 320px);
+  aspect-ratio: 1;
+  margin: 0 auto 18px;
+  background: #fff;
+  border: 10px solid #fff;
+  border-radius: 6px;
+}
+
+.wallet-qr-image {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 160%;
+  max-width: none;
+  height: auto;
+  transform: translate(-50%, -14%);
+}
+
+.wallet-details {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 16px;
+}
+
+.wallet-details > div {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 10px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--border);
+}
+
+.wallet-details dt {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.wallet-details dd {
+  margin: 0;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.wallet-address-row {
+  grid-template-columns: 1fr !important;
+}
+
+.wallet-copy {
+  width: 100%;
+}
+
+.wallet-copy-status {
+  min-height: 20px;
+  margin: 8px 0 0;
+  color: var(--accent-2);
+  font-size: 12px;
+  text-align: center;
+}
+
 body.modal-open { overflow: hidden; }
 
-@media (max-width: 640px) {
+@media (max-width: 760px) {
   .gaza-modal { padding: 10px; }
   .gaza-modal-panel { max-height: 94vh; padding: 20px; }
-  .gaza-image-grid { grid-template-columns: 1fr 1fr; }
-  .gaza-image-grid img { height: 130px; }
-  .gaza-image-grid img:first-child { grid-column: 1 / -1; height: 180px; }
+  .support-layout { grid-template-columns: 1fr; }
+  .wallet-card { order: -1; }
 }
 
 .brand-text strong {
