@@ -1,13 +1,11 @@
-/* Generated from the reviewed English locale. */
 window.I18N = window.I18N || {};
 window.I18N.de = {
   "dir": "ltr",
   "langButton": "Deutsch",
-  "docTitle": "Mohammad Abdelhadi | Remote GIS Berater, UAV Bildverarbeitung und Web GIS Dashboards",
+  "docTitle": "Mohammad Abdelhadi | Remote-GIS-Berater & Web-GIS-Dashboard-Entwickler",
   "nav": {
     "value": "Wie ich helfe",
     "services": "Dienstleistungen",
-    "uav": "UAV Verarbeitung",
     "projects": "Projekte",
     "gallery": "Galerie",
     "process": "Verfahren",
@@ -15,13 +13,12 @@ window.I18N.de = {
     "hire": "Stellen Sie mich aus der Ferne ein"
   },
   "hero": {
-    "badge": "Verfügbar für Remote-Projekte • GIS Dashboards • UAV / Orthomosaic / DSM • Räumliche Datenbanken",
+    "badge": "Verfügbar für Remote-Projekte • GIS-Dashboards • Räumliche Datenbanken • Kommunale Systeme",
     "titleHtml": "Ich erstelle <span class=\"accent\">GIS-Dashboards</span>, <span class=\"accent\">räumliche Datenbanken</span> und <span class=\"accent\">intelligente kommunale Systeme</span>, die verstreute Daten in Entscheidungen umwandeln.",
     "name": "Mohammad Abdelhadi",
     "roleShort": "Remote-GIS-Berater",
     "role": "GIS Manager | Geomatikingenieur | Web GIS & Spezialist für kommunale intelligente Transformation",
     "copy": "Ich helfe Kommunen, Ingenieurbüros, NGOs, Beratungsunternehmen und Remote-Teams dabei, GIS-Ebenen, Excel-Blätter, CAD-Zeichnungen, Luftbilder, Beschwerden und unstrukturierte Felddaten in betriebsfähige GIS-Plattformen umzuwandeln, die Ihr Team anzeigen, analysieren, aktualisieren und bereitstellen kann.",
-    "uavNote": "Ich kann auch Ihre rohen UAV-Bilder verarbeiten und hochauflösende Orthomosaikkarten und DSM-Ausgaben liefern, die für GIS, kommunale Planung und Web-GIS-Dashboards bereit sind.",
     "ctaHire": "Stellen Sie mich aus der Ferne ein",
     "ctaProjects": "GIS Projekte anzeigen",
     "ctaDownload": "Portfolio herunterladen",
@@ -55,32 +52,23 @@ window.I18N.de = {
     {
       "value": "1,200",
       "label": "GIS Auszubildende in 790 Ausbildungsstunden"
-    },
-    {
-      "value": "42,5 km²",
-      "label": "hochauflösende UAV Kartierung bei 7 cm GSD"
     }
   ],
   "sections": {
     "value": {
       "kicker": "Wert von Remote-Arbeit",
       "title": "Wie ich Ihnen aus der Ferne helfen kann",
-      "text": "Wenn Sie über chaotische Geodaten, alte Karten, Bürgerbeschwerden, kommunale Vermögenswerte, Wasser- oder Abwassernetze, Straßenzustandsaufzeichnungen oder UAV-Bilder verfügen, kann ich diese in praktischen Implementierungsphasen aus der Ferne in ein klares, betriebsfähiges System umwandeln."
+      "text": "Wenn Sie ungeordnete Geodaten, alte Karten, Bürgerbeschwerden, kommunale Anlagen, Wasser- oder Abwassernetze oder Straßenzustandsdaten haben, kann ich diese in praktischen Schritten aus der Ferne in ein klares, betriebsfähiges System überführen."
     },
     "services": {
       "kicker": "Remote-Service-Pakete",
       "title": "Pakete löschen. Definierter Geltungsbereich. Überprüfbare Ergebnisse.",
       "text": "Jedes Paket ist so konzipiert, dass ein Arbeitgeber oder Kunde mit einem definierten Umfang und einer schrittweisen Lieferung beginnen kann."
     },
-    "uav": {
-      "kicker": "Empfohlener Remote-Service",
-      "title": "UAV Bildverarbeitung und Orthomosaikproduktion",
-      "text": "Von rohen Drohnenbildern bis hin zu hochauflösenden Orthomosaikkarten und DSM-Ausgaben, bereit für GIS und kommunale Entscheidungen."
-    },
     "projects": {
       "kicker": "Ausgewählte Projekte",
       "title": "Fallstudien aus der realen kommunalen GIS-Arbeit",
-      "text": "Problem → Lösung → Ergebnisse. Jedes der folgenden Projekte basiert auf realen kommunalen Vorgängen: Straßen, Wasser, Abwasser, Gebäude, Beschwerden, UAV und Schadensbewertung."
+      "text": "Problem → Lösung → Ergebnisse. Jedes Projekt basiert auf realen kommunalen Abläufen: Straßen, Wasser, Abwasser, Gebäude, Beschwerden, Street View und Schadensbewertung."
     },
     "metrics": {
       "kicker": "Arbeitsnachweis",
@@ -88,7 +76,7 @@ window.I18N.de = {
     },
     "gallery": {
       "kicker": "Visuelles Portfolio",
-      "title": "Dashboards, UAV-Ausgaben, Street View und Feldsysteme",
+      "title": "Dashboards, Street View und Feldsysteme",
       "note": "Aus Gründen der Vertraulichkeit können bei einigen Bildern maskierte Daten oder Beispieldaten verwendet werden."
     },
     "process": {
@@ -139,13 +127,6 @@ window.I18N.de = {
       "problem": "Straßen-, Wasser-, Abwasser-, Beschwerde- und Schadensdaten, die nie zu nachverfolgbaren Indikatoren werden.",
       "deliver": "Speziell entwickelte Dashboards: Straßeninstandhaltung, Bürgerbeschwerden, Wassernetze, Schadensbewertung.",
       "benefit": "KPIs und Berichte für Führungskräfte, die Planung, Budgetierung und tägliche Entscheidungen unterstützen."
-    },
-    {
-      "icon": "🛩️",
-      "title": "Ich kann Ihre rohen UAV-Bilder aus der Ferne verarbeiten",
-      "problem": "Rohe Drohnenbilder, die nicht für die Kartierung, Analyse oder Entscheidungsfindung bereit sind.",
-      "deliver": "Hochauflösende Orthomosaikkarten, DSM-Ausgaben und GIS-fähige GeoTIFF-Dateien.",
-      "benefit": "Eine aktuelle, genaue Luftreferenz für Planung, Dashboards und technische Berichte."
     },
     {
       "icon": "📱",
@@ -220,15 +201,14 @@ window.I18N.de = {
     },
     {
       "tag": "Paket E",
-      "title": "UAV Bildverarbeitung und 360°-Dokumentation",
+      "title": "360°-Straßendokumentation",
       "items": [
-        "Rohe UAV-Bildverarbeitung mit professionellen Photogrammetrie-Workflows",
-        "Hochauflösendes Orthomosaik und DSM-Produktion",
-        "Visuelle Archive im Street View-Stil, verknüpft mit GIS-Ebenen",
-        "Feldvalidierung mit Bodenkontrollpunkten, sofern verfügbar",
-        "GIS-bereite Ausgaben für QGIS, ArcGIS und Web GIS"
+        "Street-View-ähnliche Bildarchive, verknüpft mit GIS-Layern",
+        "360°-Panoramadokumentation von Straßen, Quartieren und kommunalen Anlagen",
+        "Unterstützung bei Feldprüfung und Inspektion",
+        "GIS-fertige visuelle Referenzen für QGIS, ArcGIS und Web GIS"
       ],
-      "bestFor": "Geeignet für: Stadtanalyse, Immobiliendokumentation und Infrastrukturüberwachung."
+      "bestFor": "Ideal für: Objektdokumentation, Feldprüfung, Infrastrukturüberwachung und kommunale Bildarchive."
     },
     {
       "tag": "Paket F",
@@ -243,63 +223,6 @@ window.I18N.de = {
       "bestFor": "Ideal für: Kommunen, NGOs und Sanierungsprogramme, die entscheidungsreife Schadensdaten benötigen."
     }
   ],
-  "uav": {
-    "intro": "Sie senden die rohen Drohnenbilder – alles andere kümmere ich mich aus der Ferne: Qualitätsprüfung, Photogrammetrieverarbeitung, Orthomosaik- und DSM-Produktion sowie GIS-fertige Verpackung für QGIS-, ArcGIS-, Web-GIS-Dashboards, kommunale Planung, Infrastrukturanalyse, Grundstücksdokumentation, Schadensbewertung und technische Berichte.",
-    "cta": "Verarbeiten Sie meine UAV Bilder",
-    "ctaSecondary": "Fordern Sie den Verarbeitungsservice UAV an",
-    "needTitle": "Was ich von dir brauche",
-    "needItems": [
-      "Rohe UAV / Drohnenbilder",
-      "Projektgebiet und Standort",
-      "Ungefähre Grenze, falls verfügbar",
-      "Bodenkontrollpunkte, falls verfügbar",
-      "Erforderliches Ausgabeformat",
-      "Verwendungszweck: Gemeindeplan, Infrastruktur, Schadensbewertung, Planung, Web GIS…"
-    ],
-    "deliverTitle": "Was ich liefere",
-    "deliverItems": [
-      "Hochauflösendes Orthomosaik",
-      "GIS-bereit GeoTIFF",
-      "DSM Ausgabe",
-      "Optionale Kontur-/Höhenprodukte, sofern die Datenqualität dies zulässt",
-      "Optionale Webkartenkacheln",
-      "Bearbeitungsbericht und Qualitätshinweise",
-      "Organisierte Abschlussdateien"
-    ],
-    "suitableTitle": "Geeignet für",
-    "suitableItems": [
-      "Kommunale Grundkarten",
-      "Straßen- und Infrastrukturkartierung",
-      "Wasser- und Kanalnetzplanung",
-      "Gebäude- und Grundstücksdokumentation",
-      "Schadensbeurteilung",
-      "Stadtplanung",
-      "Landwirtschaftliche Kartierung",
-      "Umweltüberwachung",
-      "Web-GIS-Dashboards",
-      "Technische Berichte"
-    ],
-    "whyTitle": "Warum das wichtig ist",
-    "whyItems": [
-      "Spart Feldzeit",
-      "Verbessert die Kartengenauigkeit",
-      "Erstellt eine aktuelle visuelle Referenz",
-      "Unterstützt die Entscheidungsfindung",
-      "Hilft bei der Aktualisierung kommunaler GIS-Layer",
-      "Unterstützt den Vorher-/Nachher-Vergleich",
-      "Hilft bei der Dokumentation von Vermögenswerten und Schäden",
-      "Bietet eine zuverlässige Basisschicht für Dashboards"
-    ],
-    "expTitle": "Meine UAV Mapping-Erfahrung",
-    "expItems": [
-      "42,5 km² UAV Kartierungsabdeckung",
-      "7 cm GSD Luftbilder",
-      "5 cm Orthomosaik-Ausgabeerlebnis",
-      "DSM gibt mit einer Auflösung von ca. 14 cm aus",
-      "PIX4D- und Agisoft Metashape-Workflows",
-      "Ergebnisse, die für kommunale, planerische, technische und GIS-Nutzung erstellt werden"
-    ]
-  },
   "caseStudies": [
     {
       "title": "Municipal GIS Interaktive Karte und Entscheidungs-Dashboard",
@@ -316,24 +239,6 @@ window.I18N.de = {
         "Führungs-KPIs",
         "Raumanalyse"
       ]
-    },
-    {
-      "title": "Hochauflösendes UAV Orthomosaik und DSM Produktion",
-      "sub": "Von rohen Drohnenbildern bis hin zu GIS-fähigen Luftkartierungsprodukten",
-      "year": "2023",
-      "image": "uav-7cm-01.jpg",
-      "problem": "Kommunal- und Ingenieurteams benötigen oft aktuelle und genaue Luftbilder, aber rohe UAV-Bilder allein sind nicht für die Kartierung, Analyse oder Entscheidungsfindung geeignet.",
-      "solution": "Ich verarbeite rohe UAV-Bilder mithilfe eines professionellen Photogrammetrie-Workflows, um hochauflösende Orthomosaikkarten und DSM-Ausgaben zu erstellen, die in GIS, Planung, Infrastrukturkartierung und kommunalen Dashboards verwendet werden können.",
-      "role": "Verwaltete den gesamten Erfassungs- und Verarbeitungsworkflow mit PIX4D und Agisoft Metashape, validierte die Ausgaben mit Totalstation und Bodenkontrollpunkten und führte eine Qualitätskontrolle durch.",
-      "value": "Orthomosaikbilder bei 5–7 cm, DSM bei ~14 cm, GIS-bereit GeoTIFF, optionale Webkartenkacheln und Qualitätshinweise – vorbereitet für QGIS / ArcGIS / Web GIS.",
-      "tags": [
-        "PIX4D",
-        "Agisoft Metashape",
-        "QGIS / ArcGIS",
-        "Photogrammetrie",
-        "Fernerkundung"
-      ],
-      "ctaOverride": "Möchten Sie, dass Ihre UAV-Rohbilder in eine professionelle Luftbildkarte umgewandelt werden? Kontaktieren Sie mich."
     },
     {
       "title": "Straßeninstandhaltung GIS Dashboard",
@@ -458,18 +363,6 @@ window.I18N.de = {
       "label": "Panoramaabdeckung für Al-Bureij und Umgebung"
     },
     {
-      "value": "42,5 km²",
-      "label": "UAV Kartierung mit 7 cm Bodenauflösung"
-    },
-    {
-      "value": "5 cm",
-      "label": "Orthomosaik-Bodenauflösung erreicht"
-    },
-    {
-      "value": "14 cm",
-      "label": "DSM Ausgabeauflösung"
-    },
-    {
       "value": "5,500+",
       "label": "in Feldformularen dokumentierte Berufe und Betriebe"
     },
@@ -508,43 +401,27 @@ window.I18N.de = {
   ],
   "galleryCats": [
     {
-      "id": "alle",
+      "id": "all",
       "label": "Alle"
     },
     {
-      "id": "Dashboards",
+      "id": "dashboards",
       "label": "Dashboards"
     },
     {
-      "id": "uav",
-      "label": "UAV Zuordnung"
-    },
-    {
-      "id": "ortho",
-      "label": "Orthomosaik"
-    },
-    {
-      "id": "dsm",
-      "label": "DSM"
-    },
-    {
-      "id": "Antenne",
-      "label": "Luftbilder"
-    },
-    {
-      "id": "Straßenansicht",
+      "id": "streetview",
       "label": "Straßenansicht / 360°"
     },
     {
-      "id": "Feld",
+      "id": "field",
       "label": "Feldanwendungen"
     },
     {
-      "id": "Schaden",
+      "id": "damage",
       "label": "Schadensbeurteilung"
     },
     {
-      "id": "schlau",
+      "id": "smart",
       "label": "Intelligente Kommune"
     }
   ],
@@ -561,15 +438,6 @@ window.I18N.de = {
     "water-dashboard.jpg": "Dashboard für Wassernetzmanagement und -analyse",
     "emergency-dashboard.jpg": "Interaktive Karte und Dashboard für intelligentes kommunales Notfallmanagement – ​​03/2026",
     "smart-municipality-gis.jpg": "Smarte Kommune GIS Arbeitsprobe – Kommunalmanagement – ​​04/2026",
-    "aerial-imagery-2026.jpg": "Luftkartierungsausgabe geeignet für GIS Basiskarten und Planung – 06/2026",
-    "aerial-documentation.jpg": "Ausgabe einer hochauflösenden Luftbilddokumentation",
-    "uav-7cm-01.jpg": "Hochauflösende UAV Orthomosaik-Ausgabe für kommunale GIS – 7 cm GSD – 09/2023",
-    "uav-7cm-02.jpg": "Hochauflösende UAV Orthomosaik-Ausgabe für kommunale GIS – 7 cm GSD – 09/2023",
-    "uav-7cm-03.jpg": "UAV Orthomosaikbilder mit 7 cm Bodenauflösung – 09/2023",
-    "dsm-14cm-coverage.jpg": "DSM Produkt generiert aus UAV Bildern – 14 cm über 41,5 km² – 09/2023",
-    "dsm-wadi-gaza-01.jpg": "DSM Produkt generiert aus UAV Bildern – Wadi-Gaza-Korridor – 09/2023",
-    "dsm-wadi-gaza-02.jpg": "DSM Produkt generiert aus UAV Bildern – Wadi-Gaza-Korridor – 09/2023",
-    "dsm-agricultural.jpg": "DSM Produkt generiert aus UAV Bildern – landwirtschaftliche Fläche – 09/2023",
     "street-view-01.jpg": "Street View-Projektausgabe, offline-bereit und webbereitstellbar – 02/2026",
     "street-view-02.jpg": "Ausgabe des Street View-Projekts – 02/2026",
     "street-view-03.jpg": "Ausgabe des Street View-Projekts – 02/2026",
@@ -593,7 +461,7 @@ window.I18N.de = {
     },
     {
       "title": "Überprüfen Sie Ihre aktuellen Daten",
-      "text": "GIS Ebenen, Excel, CAD, UAV Bilder, Beschwerden, Feldnotizen – ich arbeite mit unvollständigen Daten."
+      "text": "GIS-Layer, Excel, CAD, Beschwerden und Feldnotizen — ich arbeite mit unvollständigen Daten."
     },
     {
       "title": "Entwerfen Sie die Datenbank und den Workflow",
@@ -615,7 +483,7 @@ window.I18N.de = {
   "whyItems": [
     {
       "head": "Engineering + GIS + Dashboards in einem Profil.",
-      "text": "Ich kombiniere Bauingenieurwesen, Geomatik, GIS-Management, UAV-Kartierung, Felddaten und Dashboard-Denken."
+      "text": "Ich verbinde Bauingenieurwesen, Geomatik, GIS-Management, Felddaten und Dashboard-Konzeption."
     },
     {
       "head": "Ich verstehe kommunale Abläufe, nicht nur Software.",
@@ -643,7 +511,6 @@ window.I18N.de = {
     "roles": [
       "GIS Berater",
       "Web GIS Dashboard-Entwickler",
-      "UAV Bildverarbeitungsspezialist",
       "Geodatenbank-Designer",
       "Städtischer GIS Support-Spezialist"
     ],
@@ -663,7 +530,7 @@ window.I18N.de = {
   "contact": {
     "kicker": "Starten Sie ein Projekt",
     "title": "Starten Sie ein Remote-GIS-Projekt",
-    "sub": "Senden Sie Ihre Projektdetails. Ich kann Ihnen helfen, Rohdaten, UAV Bilder, Infrastrukturebenen oder kommunale Aufzeichnungen in GIS Dashboards, Orthomosaikkarten, DSM Ausgaben und entscheidungsbereite Systeme umzuwandeln.",
+    "sub": "Senden Sie Ihre Projektdetails. Ich kann Rohdaten, Infrastrukturlayer oder kommunale Unterlagen in GIS-Dashboards, räumliche Datenbanken, Karten und entscheidungsreife Systeme überführen.",
     "confidential": "Aus Gründen der beruflichen Vertraulichkeit werden direkte Kontaktdaten nicht öffentlich angezeigt. Bitte nutzen Sie das sichere Projektanfrageformular.",
     "facts": [
       [
@@ -692,50 +559,46 @@ window.I18N.de = {
       "method": "Bevorzugte Kontaktmethode",
       "methodOptions": [
         [
-          "WhatsApp",
+          "whatsapp",
           "WhatsApp"
         ],
         [
-          "Telegramm",
+          "telegram",
           "Telegram"
         ],
         [
-          "E-Mail",
+          "email",
           "E-Mail"
         ]
       ],
       "service": "Service erforderlich",
       "serviceOptions": [
         [
-          "Armaturenbrett",
+          "dashboard",
           "Web GIS Dashboard"
         ],
         [
-          "uav",
-          "UAV Bildverarbeitung / Orthomosaik / DSM"
-        ],
-        [
-          "Datenbank",
+          "database",
           "Raumdatenbank"
         ],
         [
-          "Beratung",
+          "consulting",
           "Kommunale GIS Beratung"
         ],
         [
-          "Infrastruktur",
+          "infrastructure",
           "Infrastruktur GIS Zuordnung"
         ],
         [
-          "Feld",
+          "field",
           "Felddatenerfassungssystem"
         ],
         [
-          "Schaden",
+          "damage",
           "Schadensgutachten GIS"
         ],
         [
-          "andere",
+          "other",
           "Andere"
         ]
       ],

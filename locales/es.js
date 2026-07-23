@@ -1,13 +1,11 @@
-/* Generated from the reviewed English locale. */
 window.I18N = window.I18N || {};
 window.I18N.es = {
   "dir": "ltr",
   "langButton": "Español",
-  "docTitle": "Mohamed Abdelhadi | Consultor remoto GIS, UAV Procesamiento de imágenes y paneles web GIS",
+  "docTitle": "Mohammad Abdelhadi | Consultor GIS remoto y desarrollador de paneles Web GIS",
   "nav": {
     "value": "Como ayudo",
     "services": "Servicios",
-    "uav": "UAV Procesando",
     "projects": "Proyectos",
     "gallery": "Galería",
     "process": "Proceso",
@@ -15,13 +13,12 @@ window.I18N.es = {
     "hire": "Contratame de forma remota"
   },
   "hero": {
-    "badge": "Disponible para proyectos remotos • GIS Paneles de control • UAV / Ortomosaico / DSM • Bases de datos espaciales",
+    "badge": "Disponible para proyectos remotos • Paneles GIS • Bases de datos espaciales • Sistemas municipales",
     "titleHtml": "Construyo <span class=\"accent\">paneles de control GIS</span>, <span class=\"accent\">bases de datos espaciales</span> y <span class=\"accent\">sistemas municipales inteligentes</span> que convierten datos dispersos en decisiones.",
     "name": "Mohamed Abdelhadi",
     "roleShort": "Consultor remoto GIS",
     "role": "GIS Gerente | Ingeniero Geomática | Web GIS & Especialista en Transformación Inteligente Municipal",
     "copy": "Ayudo a municipios, empresas de ingeniería, ONG, consultorías y equipos remotos a convertir GIS capas, Excel hojas, CAD dibujos, imágenes aéreas, quejas y datos de campo no estructurados en GIS plataformas operativas que su equipo puede ver, analizar, actualizar y entregar.",
-    "uavNote": "También puedo procesar sus UAV imágenes sin procesar y entregar mapas ortomosaicos de alta resolución y DSM resultados listos para GIS, planificación municipal y paneles web GIS.",
     "ctaHire": "Contratame de forma remota",
     "ctaProjects": "Ver GIS proyectos",
     "ctaDownload": "Descargar Portafolio",
@@ -55,32 +52,23 @@ window.I18N.es = {
     {
       "value": "1,200",
       "label": "GIS alumnos en 790 horas de formación"
-    },
-    {
-      "value": "42,5 km²",
-      "label": "mapeo de alta resolución UAV a 7 cm GSD"
     }
   ],
   "sections": {
     "value": {
       "kicker": "Valor del trabajo remoto",
       "title": "Cómo puedo ayudarte de forma remota",
-      "text": "Si tiene datos espaciales confusos, mapas antiguos, quejas de ciudadanos, activos municipales, redes de agua o alcantarillado, registros del estado de las carreteras o imágenes UAV, puedo convertirlo en un sistema operativo claro, de forma remota, en etapas de implementación práctica."
+      "text": "Si dispone de datos espaciales desorganizados, mapas antiguos, quejas ciudadanas, activos municipales, redes de agua o alcantarillado, o registros del estado de las carreteras, puedo convertirlos de forma remota en un sistema operativo claro mediante etapas prácticas."
     },
     "services": {
       "kicker": "Paquetes de servicio remoto",
       "title": "Borrar paquetes. Alcance definido. Resultados revisables.",
       "text": "Cada paquete está diseñado para que un empleador o cliente pueda comenzar con un alcance definido y una entrega gradual."
     },
-    "uav": {
-      "kicker": "Servicio remoto destacado",
-      "title": "UAV Procesamiento de imágenes y producción de ortomosaicos",
-      "text": "Desde imágenes sin procesar de drones hasta mapas ortomosaicos de alta resolución y resultados de DSM listos para GIS y la toma de decisiones municipales."
-    },
     "projects": {
       "kicker": "Proyectos destacados",
       "title": "Estudios de caso del trabajo municipal real GIS",
-      "text": "Problema → solución → entregables. Cada proyecto a continuación se basó en operaciones municipales reales: carreteras, agua, alcantarillado, edificios, quejas, UAV y evaluación de daños."
+      "text": "Problema → solución → entregables. Cada proyecto se basa en operaciones municipales reales: carreteras, agua, alcantarillado, edificios, quejas, Street View y evaluación de daños."
     },
     "metrics": {
       "kicker": "Prueba de trabajo",
@@ -88,7 +76,7 @@ window.I18N.es = {
     },
     "gallery": {
       "kicker": "Portafolio visual",
-      "title": "Paneles, UAV Salidas, Street View y Sistemas de Campo",
+      "title": "Paneles, Street View y sistemas de campo",
       "note": "Por razones de confidencialidad, algunas imágenes pueden utilizar datos enmascarados o de muestra."
     },
     "process": {
@@ -139,13 +127,6 @@ window.I18N.es = {
       "problem": "Datos de carreteras, agua, alcantarillado, quejas y daños que nunca se convierten en indicadores rastreables.",
       "deliver": "Cuadros de mando específicos: mantenimiento de carreteras, denuncias ciudadanas, redes de agua, evaluación de daños.",
       "benefit": "KPI ejecutivos e informes que respaldan la planificación, la elaboración de presupuestos y las decisiones diarias."
-    },
-    {
-      "icon": "🛩️",
-      "title": "Puedo procesar tus imágenes sin procesar UAV de forma remota",
-      "problem": "Imágenes sin procesar de drones que no están listas para mapeo, análisis o toma de decisiones.",
-      "deliver": "Mapas de ortomosaicos de alta resolución, DSM salidas y archivos GeoTIFF listos para GIS.",
-      "benefit": "Una referencia aérea reciente y precisa para planificación, paneles e informes de ingeniería."
     },
     {
       "icon": "📱",
@@ -220,15 +201,14 @@ window.I18N.es = {
     },
     {
       "tag": "Paquete E",
-      "title": "UAV Procesamiento de imágenes y documentación de 360°",
+      "title": "Documentación de calles en 360°",
       "items": [
-        "Procesamiento de imágenes sin formato UAV con flujos de trabajo de fotogrametría profesionales",
-        "Ortomosaico de alta resolución y producción DSM",
-        "Archivos visuales de estilo Street View vinculados a GIS capas",
-        "Validación de campo con puntos de control terrestre cuando esté disponible",
-        "Salidas listas para GIS para QGIS, ArcGIS y Web GIS"
+        "Archivos visuales tipo Street View vinculados a capas GIS",
+        "Documentación panorámica en 360° de calles, barrios y activos municipales",
+        "Apoyo para verificación e inspección de campo",
+        "Referencias visuales listas para QGIS, ArcGIS y Web GIS"
       ],
-      "bestFor": "Ideal para: análisis urbano, documentación de propiedades y monitoreo de infraestructura."
+      "bestFor": "Ideal para: documentación de propiedades, verificación de campo, seguimiento de infraestructuras y archivos visuales municipales."
     },
     {
       "tag": "Paquete F",
@@ -243,63 +223,6 @@ window.I18N.es = {
       "bestFor": "Ideal para: municipios, ONG y programas de recuperación que necesitan datos sobre daños listos para tomar decisiones."
     }
   ],
-  "uav": {
-    "intro": "Usted envía las imágenes sin procesar del dron; yo me encargo de todo lo demás, de forma remota: revisión de calidad, procesamiento de fotogrametría, producción de ortomosaicos y DSM, y embalaje listo para GIS para QGIS, ArcGIS, paneles web GIS, planificación municipal, análisis de infraestructura, documentación territorial, evaluación de daños e informes de ingeniería.",
-    "cta": "Procesar mis UAV imágenes",
-    "ctaSecondary": "Solicitar UAV Servicio de procesamiento",
-    "needTitle": "Lo que necesito de ti",
-    "needItems": [
-      "Imágenes sin procesar UAV / drones",
-      "Área y ubicación del proyecto.",
-      "Límite aproximado si está disponible",
-      "Puntos de control terrestre si están disponibles",
-      "Formato de salida requerido",
-      "Uso objetivo: mapa municipal, infraestructuras, evaluación de daños, planificación, Web GIS…"
-    ],
-    "deliverTitle": "lo que entrego",
-    "deliverItems": [
-      "Ortomosaico de alta resolución",
-      "GIS-listo GeoTIFF",
-      "DSM salida",
-      "Productos opcionales de contorno/elevación si la calidad de los datos lo permite",
-      "Mosaicos de mapas web opcionales",
-      "Informe de procesamiento y notas de calidad.",
-      "Archivos finales organizados"
-    ],
-    "suitableTitle": "Adecuado para",
-    "suitableItems": [
-      "Mapas base municipales",
-      "Mapeo de carreteras e infraestructura.",
-      "Planificación de redes de agua y alcantarillado.",
-      "Documentación de construcción y terreno.",
-      "Evaluación de daños",
-      "Planificación urbana",
-      "Mapeo agrícola",
-      "Monitoreo ambiental",
-      "Paneles web GIS",
-      "Informes de ingeniería"
-    ],
-    "whyTitle": "Por qué esto importa",
-    "whyItems": [
-      "Ahorra tiempo en el campo",
-      "Mejora la precisión del mapa",
-      "Crea una referencia visual reciente.",
-      "Apoya la toma de decisiones",
-      "Ayuda a actualizar las GIS capas municipales",
-      "Admite comparación antes/después",
-      "Ayuda a documentar activos y daños.",
-      "Proporciona una capa base confiable para paneles"
-    ],
-    "expTitle": "Mi experiencia cartográfica UAV",
-    "expItems": [
-      "42,5 km² UAV cobertura cartográfica",
-      "7 cm GSD imágenes aéreas",
-      "Experiencia de salida ortomosaica de 5 cm.",
-      "DSM produce salidas con una resolución de aproximadamente 14 cm",
-      "Flujos de trabajo de PIX4D y Agisoft Metashape",
-      "Productos producidos para uso municipal, de planificación, de ingeniería y GIS"
-    ]
-  },
   "caseStudies": [
     {
       "title": "Municipal GIS Mapa interactivo y panel de decisiones",
@@ -316,24 +239,6 @@ window.I18N.es = {
         "KPI ejecutivos",
         "Análisis espacial"
       ]
-    },
-    {
-      "title": "Alta resolución UAV Ortomosaico y DSM Producción",
-      "sub": "Desde imágenes sin procesar de drones hasta productos de mapeo aéreo listos para GIS",
-      "year": "2023",
-      "image": "uav-7cm-01.jpg",
-      "problem": "Los equipos municipales y de ingeniería a menudo necesitan imágenes aéreas recientes y precisas, pero las UAV imágenes sin procesar por sí solas no están listas para mapear, analizar o tomar decisiones.",
-      "solution": "Proceso imágenes UAV sin procesar a través de un flujo de trabajo de fotogrametría profesional para producir mapas ortomosaicos de alta resolución y resultados DSM utilizables en GIS, planificación, mapeo de infraestructura y paneles municipales.",
-      "role": "Gestioné el flujo de trabajo completo de captura y procesamiento utilizando PIX4D y Agisoft Metashape, validé las salidas con la estación total y los puntos de control terrestre, y realicé el control de calidad.",
-      "value": "Imágenes de ortomosaicos de 5 a 7 cm, DSM de ~14 cm, GIS listos para GeoTIFF, mosaicos de mapas web opcionales y notas de calidad, preparados para QGIS / ArcGIS / Web GIS.",
-      "tags": [
-        "PIX4D",
-        "Metashape de Agisoft",
-        "QGIS / ArcGIS",
-        "Fotogrametría",
-        "Teledetección"
-      ],
-      "ctaOverride": "¿Necesita convertir sus UAV imágenes sin procesar en un mapa aéreo profesional? Contáctame."
     },
     {
       "title": "Mantenimiento de carreteras GIS Panel de control",
@@ -458,18 +363,6 @@ window.I18N.es = {
       "label": "Cobertura panorámica de Al-Bureij y sus alrededores."
     },
     {
-      "value": "42,5 km²",
-      "label": "UAV mapeo a una resolución terrestre de 7 cm"
-    },
-    {
-      "value": "5 centímetros",
-      "label": "resolución del terreno ortomosaico lograda"
-    },
-    {
-      "value": "14cm",
-      "label": "DSM resolución de salida"
-    },
-    {
       "value": "5,500+",
       "label": "Profesiones y negocios documentados en formularios de campo."
     },
@@ -508,43 +401,27 @@ window.I18N.es = {
   ],
   "galleryCats": [
     {
-      "id": "todo",
+      "id": "all",
       "label": "Todo"
     },
     {
-      "id": "tableros",
+      "id": "dashboards",
       "label": "Paneles de control"
     },
     {
-      "id": "vehículo aéreo no tripulado",
-      "label": "UAV Mapeo"
-    },
-    {
-      "id": "orto",
-      "label": "ortomosaico"
-    },
-    {
-      "id": "dsm",
-      "label": "DSM"
-    },
-    {
-      "id": "aéreo",
-      "label": "Imágenes aéreas"
-    },
-    {
-      "id": "vista a la calle",
+      "id": "streetview",
       "label": "Vista de la calle / 360°"
     },
     {
-      "id": "campo",
+      "id": "field",
       "label": "Aplicaciones de campo"
     },
     {
-      "id": "daño",
+      "id": "damage",
       "label": "Evaluación de daños"
     },
     {
-      "id": "elegante",
+      "id": "smart",
       "label": "Municipio inteligente"
     }
   ],
@@ -561,15 +438,6 @@ window.I18N.es = {
     "water-dashboard.jpg": "Panel de gestión y análisis de redes de agua.",
     "emergency-dashboard.jpg": "Mapa interactivo y panel de control de emergencias de municipios inteligentes — 03/2026",
     "smart-municipality-gis.jpg": "Municipio inteligente GIS muestra de trabajo — gestión municipal — 04/2026",
-    "aerial-imagery-2026.jpg": "Salida de cartografía aérea adecuada para GIS mapas base y planificación — 06/2026",
-    "aerial-documentation.jpg": "Salida de documentación aérea de alta resolución",
-    "uav-7cm-01.jpg": "Salida de ortomosaico UAV de alta resolución para municipal GIS — 7 cm GSD — 09/2023",
-    "uav-7cm-02.jpg": "Salida de ortomosaico UAV de alta resolución para municipal GIS — 7 cm GSD — 09/2023",
-    "uav-7cm-03.jpg": "UAV imágenes de ortomosaicos con una resolución terrestre de 7 cm - 09/2023",
-    "dsm-14cm-coverage.jpg": "DSM producto generado a partir de UAV imágenes — 14 cm en 41,5 km² — 09/2023",
-    "dsm-wadi-gaza-01.jpg": "DSM producto generado a partir de UAV imágenes — Corredor Wadi Gaza — 09/2023",
-    "dsm-wadi-gaza-02.jpg": "DSM producto generado a partir de UAV imágenes — Corredor Wadi Gaza — 09/2023",
-    "dsm-agricultural.jpg": "DSM producto generado a partir de UAV imágenes — área agrícola — 09/2023",
     "street-view-01.jpg": "Salida del proyecto de Street View, lista para usar sin conexión y desplegable en la web: 02/2026",
     "street-view-02.jpg": "Resultado del proyecto de Street View: 02/2026",
     "street-view-03.jpg": "Resultado del proyecto de Street View: 02/2026",
@@ -593,7 +461,7 @@ window.I18N.es = {
     },
     {
       "title": "Revisa tus datos actuales",
-      "text": "GIS capas, Excel, CAD, UAV imágenes, quejas, notas de campo: trabajo con datos imperfectos."
+      "text": "Capas GIS, Excel, CAD, quejas y notas de campo: trabajo con datos imperfectos."
     },
     {
       "title": "Diseñar la base de datos y el flujo de trabajo.",
@@ -615,7 +483,7 @@ window.I18N.es = {
   "whyItems": [
     {
       "head": "Ingeniería + GIS + paneles de control en un perfil.",
-      "text": "Combino ingeniería civil, geomática, GIS gestión, UAV mapeo, datos de campo y pensamiento de tablero."
+      "text": "Combino ingeniería civil, geomática, gestión GIS, datos de campo y diseño de paneles."
     },
     {
       "head": "Entiendo las operaciones municipales, no sólo el software.",
@@ -643,7 +511,6 @@ window.I18N.es = {
     "roles": [
       "GIS Consultor",
       "Web GIS Desarrollador de paneles",
-      "UAV Especialista en procesamiento de imágenes",
       "Diseñador de bases de datos espaciales",
       "Municipal GIS Especialista de Apoyo"
     ],
@@ -663,7 +530,7 @@ window.I18N.es = {
   "contact": {
     "kicker": "Iniciar un proyecto",
     "title": "Iniciar un proyecto GIS remoto",
-    "sub": "Envía los detalles de tu proyecto. Puedo ayudarlo a convertir datos sin procesar, UAV imágenes, capas de infraestructura o registros municipales en GIS paneles de control, mapas ortomosaicos, DSM resultados y sistemas listos para tomar decisiones.",
+    "sub": "Envíe los detalles de su proyecto. Puedo convertir datos sin procesar, capas de infraestructura o registros municipales en paneles GIS, bases de datos espaciales, mapas y sistemas listos para la toma de decisiones.",
     "confidential": "Por motivos de confidencialidad profesional, los datos de contacto directo no se muestran públicamente. Utilice el formulario seguro de consulta de proyectos.",
     "facts": [
       [
@@ -692,50 +559,46 @@ window.I18N.es = {
       "method": "Método de contacto preferido",
       "methodOptions": [
         [
-          "WhatsApp",
+          "whatsapp",
           "WhatsApp"
         ],
         [
-          "telegrama",
+          "telegram",
           "Telegram"
         ],
         [
-          "correo electrónico",
+          "email",
           "Correo electrónico"
         ]
       ],
       "service": "Servicio necesario",
       "serviceOptions": [
         [
-          "panel",
+          "dashboard",
           "Panel web GIS"
         ],
         [
-          "vehículo aéreo no tripulado",
-          "UAV Procesamiento de imágenes / Ortomosaico / DSM"
-        ],
-        [
-          "base de datos",
+          "database",
           "Base de datos espacial"
         ],
         [
-          "consultante",
+          "consulting",
           "Municipal GIS Consultoría"
         ],
         [
-          "infraestructura",
+          "infrastructure",
           "Infraestructura GIS Mapeo"
         ],
         [
-          "campo",
+          "field",
           "Sistema de recopilación de datos de campo"
         ],
         [
-          "daño",
+          "damage",
           "Evaluación de daños GIS"
         ],
         [
-          "otro",
+          "other",
           "Otro"
         ]
       ],

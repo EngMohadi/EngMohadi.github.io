@@ -1,13 +1,11 @@
-/* Generated from the reviewed English locale. */
 window.I18N = window.I18N || {};
 window.I18N.fr = {
   "dir": "ltr",
   "langButton": "Français",
-  "docTitle": "Mohammad Abdelhadi | Consultant GIS à distance, traitement d’images UAV et tableaux de bord Web GIS",
+  "docTitle": "Mohammad Abdelhadi | Consultant GIS à distance et développeur de tableaux de bord Web GIS",
   "nav": {
     "value": "Comment j'aide",
     "services": "Services",
-    "uav": "UAV Traitement",
     "projects": "Projets",
     "gallery": "Galerie",
     "process": "Processus",
@@ -15,13 +13,12 @@ window.I18N.fr = {
     "hire": "Embauchez-moi à distance"
   },
   "hero": {
-    "badge": "Disponible pour les projets distants • Tableaux de bord GIS • UAV / Orthomosaïque / DSM • Bases de données spatiales",
+    "badge": "Disponible pour des projets à distance • Tableaux de bord GIS • Bases de données spatiales • Systèmes municipaux",
     "titleHtml": "Je crée des <span class=\"accent\">tableaux de bord SIG</span>, des <span class=\"accent\">bases de données spatiales</span> et des <span class=\"accent\">systèmes municipaux intelligents</span> qui transforment des données dispersées en décisions.",
     "name": "Mohammad Abdelhadi",
     "roleShort": "Consultant GIS à distance",
     "role": "GIS Gestionnaire | Ingénieur en géomatique | Web GIS et spécialiste de la transformation intelligente municipale",
     "copy": "J'aide les municipalités, les sociétés d'ingénierie, les ONG, les cabinets de conseil et les équipes à distance à transformer GIS couches, Excel feuilles, CAD dessins, images aériennes, plaintes et données de terrain non structurées en plates-formes opérationnelles GIS que votre équipe peut visualiser, analyser, mettre à jour et fournir.",
-    "uavNote": "Je peux également traiter vos images UAV brutes et fournir des cartes orthomosaïques haute résolution et des sorties DSM prêtes pour GIS, la planification municipale et les tableaux de bord Web GIS.",
     "ctaHire": "Embauchez-moi à distance",
     "ctaProjects": "Afficher GIS projets",
     "ctaDownload": "Télécharger le portfolio",
@@ -55,32 +52,23 @@ window.I18N.fr = {
     {
       "value": "1,200",
       "label": "1 200 stagiaires sur 790 heures de formation"
-    },
-    {
-      "value": "42,5 km²",
-      "label": "cartographie UAV haute résolution à 7 cm GSD"
     }
   ],
   "sections": {
     "value": {
       "kicker": "Valeur du travail à distance",
       "title": "Comment puis-je vous aider à distance",
-      "text": "Si vous avez des données spatiales désordonnées, d'anciennes cartes, des plaintes de citoyens, des actifs municipaux, des réseaux d'eau ou d'égouts, des enregistrements de l'état des routes ou des images UAV, je peux transformer cela en un système clair et opérationnel, à distance, lors d'étapes de mise en œuvre pratiques."
+      "text": "Si vous disposez de données spatiales désorganisées, d’anciennes cartes, de plaintes citoyennes, d’actifs municipaux, de réseaux d’eau ou d’assainissement, ou de relevés sur l’état des routes, je peux les transformer à distance en un système opérationnel clair, par étapes pratiques."
     },
     "services": {
       "kicker": "Forfaits de services à distance",
       "title": "Effacer les packages. Portée définie. Résultats révisables.",
       "text": "Chaque package est conçu pour qu'un employeur ou un client puisse commencer avec une portée définie et une livraison progressive."
     },
-    "uav": {
-      "kicker": "Service à distance en vedette",
-      "title": "UAV Traitement d'images et production d'orthomosaïques",
-      "text": "Des images brutes de drone aux cartes orthomosaïques haute résolution et aux sorties DSM prêtes pour GIS et la prise de décision municipale."
-    },
     "projects": {
       "kicker": "Projets en vedette",
       "title": "Études de cas de véritables travaux municipaux GIS",
-      "text": "Problème → solution → livrables. Chaque projet ci-dessous a été construit sur des opérations municipales réelles : routes, eau, égouts, bâtiments, plaintes, UAV et évaluation des dommages."
+      "text": "Problème → solution → livrables. Chaque projet ci-dessous repose sur des opérations municipales réelles : routes, eau, assainissement, bâtiments, plaintes, Street View et évaluation des dommages."
     },
     "metrics": {
       "kicker": "Preuve de travail",
@@ -88,7 +76,7 @@ window.I18N.fr = {
     },
     "gallery": {
       "kicker": "Portefeuille visuel",
-      "title": "Tableaux de bord, sorties UAV, Street View et systèmes de terrain",
+      "title": "Tableaux de bord, Street View et systèmes de terrain",
       "note": "Pour des raisons de confidentialité, certains visuels peuvent utiliser des données masquées ou des échantillons."
     },
     "process": {
@@ -139,13 +127,6 @@ window.I18N.fr = {
       "problem": "Des données sur les routes, l'eau, les égouts, les plaintes et les dommages qui ne deviennent jamais des indicateurs traçables.",
       "deliver": "Tableaux de bord spécialement conçus : entretien des routes, plaintes des citoyens, réseaux d'eau, évaluation des dégâts.",
       "benefit": "KPI et rapports exécutifs qui soutiennent la planification, la budgétisation et les décisions quotidiennes."
-    },
-    {
-      "icon": "🛩️",
-      "title": "Je peux traiter vos images brutes UAV à distance",
-      "problem": "Images brutes de drones qui ne sont pas prêtes pour la cartographie, l’analyse ou la prise de décision.",
-      "deliver": "Cartes orthomosaïques haute résolution, sorties DSM et fichiers GeoTIFF prêts pour GIS.",
-      "benefit": "Une référence aérienne récente et précise pour la planification, les tableaux de bord et les rapports d'ingénierie."
     },
     {
       "icon": "📱",
@@ -220,15 +201,14 @@ window.I18N.fr = {
     },
     {
       "tag": "Forfait E",
-      "title": "UAV Traitement d'images et documentation 360°",
+      "title": "Documentation des rues à 360°",
       "items": [
-        "Traitement d'images brutes UAV avec des flux de travail de photogrammétrie professionnels",
-        "Production d'orthomosaïques haute résolution et de DSM",
-        "Archives visuelles de style Street View liées aux calques GIS",
-        "Validation sur le terrain avec points de contrôle au sol lorsque disponibles",
-        "Sorties prêtes pour GIS pour QGIS, ArcGIS et Web GIS"
+        "Archives visuelles de type Street View liées aux couches GIS",
+        "Documentation panoramique à 360° des rues, quartiers et actifs municipaux",
+        "Appui à la vérification et à l’inspection sur le terrain",
+        "Références visuelles prêtes pour QGIS, ArcGIS et Web GIS"
       ],
-      "bestFor": "Idéal pour : l’analyse urbaine, la documentation immobilière et la surveillance des infrastructures."
+      "bestFor": "Idéal pour : documentation des propriétés, vérification sur le terrain, suivi des infrastructures et archives visuelles municipales."
     },
     {
       "tag": "Forfait F",
@@ -243,63 +223,6 @@ window.I18N.fr = {
       "bestFor": "Idéal pour : les municipalités, les ONG et les programmes de rétablissement qui ont besoin de données sur les dommages prêtes à la décision."
     }
   ],
-  "uav": {
-    "intro": "Vous envoyez les images brutes du drone — je gère tout le reste, à distance : examen de la qualité, traitement de la photogrammétrie, production d'orthomosaïques et de DSM, et emballage prêt à l'emploi de GIS pour QGIS, ArcGIS, tableaux de bord Web GIS, planification municipale, analyse des infrastructures, documentation foncière, évaluation des dommages et rapports d'ingénierie.",
-    "cta": "Traiter mes images UAV",
-    "ctaSecondary": "Demander le service de traitement UAV",
-    "needTitle": "Ce dont j'ai besoin de toi",
-    "needItems": [
-      "Images brutes UAV / drone",
-      "Zone et emplacement du projet",
-      "Limite approximative si disponible",
-      "Points de contrôle au sol si disponibles",
-      "Format de sortie requis",
-      "Utilisation ciblée : carte municipale, infrastructures, évaluation des dommages, planification, Web GIS…"
-    ],
-    "deliverTitle": "Ce que je livre",
-    "deliverItems": [
-      "Orthomosaïque haute résolution",
-      "GIS-prêt GeoTIFF",
-      "Sortie DSM",
-      "Produits de contour/élévation en option si la qualité des données le permet",
-      "Tuiles de carte Web en option",
-      "Rapport de traitement et notes de qualité",
-      "Fichiers finaux organisés"
-    ],
-    "suitableTitle": "Convient pour",
-    "suitableItems": [
-      "Fonds de cartes municipales",
-      "Cartographie des routes et des infrastructures",
-      "Planification des réseaux d'eau et d'égout",
-      "Documentation immobilière et foncière",
-      "Évaluation des dommages",
-      "Urbanisme",
-      "Cartographie agricole",
-      "Surveillance environnementale",
-      "Tableaux de bord Web GIS",
-      "Rapports d'ingénierie"
-    ],
-    "whyTitle": "Pourquoi c'est important",
-    "whyItems": [
-      "Gain de temps sur le terrain",
-      "Améliore la précision de la carte",
-      "Crée une référence visuelle récente",
-      "Aide à la prise de décision",
-      "Aide à mettre à jour les couches municipales GIS",
-      "Prend en charge la comparaison avant/après",
-      "Aide à documenter les actifs et les dommages",
-      "Fournit une couche de base fiable pour les tableaux de bord"
-    ],
-    "expTitle": "Mon expérience de cartographie UAV",
-    "expItems": [
-      "Couverture cartographique UAV de 42,5 km²",
-      "Images aériennes GSD de 7 cm",
-      "Expérience de sortie d'orthomosaïque de 5 cm",
-      "DSM sort avec une résolution d'environ 14 cm",
-      "Flux de travail PIX4D et Agisoft Metashape",
-      "Résultats produits à des fins municipales, de planification, d'ingénierie et GIS"
-    ]
-  },
   "caseStudies": [
     {
       "title": "Carte interactive et tableau de bord de décision municipal GIS",
@@ -316,24 +239,6 @@ window.I18N.fr = {
         "KPI exécutifs",
         "Analyse spatiale"
       ]
-    },
-    {
-      "title": "Production d'orthomosaïques UAV et DSM haute résolution",
-      "sub": "Des images brutes de drones aux produits de cartographie aérienne prêts pour GIS",
-      "year": "2023",
-      "image": "uav-7cm-01.jpg",
-      "problem": "Les équipes municipales et d'ingénierie ont souvent besoin d'images aériennes récentes et précises, mais les images brutes UAV ne sont pas prêtes à elles seules pour la cartographie, l'analyse ou la prise de décision.",
-      "solution": "Je traite les images brutes UAV via un flux de travail de photogrammétrie professionnel pour produire des cartes orthomosaïques haute résolution et des sorties DSM utilisables dans GIS, la planification, la cartographie des infrastructures et les tableaux de bord municipaux.",
-      "role": "Géré le flux de travail complet de capture et de traitement à l'aide de PIX4D et Agisoft Metashape, validé les sorties avec la station totale et les points de contrôle au sol, et effectué le contrôle qualité.",
-      "value": "Images orthomosaïques à 5–7 cm, DSM à ~14 cm, GIS-ready GeoTIFF, tuiles de carte Web en option et notes de qualité — préparées pour QGIS / ArcGIS / Web GIS.",
-      "tags": [
-        "PIX4D",
-        "Métaforme Agisoft",
-        "QGIS / ArcGIS",
-        "Photogrammétrie",
-        "Télédétection"
-      ],
-      "ctaOverride": "Besoin de transformer vos images brutes UAV en une carte aérienne professionnelle ? Contactez-moi."
     },
     {
       "title": "Entretien routier GIS Tableau de bord",
@@ -458,18 +363,6 @@ window.I18N.fr = {
       "label": "couverture panoramique pour Al-Bureij et ses environs"
     },
     {
-      "value": "42,5 km²",
-      "label": "Cartographie UAV à une résolution au sol de 7 cm"
-    },
-    {
-      "value": "5 cm",
-      "label": "résolution du sol orthomosaïque obtenue"
-    },
-    {
-      "value": "14 cm",
-      "label": "Résolution de sortie DSM"
-    },
-    {
       "value": "5,500+",
       "label": "métiers et entreprises documentés dans des fiches de terrain"
     },
@@ -508,43 +401,27 @@ window.I18N.fr = {
   ],
   "galleryCats": [
     {
-      "id": "tous",
+      "id": "all",
       "label": "Tous"
     },
     {
-      "id": "tableaux de bord",
+      "id": "dashboards",
       "label": "Tableaux de bord"
     },
     {
-      "id": "drone",
-      "label": "UAV Cartographie"
-    },
-    {
-      "id": "ortho",
-      "label": "Orthomosaïque"
-    },
-    {
-      "id": "dsm",
-      "label": "DSM"
-    },
-    {
-      "id": "aérien",
-      "label": "Imagerie aérienne"
-    },
-    {
-      "id": "vue sur la rue",
+      "id": "streetview",
       "label": "Vue de la rue / 360°"
     },
     {
-      "id": "champ",
+      "id": "field",
       "label": "Applications sur le terrain"
     },
     {
-      "id": "dommage",
+      "id": "damage",
       "label": "Évaluation des dommages"
     },
     {
-      "id": "intelligent",
+      "id": "smart",
       "label": "Municipalité intelligente"
     }
   ],
@@ -561,15 +438,6 @@ window.I18N.fr = {
     "water-dashboard.jpg": "Tableau de bord de gestion et d'analyse des réseaux d'eau",
     "emergency-dashboard.jpg": "Carte interactive et tableau de bord de gestion des urgences des municipalités intelligentes — 03/2026",
     "smart-municipality-gis.jpg": "Municipalité intelligente GIS échantillon de travail — gestion municipale — 04/2026",
-    "aerial-imagery-2026.jpg": "Sortie de cartographie aérienne adaptée aux cartes de base et à la planification GIS — 06/2026",
-    "aerial-documentation.jpg": "Sortie de documentation aérienne haute résolution",
-    "uav-7cm-01.jpg": "Sortie orthomosaïque UAV haute résolution pour les municipalités GIS — 7 cm GSD — 09/2023",
-    "uav-7cm-02.jpg": "Sortie orthomosaïque UAV haute résolution pour les municipalités GIS — 7 cm GSD — 09/2023",
-    "uav-7cm-03.jpg": "Imagerie orthomosaïque UAV à une résolution au sol de 7 cm — 09/2023",
-    "dsm-14cm-coverage.jpg": "Produit DSM généré à partir de l'imagerie UAV — 14 cm sur 41,5 km² — 09/2023",
-    "dsm-wadi-gaza-01.jpg": "Produit DSM généré à partir de l'imagerie UAV — Corridor du Wadi Gaza — 09/2023",
-    "dsm-wadi-gaza-02.jpg": "Produit DSM généré à partir de l'imagerie UAV — Corridor du Wadi Gaza — 09/2023",
-    "dsm-agricultural.jpg": "Produit DSM généré à partir de l'imagerie UAV — zone agricole — 09/2023",
     "street-view-01.jpg": "Résultat du projet Street View, prêt à être utilisé hors ligne et déployable sur le Web – 02/2026",
     "street-view-02.jpg": "Résultats du projet Street View — 02/2026",
     "street-view-03.jpg": "Résultats du projet Street View — 02/2026",
@@ -593,7 +461,7 @@ window.I18N.fr = {
     },
     {
       "title": "Vérifiez vos données actuelles",
-      "text": "Couches GIS, images Excel, CAD, UAV, plaintes, notes de terrain — Je travaille avec des données imparfaites."
+      "text": "Couches GIS, Excel, CAD, plaintes et notes de terrain — je travaille avec des données imparfaites."
     },
     {
       "title": "Concevoir la base de données et le workflow",
@@ -615,7 +483,7 @@ window.I18N.fr = {
   "whyItems": [
     {
       "head": "Ingénierie + GIS + tableaux de bord dans un seul profil.",
-      "text": "Je combine le génie civil, la géomatique, la gestion GIS, la cartographie UAV, les données de terrain et la réflexion sur des tableaux de bord."
+      "text": "Je combine le génie civil, la géomatique, la gestion GIS, les données de terrain et la conception de tableaux de bord."
     },
     {
       "head": "Je comprends les opérations municipales, pas seulement les logiciels.",
@@ -643,7 +511,6 @@ window.I18N.fr = {
     "roles": [
       "GIS Consultant",
       "Développeur de tableaux de bord Web GIS",
-      "UAV Spécialiste du traitement d'images",
       "Concepteur de bases de données spatiales",
       "Spécialiste du soutien municipal GIS"
     ],
@@ -663,7 +530,7 @@ window.I18N.fr = {
   "contact": {
     "kicker": "Démarrer un projet",
     "title": "Démarrer un projet GIS à distance",
-    "sub": "Envoyez les détails de votre projet. Je peux vous aider à transformer des données brutes, des images UAV, des couches d'infrastructure ou des dossiers municipaux en tableaux de bord GIS, cartes orthomosaïques, sorties DSM et systèmes prêts à prendre des décisions.",
+    "sub": "Envoyez les détails de votre projet. Je peux transformer des données brutes, des couches d’infrastructure ou des dossiers municipaux en tableaux de bord GIS, bases de données spatiales, cartes et systèmes d’aide à la décision.",
     "confidential": "Pour des raisons de secret professionnel, les coordonnées directes ne sont pas publiées. Veuillez utiliser le formulaire sécurisé de demande de projet.",
     "facts": [
       [
@@ -692,34 +559,30 @@ window.I18N.fr = {
       "method": "Méthode de contact préférée",
       "methodOptions": [
         [
-          "WhatsApp",
+          "whatsapp",
           "WhatsApp"
         ],
         [
-          "télégramme",
+          "telegram",
           "Telegram"
         ],
         [
-          "e-mail",
+          "email",
           "E-mail"
         ]
       ],
       "service": "Service nécessaire",
       "serviceOptions": [
         [
-          "tableau de bord",
+          "dashboard",
           "Tableau de bord Web GIS"
         ],
         [
-          "drone",
-          "UAV Traitement d'image / Orthomosaïque / DSM"
-        ],
-        [
-          "base de données",
+          "database",
           "Base de données spatiale"
         ],
         [
-          "consultant",
+          "consulting",
           "Conseils municipaux GIS"
         ],
         [
@@ -727,15 +590,15 @@ window.I18N.fr = {
           "Infrastructure GIS Cartographie"
         ],
         [
-          "champ",
+          "field",
           "Système de collecte de données sur le terrain"
         ],
         [
-          "dommage",
+          "damage",
           "Évaluation des dommages GIS"
         ],
         [
-          "autre",
+          "other",
           "Autre"
         ]
       ],

@@ -35,11 +35,7 @@ function decodeTarget(encoded) {
   return atob(encoded).split("").reverse().join("");
 }
 
-/* ------------------------------------------------------------
-   Gallery structure (files + categories). Captions per language
-   live in locales/*.js under galleryCaptions.
-   Filter "uav" is an umbrella that matches ortho + dsm + aerial.
-   ------------------------------------------------------------ */
+/* Gallery structure. Captions live in locales/*.js. */
 const GALLERY = [
   { file: "road-dashboard-executive.jpg", cat: "dashboards" },
   { file: "road-dashboard-technical.jpg", cat: "dashboards" },
@@ -53,15 +49,6 @@ const GALLERY = [
   { file: "water-dashboard.jpg", cat: "dashboards" },
   { file: "emergency-dashboard.jpg", cat: "smart" },
   { file: "smart-municipality-gis.jpg", cat: "smart" },
-  { file: "aerial-imagery-2026.jpg", cat: "aerial" },
-  { file: "aerial-documentation.jpg", cat: "aerial" },
-  { file: "uav-7cm-01.jpg", cat: "ortho" },
-  { file: "uav-7cm-02.jpg", cat: "ortho" },
-  { file: "uav-7cm-03.jpg", cat: "ortho" },
-  { file: "dsm-14cm-coverage.jpg", cat: "dsm" },
-  { file: "dsm-wadi-gaza-01.jpg", cat: "dsm" },
-  { file: "dsm-wadi-gaza-02.jpg", cat: "dsm" },
-  { file: "dsm-agricultural.jpg", cat: "dsm" },
   { file: "street-view-01.jpg", cat: "streetview" },
   { file: "street-view-02.jpg", cat: "streetview" },
   { file: "street-view-03.jpg", cat: "streetview" },
@@ -79,7 +66,6 @@ const GALLERY = [
   { file: "damage-neighborhood.jpg", cat: "damage" }
 ];
 
-const UMBRELLA_FILTERS = { uav: ["ortho", "dsm", "aerial"] };
 
 /* ============================================================
    i18n engine
@@ -184,29 +170,6 @@ function renderServices() {
   });
 }
 
-function renderUav() {
-  const grid = document.querySelector("#uavGrid");
-  grid.innerHTML = "";
-  const uav = L().uav;
-  const blocks = [
-    { title: uav.needTitle, items: uav.needItems, icon: "📥" },
-    { title: uav.deliverTitle, items: uav.deliverItems, icon: "📦" },
-    { title: uav.suitableTitle, items: uav.suitableItems, icon: "🎯" },
-    { title: uav.whyTitle, items: uav.whyItems, icon: "💡" },
-    { title: uav.expTitle, items: uav.expItems, icon: "🛩️" }
-  ];
-  blocks.forEach((b) => {
-    grid.appendChild(
-      el(
-        "article",
-        "uav-block reveal visible",
-        `<h3><span aria-hidden="true">${b.icon}</span> ${b.title}</h3>
-         <ul>${b.items.map((i) => `<li>${i}</li>`).join("")}</ul>`
-      )
-    );
-  });
-}
-
 function renderCaseStudies() {
   const grid = document.querySelector("#caseGrid");
   grid.innerHTML = "";
@@ -249,7 +212,6 @@ let visibleGallery = [];
 
 function matchesCategory(item, catId) {
   if (catId === "all") return true;
-  if (UMBRELLA_FILTERS[catId]) return UMBRELLA_FILTERS[catId].includes(item.cat);
   return item.cat === catId;
 }
 
@@ -470,18 +432,6 @@ function wireContactButtons() {
   });
 }
 
-/* ---------- UAV CTA: preselect UAV service and jump to the form ---------- */
-function wireUavCtas() {
-  document.querySelectorAll(".uav-cta").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const service = document.querySelector("#fService");
-      service.value = "uav";
-      document.querySelector("#contact").scrollIntoView({ behavior: "smooth" });
-      setTimeout(() => document.querySelector("#fName").focus(), 600);
-    });
-  });
-}
-
 /* ============================================================
    Project inquiry form
    ============================================================ */
@@ -635,7 +585,6 @@ function applyLanguage(lang) {
   renderHeroMetrics();
   renderValueCards();
   renderServices();
-  renderUav();
   renderCaseStudies();
   renderProofMetrics();
   renderGalleryFilters();
@@ -671,7 +620,6 @@ document.querySelector("#themeToggle")?.addEventListener("click", () => {
 applyLanguage(currentLang);
 applyTheme(currentTheme);
 wireContactButtons();
-wireUavCtas();
 
 /* ============================================================
    A Message from Gaza modal
