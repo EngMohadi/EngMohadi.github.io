@@ -84,9 +84,17 @@ const UMBRELLA_FILTERS = { uav: ["ortho", "dsm", "aerial"] };
 /* ============================================================
    i18n engine
    ============================================================ */
+const SUPPORTED_LANGUAGES = ["en", "ar", "fr", "de", "es"];
+
 let currentLang = (() => {
   const saved = localStorage.getItem("portfolioLanguage");
-  return saved === "ar" || saved === "en" ? saved : "en";
+  if (SUPPORTED_LANGUAGES.includes(saved)) return saved;
+
+  const systemLanguages = navigator.languages?.length ? navigator.languages : [navigator.language];
+  const detected = systemLanguages
+    .map((language) => language?.split("-")[0].toLowerCase())
+    .find((language) => SUPPORTED_LANGUAGES.includes(language));
+  return detected || "en";
 })();
 
 let currentTheme = (() => {
@@ -405,9 +413,14 @@ function renderFormSelects() {
    Contact actions — endpoints decoded at click time only
    ============================================================ */
 function buildQuickMessage() {
-  return currentLang === "ar"
-    ? "مرحباً محمد، اطلعت على بورتفوليو GIS الخاص بك وأود مناقشة مشروع عن بُعد."
-    : "Hello Mohammad, I found your GIS portfolio and I would like to discuss a remote project.";
+  const messages = {
+    ar: "مرحباً محمد، اطلعت على بورتفوليو GIS الخاص بك وأود مناقشة مشروع عن بُعد.",
+    de: "Hallo Mohammad, ich habe Ihr GIS-Portfolio gesehen und möchte ein Remote-Projekt besprechen.",
+    en: "Hello Mohammad, I found your GIS portfolio and I would like to discuss a remote project.",
+    es: "Hola Mohammad, he visto su portafolio GIS y me gustaría hablar sobre un proyecto remoto.",
+    fr: "Bonjour Mohammad, j’ai consulté votre portfolio GIS et je souhaite discuter d’un projet à distance."
+  };
+  return messages[currentLang] || messages.en;
 }
 
 function openWhatsApp(text) {
@@ -607,12 +620,13 @@ function observeReveals() {
    Language switching
    ============================================================ */
 function applyLanguage(lang) {
+  if (!SUPPORTED_LANGUAGES.includes(lang) || !window.I18N[lang]) lang = "en";
   currentLang = lang;
   localStorage.setItem("portfolioLanguage", lang);
   document.documentElement.lang = lang;
   document.documentElement.dir = L().dir;
   document.title = L().docTitle;
-  document.querySelector("#langToggle").textContent = L().langButton;
+  document.querySelector("#langSelect").value = lang;
 
   translateStaticNodes();
   renderHeroMetrics();
@@ -630,8 +644,8 @@ function applyLanguage(lang) {
   observeReveals();
 }
 
-document.querySelector("#langToggle").addEventListener("click", () => {
-  applyLanguage(currentLang === "en" ? "ar" : "en");
+document.querySelector("#langSelect").addEventListener("change", (event) => {
+  applyLanguage(event.target.value);
 });
 
 function applyTheme(theme) {
