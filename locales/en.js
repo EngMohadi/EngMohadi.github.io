@@ -2,7 +2,7 @@ window.I18N = window.I18N || {};
 window.I18N.en = {
   "dir": "ltr",
   "langButton": "العربية",
-  "docTitle": "Mohammad Abdelhadi | Remote GIS Consultant & Web GIS Dashboard Developer",
+  "docTitle": "Mohammad Abdelhadi | Smart Municipality & GIS Consultant",
   "nav": {
     "value": "How I Help",
     "services": "Services",
@@ -10,7 +10,8 @@ window.I18N.en = {
     "gallery": "Gallery",
     "process": "Process",
     "contact": "Contact",
-    "hire": "Hire Me Remotely"
+    "hire": "Hire Me Remotely",
+    "smartMunicipality": "Smart Municipality"
   },
   "hero": {
     "badge": "Available for Remote Projects • GIS Dashboards • Spatial Databases • Municipal Systems",
@@ -151,6 +152,19 @@ window.I18N.en = {
     }
   ],
   "services": [
+    {
+      "tag": "Flagship Service",
+      "title": "Integrated Smart Municipality Platform",
+      "items": [
+        "Institutional and digital-transformation readiness assessment",
+        "Unified workflows for services, departments, and citizen transactions",
+        "GIS-based asset and spatial management",
+        "Dashboards, KPIs, reports, and decision-support tools",
+        "Governance, audit logs, permissions, integrations, and phased roadmap"
+      ],
+      "bestFor": "Best for: municipalities seeking a practical, phased transformation from fragmented procedures to one connected operating platform.",
+      "flagshipSmartMunicipality": true
+    },
     {
       "tag": "Package A",
       "title": "Web GIS Dashboard Development",
@@ -574,6 +588,10 @@ window.I18N.en = {
       "service": "Service needed",
       "serviceOptions": [
         [
+          "smart",
+          "Integrated Smart Municipality Platform"
+        ],
+        [
           "dashboard",
           "Web GIS Dashboard"
         ],
@@ -640,5 +658,69 @@ window.I18N.en = {
   },
   "footer": {
     "text": "© 2026 Mohammad Abdelhadi — Remote GIS Consultant & Web GIS Developer."
+  },
+  "smartMunicipality": {
+    "kicker": "Flagship Service",
+    "title": "Integrated Smart Municipality Platform",
+    "lead": "One connected municipal ecosystem that brings citizens, services, departments, spatial data, workflows, and decision intelligence into a single operational platform.",
+    "experience": "I developed this blueprint through years of practical municipal experience across management, follow-up, supervision, GIS, engineering, field operations, and collaboration with different departments. The service starts with real workflows and institutional needs, then translates them into an implementable digital system.",
+    "whatsapp": "Book a WhatsApp Consultation",
+    "telegram": "Book via Telegram",
+    "pricing": "Scope, implementation phases, and service cost are defined after a focused discovery call based on the municipality’s priorities, current systems, data readiness, and required integrations.",
+    "imageAlt": "Integrated Smart Municipality platform architecture connecting GIS, workflow management, dashboards, and digital infrastructure",
+    "imageCaption": "Architecture from the complete Smart Municipality Blueprint developed from practical municipal operations.",
+    "download": "Download Full Blueprint",
+    "outcomes": [
+      {
+        "title": "Citizen",
+        "text": "A modern, responsive Arabic-first experience for requests, licenses, payments, notifications, and service follow-up."
+      },
+      {
+        "title": "Service",
+        "text": "Faster completion and seamless work between employees, departments, and the public through clear digital workflows."
+      },
+      {
+        "title": "Decision",
+        "text": "Spatial data, live indicators, and accurate reports that improve planning, transparency, and resource allocation."
+      }
+    ],
+    "modulesKicker": "Complete Operating Model",
+    "modulesTitle": "From fragmented procedures to active digital management",
+    "modulesIntro": "The platform is designed as a modular municipal operating system that can be implemented in practical phases and expanded as priorities, data, and budgets evolve.",
+    "modules": [
+      {
+        "title": "Unified Workflow & Services",
+        "text": "A single platform connects departments, employees, public services, responsibilities, statuses, and service-level tracking."
+      },
+      {
+        "title": "Digital Transaction Lifecycle",
+        "text": "Requests, permits, attachments, interdepartmental processing, electronic payment, final approval, and documented archiving."
+      },
+      {
+        "title": "Spatial Management & GIS",
+        "text": "Accurate tracking of buildings, land, municipal assets, facilities, and service areas through interactive maps and linked records."
+      },
+      {
+        "title": "Decision Intelligence",
+        "text": "Operational KPIs, performance monitoring, analytical reports, and dashboards for evidence-based planning and management."
+      },
+      {
+        "title": "Flexible Technical Platform",
+        "text": "Responsive interfaces, timely notifications, API integration, and a modular architecture ready for new services and future expansion."
+      },
+      {
+        "title": "Governance, Audit & Permissions",
+        "text": "Detailed activity logs, complete procedure tracing, approvals history, and granular role-based access to protect information."
+      }
+    ],
+    "flowKicker": "End-to-End Service Journey",
+    "flowTitle": "Every transaction remains connected and traceable",
+    "flow": [
+      "Application & attachments",
+      "Interdepartmental processing",
+      "Secure electronic payment",
+      "Approval & documented archive"
+    ],
+    "bookingMessage": "Hello Mohammad, I would like to book a consultation about the Integrated Smart Municipality Platform and discuss our needs, implementation scope, phases, and estimated service cost."
   }
 };

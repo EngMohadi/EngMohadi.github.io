@@ -572,6 +572,246 @@ body.modal-open { overflow: hidden; }
   color: var(--muted);
 }
 
+/* ---------- Flagship Smart Municipality service ---------- */
+.smart-service {
+  position: relative;
+  z-index: 1;
+  padding: clamp(72px, 9vw, 118px) clamp(18px, 6vw, 72px);
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, rgba(8, 145, 178, 0.08), transparent 34%),
+    var(--bg-alt);
+  border-block: 1px solid var(--border);
+}
+
+.smart-service::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(rgba(34, 211, 238, 0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(34, 211, 238, 0.12) 1px, transparent 1px);
+  background-size: 52px 52px;
+  mask-image: linear-gradient(to bottom, black, transparent 70%);
+}
+
+.smart-service > * {
+  position: relative;
+  max-width: 1220px;
+  margin-inline: auto;
+}
+
+.smart-service-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(360px, 0.98fr);
+  gap: clamp(34px, 6vw, 76px);
+  align-items: center;
+}
+
+.smart-service-copy h2 {
+  max-width: 790px;
+  margin: 10px 0 20px;
+  font-size: clamp(36px, 5.4vw, 72px);
+  line-height: 1.04;
+  letter-spacing: 0;
+}
+
+.smart-service-copy > p {
+  max-width: 68ch;
+  color: var(--muted);
+}
+
+.smart-service-lead {
+  color: var(--text) !important;
+  font-size: clamp(18px, 2vw, 23px);
+  line-height: 1.5;
+}
+
+.smart-service-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.smart-pricing-note {
+  margin-top: 14px;
+  font-size: 13px;
+}
+
+.smart-blueprint {
+  margin: 0;
+}
+
+.smart-blueprint img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border: 1px solid var(--border-strong);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.smart-blueprint figcaption {
+  margin: 12px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.smart-outcomes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: clamp(52px, 7vw, 84px);
+}
+
+.smart-outcome {
+  min-height: 180px;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.smart-outcome span {
+  display: block;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.smart-outcome h3 {
+  margin: 10px 0 8px;
+  font-size: 24px;
+  letter-spacing: 0;
+}
+
+.smart-outcome p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.smart-modules-heading {
+  max-width: 780px;
+  margin-top: clamp(64px, 8vw, 104px);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.smart-modules-heading h3,
+.smart-flow h3 {
+  margin: 8px 0 12px;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: 0;
+}
+
+.smart-modules-heading p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.smart-modules {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.smart-module {
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+}
+
+.smart-module-number {
+  color: var(--accent-2);
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.smart-module h4 {
+  margin: 10px 0 8px;
+  font-size: 19px;
+  letter-spacing: 0;
+}
+
+.smart-module p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.smart-flow {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.7fr) minmax(0, 1.3fr);
+  gap: 44px;
+  align-items: start;
+  margin-top: clamp(64px, 8vw, 104px);
+  padding-top: 42px;
+  border-top: 1px solid var(--border);
+}
+
+.smart-flow ol {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: smart-step;
+}
+
+.smart-flow li {
+  counter-increment: smart-step;
+  min-width: 0;
+  padding: 18px;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.smart-flow li::before {
+  content: counter(smart-step, decimal-leading-zero);
+  display: block;
+  margin-bottom: 10px;
+  color: var(--accent);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+@media (max-width: 960px) {
+  .smart-service-hero,
+  .smart-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .smart-modules {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .smart-service-copy h2 {
+    font-size: 40px;
+  }
+
+  .smart-outcomes,
+  .smart-modules {
+    grid-template-columns: 1fr;
+  }
+
+  .smart-flow ol {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 /* ---------- Sections ---------- */
 .section {
   padding: clamp(60px, 8vw, 110px) clamp(18px, 6vw, 72px);
@@ -706,6 +946,18 @@ body.modal-open { overflow: hidden; }
 .service-card:hover {
   transform: translateY(-4px);
   border-color: var(--border-strong);
+}
+
+.service-card-featured {
+  border-color: rgba(34, 211, 238, 0.5);
+  background:
+    linear-gradient(145deg, rgba(34, 211, 238, 0.1), rgba(14, 165, 233, 0.04)),
+    var(--surface);
+  box-shadow: 0 18px 42px rgba(0, 0, 0, 0.16);
+}
+
+.service-card-featured:hover {
+  border-color: var(--accent);
 }
 
 .service-card .service-tag {

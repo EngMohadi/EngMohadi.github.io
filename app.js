@@ -156,18 +156,51 @@ function renderServices() {
   const grid = document.querySelector("#servicesGrid");
   grid.innerHTML = "";
   L().services.forEach((s) => {
+    const isFlagship = Boolean(s.flagshipSmartMunicipality);
     grid.appendChild(
       el(
         "article",
-        "service-card reveal visible",
+        `service-card reveal visible${isFlagship ? " service-card-featured" : ""}`,
         `<span class="service-tag">${s.tag}</span>
          <h3>${s.title}</h3>
          <ul>${s.items.map((i) => `<li>${i}</li>`).join("")}</ul>
          <p class="best-for">${s.bestFor}</p>
-         <a class="btn btn-outline btn-sm" href="#contact">${t("labels.startPackage")}</a>`
+         <a class="btn ${isFlagship ? "btn-primary" : "btn-outline"} btn-sm" href="${isFlagship ? "#smart-municipality" : "#contact"}">${isFlagship ? t("nav.smartMunicipality") : t("labels.startPackage")}</a>`
       )
     );
   });
+}
+
+function renderSmartMunicipality() {
+  const content = L().smartMunicipality;
+  const outcomes = document.querySelector("#smartOutcomes");
+  const modules = document.querySelector("#smartModules");
+  const flow = document.querySelector("#smartFlow");
+  if (!content || !outcomes || !modules || !flow) return;
+
+  outcomes.innerHTML = content.outcomes
+    .map(
+      (item, index) => `
+        <article class="smart-outcome reveal visible">
+          <span>${String(index + 1).padStart(2, "0")}</span>
+          <h3>${item.title}</h3>
+          <p>${item.text}</p>
+        </article>`
+    )
+    .join("");
+
+  modules.innerHTML = content.modules
+    .map(
+      (item, index) => `
+        <article class="smart-module reveal visible">
+          <span class="smart-module-number">${String(index + 1).padStart(2, "0")}</span>
+          <h4>${item.title}</h4>
+          <p>${item.text}</p>
+        </article>`
+    )
+    .join("");
+
+  flow.innerHTML = content.flow.map((step) => `<li>${step}</li>`).join("");
 }
 
 function renderCaseStudies() {
@@ -432,6 +465,16 @@ function wireContactButtons() {
   });
 }
 
+function wireSmartMunicipalityBooking() {
+  document.querySelectorAll(".smart-whatsapp-booking").forEach((button) => {
+    button.addEventListener("click", () => openWhatsApp(t("smartMunicipality.bookingMessage")));
+  });
+  document.querySelectorAll(".smart-telegram-booking").forEach((button) => {
+    button.hidden = !hasTelegramTarget();
+    button.addEventListener("click", () => openTelegram(t("smartMunicipality.bookingMessage")));
+  });
+}
+
 /* ============================================================
    Project inquiry form
    ============================================================ */
@@ -582,6 +625,7 @@ function applyLanguage(lang) {
   document.querySelector("#langSelect").value = lang;
 
   translateStaticNodes();
+  renderSmartMunicipality();
   renderHeroMetrics();
   renderValueCards();
   renderServices();
@@ -620,6 +664,7 @@ document.querySelector("#themeToggle")?.addEventListener("click", () => {
 applyLanguage(currentLang);
 applyTheme(currentTheme);
 wireContactButtons();
+wireSmartMunicipalityBooking();
 
 /* ============================================================
    A Message from Gaza modal

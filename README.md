@@ -8,10 +8,10 @@ Content source of truth: `Mohammad_Abdelhadi_GIS_Remote_Work_Portfolio_EN.docx` 
 
 | File / folder | Purpose |
 |---|---|
-| `index.html` | Single-page portfolio: hero, remote value, service packages, UAV processing service, case studies, proof metrics, gallery, process, why-hire-me, project inquiry form |
+| `index.html` | Single-page portfolio: hero, flagship smart municipality service, service packages, case studies, proof metrics, gallery, process, why-hire-me, project inquiry form |
 | `styles.css` | Premium dark theme (CSS variables, glassmorphism cards, grid overlay, responsive, RTL support) |
-| `app.js` | Rendering engine, EN/AR language switch, gallery filters, lightbox, inquiry form logic, obfuscated contact actions |
-| `locales/en.js`, `locales/ar.js` | All visible site text per language — edit these to change content |
+| `app.js` | Rendering engine, five-language switch, gallery filters, lightbox, inquiry form logic, obfuscated contact actions |
+| `locales/` | All visible site text in English, Arabic, French, German, and Spanish |
 | `.env.example` | Placeholder env vars for a future backend that would truly hide contact details |
 | `assets/images/work/` | 36 web-optimized project images extracted from the Word portfolio |
 | `assets/downloads/` | Downloadable portfolio DOCX (replace with a PDF for smaller size if desired) |
@@ -22,7 +22,7 @@ Content source of truth: `Mohammad_Abdelhadi_GIS_Remote_Work_Portfolio_EN.docx` 
 
 ## Editing content and translations
 
-All visible text lives in `locales/en.js` (English) and `locales/ar.js` (Arabic). Each file is one object with the same structure (`hero`, `valueCards`, `services`, `uav`, `caseStudies`, `proofMetrics`, `galleryCaptions`, `processSteps`, `whyItems`, `contact.form`, …). Edit the matching key in both files — no HTML changes needed. The language toggle in the header switches EN (LTR) / AR (RTL) and remembers the choice in localStorage; English is the default.
+All visible text lives in `locales/en.js`, `locales/ar.js`, `locales/fr.js`, `locales/de.js`, and `locales/es.js`. Each file uses the same content structure. Update matching keys across all five files when changing visible copy. The language selector remembers the visitor's choice and otherwise follows the browser language.
 
 ## Contact privacy
 

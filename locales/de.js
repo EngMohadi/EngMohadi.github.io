@@ -2,7 +2,7 @@ window.I18N = window.I18N || {};
 window.I18N.de = {
   "dir": "ltr",
   "langButton": "Deutsch",
-  "docTitle": "Mohammad Abdelhadi | Remote-GIS-Berater & Web-GIS-Dashboard-Entwickler",
+  "docTitle": "Mohammad Abdelhadi | Smart-Municipality- und GIS-Berater",
   "nav": {
     "value": "Wie ich helfe",
     "services": "Dienstleistungen",
@@ -10,7 +10,8 @@ window.I18N.de = {
     "gallery": "Galerie",
     "process": "Verfahren",
     "contact": "Kontakt",
-    "hire": "Stellen Sie mich aus der Ferne ein"
+    "hire": "Stellen Sie mich aus der Ferne ein",
+    "smartMunicipality": "Smart Municipality"
   },
   "hero": {
     "badge": "Verfügbar für Remote-Projekte • GIS-Dashboards • Räumliche Datenbanken • Kommunale Systeme",
@@ -151,6 +152,19 @@ window.I18N.de = {
     }
   ],
   "services": [
+    {
+      "tag": "Kernleistung",
+      "title": "Integrierte Smart-Municipality-Plattform",
+      "items": [
+        "Bewertung der institutionellen und digitalen Transformationsreife",
+        "Einheitliche Workflows für Services, Fachbereiche und Bürgertransaktionen",
+        "GIS-basiertes Anlagen- und Raummanagement",
+        "Dashboards, KPIs, Berichte und Entscheidungsunterstützung",
+        "Governance, Audit-Logs, Rechte, Integrationen und stufenweiser Fahrplan"
+      ],
+      "bestFor": "Ideal für: Kommunen, die fragmentierte Verfahren schrittweise in eine vernetzte Betriebsplattform überführen möchten.",
+      "flagshipSmartMunicipality": true
+    },
     {
       "tag": "Paket A",
       "title": "Web GIS Dashboard-Entwicklung",
@@ -574,6 +588,10 @@ window.I18N.de = {
       "service": "Service erforderlich",
       "serviceOptions": [
         [
+          "smart",
+          "Integrierte Smart-Municipality-Plattform"
+        ],
+        [
           "dashboard",
           "Web GIS Dashboard"
         ],
@@ -640,5 +658,69 @@ window.I18N.de = {
   },
   "footer": {
     "text": "© 2026 Mohammad Abdelhadi – Remote-GIS-Berater und Web-GIS-Entwickler."
+  },
+  "smartMunicipality": {
+    "kicker": "Kernleistung",
+    "title": "Integrierte Smart-Municipality-Plattform",
+    "lead": "Ein vernetztes kommunales Ökosystem, das Bürger, Dienstleistungen, Fachbereiche, Geodaten, Workflows und Entscheidungsinformationen in einer operativen Plattform vereint.",
+    "experience": "Dieses Konzept entstand aus langjähriger praktischer Kommunalerfahrung in Management, Nachverfolgung, Aufsicht, GIS, Ingenieurwesen, Feldeinsätzen und bereichsübergreifender Zusammenarbeit. Reale Prozesse und institutionelle Anforderungen werden in ein umsetzbares digitales System übersetzt.",
+    "whatsapp": "Beratung per WhatsApp buchen",
+    "telegram": "Über Telegram buchen",
+    "pricing": "Leistungsumfang, Umsetzungsphasen und Kosten werden nach einem fokussierten Erstgespräch anhand von Prioritäten, vorhandenen Systemen, Datenreife und Integrationsbedarf festgelegt.",
+    "imageAlt": "Architektur einer integrierten Smart-Municipality-Plattform mit GIS, Workflow-Management, Dashboards und digitaler Infrastruktur",
+    "imageCaption": "Architektur aus dem vollständigen Blueprint, entwickelt aus praktischen kommunalen Abläufen.",
+    "download": "Vollständigen Blueprint herunterladen",
+    "outcomes": [
+      {
+        "title": "Bürger",
+        "text": "Eine moderne, responsive und arabisch ausgerichtete Erfahrung für Anträge, Genehmigungen, Zahlungen, Benachrichtigungen und Statusverfolgung."
+      },
+      {
+        "title": "Service",
+        "text": "Schnellere Bearbeitung und reibungslose Zusammenarbeit zwischen Mitarbeitenden, Fachbereichen und Öffentlichkeit durch klare digitale Workflows."
+      },
+      {
+        "title": "Entscheidung",
+        "text": "Geodaten, Live-Kennzahlen und präzise Berichte verbessern Planung, Transparenz und Ressourcensteuerung."
+      }
+    ],
+    "modulesKicker": "Vollständiges Betriebsmodell",
+    "modulesTitle": "Von fragmentierten Verfahren zur aktiven digitalen Verwaltung",
+    "modulesIntro": "Die Plattform ist als modulares kommunales Betriebssystem konzipiert, das schrittweise eingeführt und nach Prioritäten, Datenlage und Budget erweitert werden kann.",
+    "modules": [
+      {
+        "title": "Einheitliche Services und Workflows",
+        "text": "Eine Plattform verbindet Fachbereiche, Mitarbeitende, Bürgerdienste, Zuständigkeiten, Status und Bearbeitungszeiten."
+      },
+      {
+        "title": "Digitaler Transaktionszyklus",
+        "text": "Anträge, Genehmigungen, Anlagen, bereichsübergreifende Bearbeitung, elektronische Zahlung, Freigabe und dokumentierte Archivierung."
+      },
+      {
+        "title": "Räumliches Management und GIS",
+        "text": "Präzise Verwaltung von Gebäuden, Grundstücken, Anlagen, Einrichtungen und Versorgungsgebieten über interaktive Karten."
+      },
+      {
+        "title": "Entscheidungsintelligenz",
+        "text": "Operative KPIs, Leistungsüberwachung, analytische Berichte und Dashboards für datenbasierte Planung und Steuerung."
+      },
+      {
+        "title": "Flexible technische Plattform",
+        "text": "Responsive Oberflächen, Benachrichtigungen, API-Integration und modulare Architektur für neue Services und Wachstum."
+      },
+      {
+        "title": "Governance, Audit und Rechte",
+        "text": "Detaillierte Aktivitätsprotokolle, lückenlose Vorgangsverfolgung, Freigabehistorie und rollenbasierte Zugriffsrechte."
+      }
+    ],
+    "flowKicker": "Durchgängige Service Journey",
+    "flowTitle": "Jede Transaktion bleibt verbunden und nachvollziehbar",
+    "flow": [
+      "Antrag und Anlagen",
+      "Bereichsübergreifende Bearbeitung",
+      "Sichere elektronische Zahlung",
+      "Freigabe und Archivierung"
+    ],
+    "bookingMessage": "Hallo Mohammad, ich möchte eine Beratung zur integrierten Smart-Municipality-Plattform buchen und unsere Anforderungen, den Umfang, die Phasen und die voraussichtlichen Kosten besprechen."
   }
 };

@@ -2,7 +2,7 @@ window.I18N = window.I18N || {};
 window.I18N.es = {
   "dir": "ltr",
   "langButton": "Español",
-  "docTitle": "Mohammad Abdelhadi | Consultor GIS remoto y desarrollador de paneles Web GIS",
+  "docTitle": "Mohammad Abdelhadi | Consultor en municipio inteligente y SIG",
   "nav": {
     "value": "Como ayudo",
     "services": "Servicios",
@@ -10,7 +10,8 @@ window.I18N.es = {
     "gallery": "Galería",
     "process": "Proceso",
     "contact": "Contacto",
-    "hire": "Contratame de forma remota"
+    "hire": "Contratame de forma remota",
+    "smartMunicipality": "Municipio inteligente"
   },
   "hero": {
     "badge": "Disponible para proyectos remotos • Paneles GIS • Bases de datos espaciales • Sistemas municipales",
@@ -151,6 +152,19 @@ window.I18N.es = {
     }
   ],
   "services": [
+    {
+      "tag": "Servicio principal",
+      "title": "Plataforma municipal inteligente integrada",
+      "items": [
+        "Evaluación de preparación institucional y digital",
+        "Flujos unificados para servicios, departamentos y trámites ciudadanos",
+        "Gestión espacial y de activos basada en GIS",
+        "Paneles, KPI, informes y herramientas de apoyo a decisiones",
+        "Gobernanza, auditoría, permisos, integraciones y hoja de ruta por fases"
+      ],
+      "bestFor": "Ideal para: municipios que buscan pasar gradualmente de procedimientos fragmentados a una plataforma operativa conectada.",
+      "flagshipSmartMunicipality": true
+    },
     {
       "tag": "Paquete A",
       "title": "Desarrollo de panel web GIS",
@@ -574,6 +588,10 @@ window.I18N.es = {
       "service": "Servicio necesario",
       "serviceOptions": [
         [
+          "smart",
+          "Plataforma municipal inteligente integrada"
+        ],
+        [
           "dashboard",
           "Panel web GIS"
         ],
@@ -640,5 +658,69 @@ window.I18N.es = {
   },
   "footer": {
     "text": "© 2026 Mohammad Abdelhadi — Consultor remoto GIS y desarrollador web GIS."
+  },
+  "smartMunicipality": {
+    "kicker": "Servicio principal",
+    "title": "Plataforma municipal inteligente integrada",
+    "lead": "Un ecosistema municipal conectado que reúne ciudadanía, servicios, departamentos, datos espaciales, flujos de trabajo e inteligencia de decisión en una única plataforma operativa.",
+    "experience": "Desarrollé este modelo durante años de experiencia municipal práctica en gestión, seguimiento, supervisión, GIS, ingeniería, operaciones de campo y coordinación entre departamentos. El servicio parte de procesos reales y necesidades institucionales para convertirlos en un sistema digital viable.",
+    "whatsapp": "Reservar consulta por WhatsApp",
+    "telegram": "Reservar por Telegram",
+    "pricing": "El alcance, las fases de implementación y el costo se definen después de una reunión de diagnóstico según las prioridades, los sistemas actuales, la preparación de los datos y las integraciones requeridas.",
+    "imageAlt": "Arquitectura de una plataforma municipal inteligente que conecta GIS, gestión de flujos, paneles e infraestructura digital",
+    "imageCaption": "Arquitectura del blueprint completo, desarrollada a partir de operaciones municipales reales.",
+    "download": "Descargar blueprint completo",
+    "outcomes": [
+      {
+        "title": "Ciudadanía",
+        "text": "Una experiencia moderna, adaptable y pensada primero en árabe para solicitudes, licencias, pagos, notificaciones y seguimiento."
+      },
+      {
+        "title": "Servicio",
+        "text": "Ejecución más rápida y colaboración fluida entre empleados, departamentos y público mediante flujos digitales claros."
+      },
+      {
+        "title": "Decisión",
+        "text": "Datos espaciales, indicadores en tiempo real e informes precisos para mejorar planificación, transparencia y recursos."
+      }
+    ],
+    "modulesKicker": "Modelo operativo completo",
+    "modulesTitle": "De procedimientos fragmentados a una gestión digital activa",
+    "modulesIntro": "La plataforma funciona como un sistema operativo municipal modular, implementable por fases y ampliable según prioridades, datos y presupuesto.",
+    "modules": [
+      {
+        "title": "Servicios y flujos unificados",
+        "text": "Una plataforma conecta departamentos, empleados, servicios públicos, responsabilidades, estados y tiempos de atención."
+      },
+      {
+        "title": "Ciclo digital de transacciones",
+        "text": "Solicitudes, permisos, adjuntos, tramitación interdepartamental, pago electrónico, aprobación y archivo documentado."
+      },
+      {
+        "title": "Gestión espacial y GIS",
+        "text": "Seguimiento preciso de edificios, terrenos, activos, instalaciones y zonas de servicio mediante mapas interactivos."
+      },
+      {
+        "title": "Inteligencia para decisiones",
+        "text": "KPI operativos, seguimiento del desempeño, informes analíticos y paneles para planificar y gestionar con evidencia."
+      },
+      {
+        "title": "Plataforma técnica flexible",
+        "text": "Interfaces adaptables, notificaciones, integración API y arquitectura modular preparada para nuevos servicios."
+      },
+      {
+        "title": "Gobernanza, auditoría y permisos",
+        "text": "Registros detallados, trazabilidad de procedimientos, historial de aprobaciones y acceso granular según roles."
+      }
+    ],
+    "flowKicker": "Recorrido integral del servicio",
+    "flowTitle": "Cada transacción permanece conectada y trazable",
+    "flow": [
+      "Solicitud y documentos",
+      "Tramitación entre departamentos",
+      "Pago electrónico seguro",
+      "Aprobación y archivo documentado"
+    ],
+    "bookingMessage": "Hola Mohammad, deseo reservar una consulta sobre la Plataforma municipal inteligente integrada y hablar sobre nuestras necesidades, el alcance, las fases y el costo estimado."
   }
 };
