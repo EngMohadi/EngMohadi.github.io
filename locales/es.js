@@ -670,6 +670,22 @@ window.I18N.es = {
     "imageAlt": "Arquitectura de una plataforma municipal inteligente que conecta GIS, gestión de flujos, paneles e infraestructura digital",
     "imageCaption": "Arquitectura del blueprint completo, desarrollada a partir de operaciones municipales reales.",
     "download": "Descargar blueprint completo",
+    "deckAlt": "Diapositiva en inglés de la presentación Smart Municipality",
+    "previousSlide": "Diapositiva anterior",
+    "nextSlide": "Diapositiva siguiente",
+    "openSlide": "Abrir diapositiva a tamaño completo",
+    "slideCount": "Diapositiva {current} de {total}",
+    "deckSlides": [
+      "Smart Municipality: One connected ecosystem for a more efficient city",
+      "Integrated Digital Transformation",
+      "From Traditional Administration to Smart Operations",
+      "The Digital Transaction Journey",
+      "Smart Spatial Management",
+      "Decision-Maker Enablement",
+      "Flexible, Secure and Scalable Technology",
+      "Comprehensive Governance and Auditability",
+      "One Platform. A Smarter Municipality."
+    ],
     "outcomes": [
       {
         "title": "Ciudadanía",

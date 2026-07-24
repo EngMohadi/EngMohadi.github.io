@@ -670,6 +670,22 @@ window.I18N.de = {
     "imageAlt": "Architektur einer integrierten Smart-Municipality-Plattform mit GIS, Workflow-Management, Dashboards und digitaler Infrastruktur",
     "imageCaption": "Architektur aus dem vollständigen Blueprint, entwickelt aus praktischen kommunalen Abläufen.",
     "download": "Vollständigen Blueprint herunterladen",
+    "deckAlt": "Englische Folie der Smart-Municipality-Präsentation",
+    "previousSlide": "Vorherige Folie",
+    "nextSlide": "Nächste Folie",
+    "openSlide": "Folie in voller Größe öffnen",
+    "slideCount": "Folie {current} von {total}",
+    "deckSlides": [
+      "Smart Municipality: One connected ecosystem for a more efficient city",
+      "Integrated Digital Transformation",
+      "From Traditional Administration to Smart Operations",
+      "The Digital Transaction Journey",
+      "Smart Spatial Management",
+      "Decision-Maker Enablement",
+      "Flexible, Secure and Scalable Technology",
+      "Comprehensive Governance and Auditability",
+      "One Platform. A Smarter Municipality."
+    ],
     "outcomes": [
       {
         "title": "Bürger",

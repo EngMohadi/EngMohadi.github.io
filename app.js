@@ -203,6 +203,108 @@ function renderSmartMunicipality() {
   flow.innerHTML = content.flow.map((step) => `<li>${step}</li>`).join("");
 }
 
+let smartDeckSlide = 0;
+
+function smartDeckLanguage() {
+  return currentLang === "ar" ? "ar" : "en";
+}
+
+function formatSmartDeckCounter(template, current, total) {
+  return template.replace("{current}", String(current)).replace("{total}", String(total));
+}
+
+function renderSmartMunicipalityDeck() {
+  const content = L().smartMunicipality;
+  const image = document.querySelector("#smartDeckImage");
+  const caption = document.querySelector("#smartDeckCaption");
+  const counter = document.querySelector("#smartDeckCounter");
+  const dots = document.querySelector("#smartDeckDots");
+  const previous = document.querySelector("#smartDeckPrev");
+  const next = document.querySelector("#smartDeckNext");
+  const download = document.querySelector("#smartDeckDownload");
+  if (!content?.deckSlides || !image || !caption || !counter || !dots || !previous || !next || !download) return;
+
+  const total = content.deckSlides.length;
+  smartDeckSlide = ((smartDeckSlide % total) + total) % total;
+  const deckLanguage = smartDeckLanguage();
+  const slideNumber = smartDeckSlide + 1;
+  const slideFile = String(slideNumber).padStart(2, "0");
+  const slideTitle = content.deckSlides[smartDeckSlide];
+
+  image.src = `assets/images/smart-municipality/${deckLanguage}/slide-${slideFile}.png`;
+  image.alt = `${content.deckAlt} ${slideNumber}: ${slideTitle}`;
+  image.setAttribute("aria-label", `${content.openSlide}: ${slideTitle}`);
+  image.title = content.openSlide;
+  caption.textContent = slideTitle;
+  counter.textContent = formatSmartDeckCounter(content.slideCount, slideNumber, total);
+
+  previous.setAttribute("aria-label", content.previousSlide);
+  previous.title = content.previousSlide;
+  next.setAttribute("aria-label", content.nextSlide);
+  next.title = content.nextSlide;
+
+  const deckSuffix = deckLanguage.toUpperCase();
+  download.href = `assets/downloads/Smart_Municipality_Blueprint_${deckSuffix}.pptx`;
+  download.download = `Smart_Municipality_Blueprint_${deckSuffix}.pptx`;
+
+  dots.innerHTML = content.deckSlides
+    .map(
+      (title, index) =>
+        `<button type="button" role="tab" aria-selected="${index === smartDeckSlide}" aria-label="${index + 1}: ${title}" class="${index === smartDeckSlide ? "active" : ""}" data-slide="${index}"></button>`
+    )
+    .join("");
+}
+
+function changeSmartDeckSlide(direction) {
+  smartDeckSlide += direction;
+  renderSmartMunicipalityDeck();
+}
+
+function wireSmartMunicipalityDeck() {
+  const deck = document.querySelector("#smartDeck");
+  const previous = document.querySelector("#smartDeckPrev");
+  const next = document.querySelector("#smartDeckNext");
+  const dots = document.querySelector("#smartDeckDots");
+  const image = document.querySelector("#smartDeckImage");
+  if (!deck || !previous || !next || !dots || !image) return;
+
+  previous.addEventListener("click", () => changeSmartDeckSlide(-1));
+  next.addEventListener("click", () => changeSmartDeckSlide(1));
+  dots.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-slide]");
+    if (!button) return;
+    smartDeckSlide = Number(button.dataset.slide);
+    renderSmartMunicipalityDeck();
+  });
+
+  deck.addEventListener("keydown", (event) => {
+    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+    event.preventDefault();
+    const direction = event.key === "ArrowRight" ? 1 : -1;
+    changeSmartDeckSlide(document.documentElement.dir === "rtl" ? -direction : direction);
+  });
+
+  let touchStartX = 0;
+  deck.addEventListener("touchstart", (event) => {
+    touchStartX = event.changedTouches[0].clientX;
+  }, { passive: true });
+  deck.addEventListener("touchend", (event) => {
+    const distance = event.changedTouches[0].clientX - touchStartX;
+    if (Math.abs(distance) < 50) return;
+    changeSmartDeckSlide(distance < 0 ? 1 : -1);
+  }, { passive: true });
+
+  const openCurrentSlide = () => {
+    openLightboxWithImage(image.src, document.querySelector("#smartDeckCaption").textContent);
+  };
+  image.addEventListener("click", openCurrentSlide);
+  image.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    openCurrentSlide();
+  });
+}
+
 function renderCaseStudies() {
   const grid = document.querySelector("#caseGrid");
   grid.innerHTML = "";
@@ -626,6 +728,7 @@ function applyLanguage(lang) {
 
   translateStaticNodes();
   renderSmartMunicipality();
+  renderSmartMunicipalityDeck();
   renderHeroMetrics();
   renderValueCards();
   renderServices();
@@ -665,6 +768,7 @@ applyLanguage(currentLang);
 applyTheme(currentTheme);
 wireContactButtons();
 wireSmartMunicipalityBooking();
+wireSmartMunicipalityDeck();
 
 /* ============================================================
    A Message from Gaza modal

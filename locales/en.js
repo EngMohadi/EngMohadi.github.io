@@ -670,6 +670,22 @@ window.I18N.en = {
     "imageAlt": "Integrated Smart Municipality platform architecture connecting GIS, workflow management, dashboards, and digital infrastructure",
     "imageCaption": "Architecture from the complete Smart Municipality Blueprint developed from practical municipal operations.",
     "download": "Download Full Blueprint",
+    "deckAlt": "Smart Municipality presentation slide",
+    "previousSlide": "Previous slide",
+    "nextSlide": "Next slide",
+    "openSlide": "Open slide at full size",
+    "slideCount": "Slide {current} of {total}",
+    "deckSlides": [
+      "Smart Municipality: One connected ecosystem for a more efficient city",
+      "Integrated Digital Transformation",
+      "From Traditional Administration to Smart Operations",
+      "The Digital Transaction Journey",
+      "Smart Spatial Management",
+      "Decision-Maker Enablement",
+      "Flexible, Secure and Scalable Technology",
+      "Comprehensive Governance and Auditability",
+      "One Platform. A Smarter Municipality."
+    ],
     "outcomes": [
       {
         "title": "Citizen",
