@@ -16,6 +16,7 @@ Content source of truth: `Mohammad_Abdelhadi_GIS_Remote_Work_Portfolio_EN.docx` 
 | `assets/images/work/` | 36 web-optimized project images extracted from the Word portfolio |
 | `assets/downloads/` | Downloadable portfolio DOCX (replace with a PDF for smaller size if desired) |
 | `demo.html`, `demo.js`, `demo.css` | Sample-data live dashboard demo (legacy styling) |
+| `sanitation-dashboard.html` | Bilingual (AR/EN) sanitation / wastewater network dashboard: map, KPIs, incidents, pump stations, rehabilitation priorities, CSV export (sample data only) |
 | `profile.html` | Printable professional profile (legacy styling) |
 | `case-studies/` | Legacy standalone case-study pages (superseded by in-page case studies; kept for old links) |
 | `legacy.css` | Old stylesheet kept only for the legacy sub-pages above |

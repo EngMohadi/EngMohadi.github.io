@@ -1,0 +1,1065 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sanitation Network Dashboard</title>
+  <meta name="description" content="Interactive wastewater / sanitation network dashboard: pipe condition, incidents, pump stations, rehabilitation priorities. Sample data only." />
+  <link rel="canonical" href="https://engmohadi.github.io/sanitation-dashboard.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f3f6fa;
+      --panel: #ffffff;
+      --panel-2: #f7f9fc;
+      --border: rgba(11, 31, 53, 0.12);
+      --text: #102033;
+      --muted: #526174;
+      --faint: #7b8898;
+      --accent: #087ea4;
+      --accent-ink: #ffffff;
+      --grid: rgba(11, 31, 53, 0.08);
+      --map-bg: #eef2f6;
+      --road: #dde3ea;
+      --district: rgba(8, 126, 164, 0.05);
+      --district-line: rgba(8, 126, 164, 0.35);
+      --ghost: rgba(82, 97, 116, 0.18);
+      --s1: #2a78d6;
+      --s2: #eb6834;
+      --s3: #1baf7a;
+      --good: #0ca30c;
+      --warn: #fab219;
+      --serious: #ec835a;
+      --crit: #d03b3b;
+      --manhole: #7b8898;
+      --shadow: 0 10px 30px rgba(15, 35, 58, 0.08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --bg: #0b1324;
+        --panel: #111b31;
+        --panel-2: #0e1830;
+        --border: rgba(148, 187, 233, 0.14);
+        --text: #e6eefc;
+        --muted: #9db0cc;
+        --faint: #6f84a3;
+        --accent: #22d3ee;
+        --accent-ink: #062030;
+        --grid: rgba(148, 187, 233, 0.09);
+        --map-bg: #0a1222;
+        --road: #18243c;
+        --district: rgba(34, 211, 238, 0.04);
+        --district-line: rgba(34, 211, 238, 0.28);
+        --ghost: rgba(157, 176, 204, 0.14);
+        --s1: #3987e5;
+        --s2: #d95926;
+        --s3: #199e70;
+        --manhole: #8aa0bf;
+        --shadow: 0 18px 50px rgba(2, 8, 20, 0.5);
+      }
+    }
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0b1324;
+      --panel: #111b31;
+      --panel-2: #0e1830;
+      --border: rgba(148, 187, 233, 0.14);
+      --text: #e6eefc;
+      --muted: #9db0cc;
+      --faint: #6f84a3;
+      --accent: #22d3ee;
+      --accent-ink: #062030;
+      --grid: rgba(148, 187, 233, 0.09);
+      --map-bg: #0a1222;
+      --road: #18243c;
+      --district: rgba(34, 211, 238, 0.04);
+      --district-line: rgba(34, 211, 238, 0.28);
+      --ghost: rgba(157, 176, 204, 0.14);
+      --s1: #3987e5;
+      --s2: #d95926;
+      --s3: #199e70;
+      --manhole: #8aa0bf;
+      --shadow: 0 18px 50px rgba(2, 8, 20, 0.5);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: FONT, "Segoe UI", system-ui, sans-serif;
+      font-size: 14px;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    button, select, input { font: inherit; color: inherit; }
+    a { color: var(--accent); }
+
+    .wrap { max-width: 1440px; margin: 0 auto; padding: 0 16px 40px; }
+
+    /* Header */
+    .top {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 14px 0; flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; min-width: 0; }
+    .brand-icon {
+      width: 42px; height: 42px; border-radius: 12px; flex: none;
+      display: grid; place-items: center;
+      background: var(--accent); color: var(--accent-ink);
+    }
+    .brand h1 { font-size: 18px; margin: 0; line-height: 1.25; }
+    .brand p { margin: 0; color: var(--muted); font-size: 12.5px; }
+    .top-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid var(--border); background: var(--panel);
+      border-radius: 10px; padding: 7px 12px; cursor: pointer; font-size: 13px;
+      text-decoration: none; color: var(--text); white-space: nowrap;
+    }
+    .btn:hover { border-color: var(--accent); }
+    .btn.primary { background: var(--accent); color: var(--accent-ink); border-color: transparent; font-weight: 600; }
+    .btn svg { width: 15px; height: 15px; }
+
+    .note {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--panel); border: 1px dashed var(--border); border-radius: 10px;
+      padding: 8px 12px; color: var(--muted); font-size: 12.5px; margin-bottom: 12px;
+    }
+
+    /* Filters */
+    .filters {
+      display: flex; gap: 10px; flex-wrap: wrap; align-items: end;
+      background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
+      padding: 12px; margin-bottom: 14px; box-shadow: var(--shadow);
+    }
+    .filters label { display: grid; gap: 4px; font-size: 12px; color: var(--muted); min-width: 140px; flex: 1 1 140px; }
+    .filters select, .search input {
+      background: var(--panel-2); border: 1px solid var(--border); border-radius: 9px;
+      padding: 7px 10px; color: var(--text); width: 100%;
+    }
+    .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 9px; overflow: hidden; background: var(--panel-2); }
+    .seg button { border: 0; background: transparent; padding: 7px 12px; cursor: pointer; color: var(--muted); }
+    .seg button[aria-pressed="true"] { background: var(--accent); color: var(--accent-ink); font-weight: 600; }
+    .filters .grow { flex: 0 0 auto; display: grid; gap: 4px; font-size: 12px; color: var(--muted); }
+
+    /* KPI */
+    .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(165px, 1fr)); gap: 10px; margin-bottom: 14px; }
+    .kpi {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
+      padding: 12px 14px; box-shadow: var(--shadow); min-width: 0;
+    }
+    .kpi .lbl { color: var(--muted); font-size: 12.5px; }
+    .kpi .val { font-size: 26px; font-weight: 700; line-height: 1.2; margin: 4px 0 2px; font-variant-numeric: tabular-nums; }
+    .kpi .val small { font-size: 14px; font-weight: 500; color: var(--muted); margin-inline-start: 3px; }
+    .kpi .sub { color: var(--faint); font-size: 12px; display: flex; align-items: center; gap: 5px; }
+
+    /* Cards */
+    .grid-main { display: grid; grid-template-columns: minmax(0, 2.1fr) minmax(0, 1fr); gap: 14px; margin-bottom: 14px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-bottom: 14px; }
+    .card {
+      background: var(--panel); border: 1px solid var(--border); border-radius: 14px;
+      padding: 14px; box-shadow: var(--shadow); min-width: 0;
+    }
+    .card-h { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px; flex-wrap: wrap; }
+    .card h2 { font-size: 15px; margin: 0; }
+    .card .hint { color: var(--faint); font-size: 12px; margin: 2px 0 0; }
+    .side { display: grid; gap: 14px; align-content: start; }
+
+    /* Map */
+    #map { height: 600px; border-radius: 10px; background: var(--map-bg); border: 1px solid var(--border); }
+    .layers { display: flex; gap: 12px; flex-wrap: wrap; font-size: 12.5px; color: var(--muted); }
+    .layers label { display: inline-flex; align-items: center; gap: 5px; cursor: pointer; }
+    .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 10px; font-size: 12px; color: var(--muted); }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .sw-line { width: 18px; height: 4px; border-radius: 2px; display: inline-block; }
+    .sw-dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; box-shadow: 0 0 0 2px var(--panel); }
+    .sw-sq { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+    .leaflet-container { font-family: inherit; }
+    .leaflet-popup-content-wrapper, .leaflet-popup-tip { background: var(--panel); color: var(--text); box-shadow: var(--shadow); }
+    .leaflet-popup-content { margin: 10px 12px; font-size: 12.5px; min-width: 190px; }
+    .pop h3 { margin: 0 0 6px; font-size: 13.5px; }
+    .pop dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 10px; margin: 0; }
+    .pop dt { color: var(--muted); }
+    .pop dd { margin: 0; font-weight: 500; }
+    .dist-label { background: transparent; border: 0; box-shadow: none; color: var(--faint); font-weight: 600; font-size: 12px; }
+    .dist-label::before { display: none; }
+    .ps-icon {
+      width: 22px; height: 22px; border-radius: 6px; display: grid; place-items: center;
+      color: #fff; font-size: 11px; font-weight: 700; border: 2px solid var(--panel);
+      box-shadow: 0 2px 6px rgba(0,0,0,.3);
+    }
+    .wwtp-icon {
+      width: 34px; height: 34px; border-radius: 9px; display: grid; place-items: center;
+      background: var(--accent); color: var(--accent-ink); font-size: 10px; font-weight: 700;
+      border: 2px solid var(--panel); box-shadow: 0 2px 8px rgba(0,0,0,.35);
+    }
+    .leaflet-bar a { background: var(--panel); color: var(--text); border-color: var(--border); }
+
+    /* Pumps */
+    .pump { padding: 9px 0; border-top: 1px solid var(--border); }
+    .pump:first-of-type { border-top: 0; padding-top: 0; }
+    .pump-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+    .pump-name { font-weight: 600; font-size: 13px; }
+    .pump-meta { color: var(--faint); font-size: 11.5px; }
+    .meter { height: 6px; background: var(--grid); border-radius: 3px; margin-top: 6px; overflow: hidden; }
+    .meter i { display: block; height: 100%; border-radius: 3px; background: var(--s1); }
+    .badge {
+      display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 600;
+      padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--text);
+      white-space: nowrap; background: var(--panel-2);
+    }
+    .badge i { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+
+    /* Insights */
+    .insights { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+    .insights li {
+      background: var(--panel-2); border: 1px solid var(--border); border-radius: 10px;
+      padding: 9px 11px; font-size: 12.5px; color: var(--muted);
+    }
+    .insights li b { color: var(--text); }
+
+    /* Charts */
+    .chart-box { position: relative; height: 270px; }
+
+    /* Tables */
+    .tbl-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+    th, td { padding: 8px 8px; text-align: start; border-bottom: 1px solid var(--border); white-space: nowrap; }
+    th { color: var(--muted); font-weight: 600; font-size: 12px; background: var(--panel-2); position: sticky; top: 0; }
+    td.num, th.num { text-align: end; font-variant-numeric: tabular-nums; }
+    tbody tr { cursor: pointer; }
+    tbody tr:hover { background: var(--panel-2); }
+    .risk { display: inline-flex; align-items: center; gap: 6px; }
+    .risk-bar { width: 50px; height: 5px; background: var(--grid); border-radius: 3px; overflow: hidden; }
+    .risk-bar i { display: block; height: 100%; background: var(--crit); }
+    .scroll { max-height: 380px; overflow: auto; }
+    .search { min-width: 180px; }
+    .empty { color: var(--faint); padding: 18px; text-align: center; }
+
+    footer { color: var(--faint); font-size: 12px; text-align: center; padding-top: 10px; }
+
+    @media (max-width: 1100px) {
+      .grid-main { grid-template-columns: 1fr; }
+      .side { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+    }
+    @media (max-width: 760px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      #map { height: 400px; }
+      .kpi .val { font-size: 22px; }
+      .brand h1 { font-size: 16px; }
+    }
+    @media print {
+      .top-actions, .filters .seg, .layers { display: none; }
+      .card, .kpi, .filters { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="top">
+      <div class="brand">
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3 6h4l3-6h4"/><path d="M12 2v6"/><circle cx="12" cy="10" r="2"/></svg>
+        </div>
+        <div>
+          <h1 data-i18n="title"></h1>
+          <p data-i18n="subtitle"></p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <a class="btn" href="index.html" data-i18n="back"></a>
+        <button class="btn" id="btnPipesCsv" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+          <span data-i18n="exportPipes"></span>
+        </button>
+        <button class="btn" id="btnIncCsv" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 21h16"/></svg>
+          <span data-i18n="exportInc"></span>
+        </button>
+        <button class="btn" id="btnPrint" type="button" data-i18n="print"></button>
+        <button class="btn" id="btnTheme" type="button" aria-label="Theme">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg>
+        </button>
+        <button class="btn primary" id="btnLang" type="button">EN</button>
+      </div>
+    </header>
+
+    <div class="note" role="note">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>
+      <span data-i18n="sampleNote"></span>
+    </div>
+
+    <section class="filters" aria-label="Filters">
+      <label><span data-i18n="fDistrict"></span><select id="fDistrict"></select></label>
+      <label><span data-i18n="fMaterial"></span><select id="fMaterial"></select></label>
+      <label><span data-i18n="fCondition"></span><select id="fCondition"></select></label>
+      <div class="grow">
+        <span data-i18n="fPeriod"></span>
+        <div class="seg" id="fPeriod">
+          <button type="button" data-p="3"></button>
+          <button type="button" data-p="6"></button>
+          <button type="button" data-p="12"></button>
+        </div>
+      </div>
+      <div class="grow">
+        <span>&nbsp;</span>
+        <button class="btn" id="btnReset" type="button" data-i18n="reset"></button>
+      </div>
+    </section>
+
+    <section class="kpis" id="kpis" aria-label="KPIs"></section>
+
+    <section class="grid-main">
+      <div class="card">
+        <div class="card-h">
+          <div>
+            <h2 data-i18n="mapTitle"></h2>
+            <p class="hint" data-i18n="mapHint"></p>
+          </div>
+          <div class="layers" id="layers">
+            <label><input type="checkbox" data-layer="districts" checked /> <span data-i18n="lDistricts"></span></label>
+            <label><input type="checkbox" data-layer="pipes" checked /> <span data-i18n="lPipes"></span></label>
+            <label><input type="checkbox" data-layer="manholes" /> <span data-i18n="lManholes"></span></label>
+            <label><input type="checkbox" data-layer="pumps" checked /> <span data-i18n="lPumps"></span></label>
+            <label><input type="checkbox" data-layer="incidents" checked /> <span data-i18n="lIncidents"></span></label>
+          </div>
+        </div>
+        <div id="map" dir="ltr" role="region" aria-label="Sanitation network map"></div>
+        <div class="legend" id="legend"></div>
+      </div>
+      <div class="side">
+        <div class="card">
+          <div class="card-h"><h2 data-i18n="pumpsTitle"></h2></div>
+          <div id="pumps"></div>
+        </div>
+        <div class="card">
+          <div class="card-h"><h2 data-i18n="insightsTitle"></h2></div>
+          <ul class="insights" id="insights"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="card">
+        <div class="card-h"><div><h2 data-i18n="cMonthly"></h2><p class="hint" data-i18n="cMonthlyHint"></p></div></div>
+        <div class="chart-box"><canvas id="chMonthly"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><div><h2 data-i18n="cCondition"></h2><p class="hint" data-i18n="cConditionHint"></p></div></div>
+        <div class="chart-box"><canvas id="chCondition"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><div><h2 data-i18n="cMaterial"></h2><p class="hint" data-i18n="cMaterialHint"></p></div></div>
+        <div class="chart-box"><canvas id="chMaterial"></canvas></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><div><h2 data-i18n="cAge"></h2><p class="hint" data-i18n="cAgeHint"></p></div></div>
+        <div class="chart-box"><canvas id="chAge"></canvas></div>
+      </div>
+    </section>
+
+    <section class="grid-2">
+      <div class="card">
+        <div class="card-h"><div><h2 data-i18n="prioTitle"></h2><p class="hint" data-i18n="prioHint"></p></div></div>
+        <div class="tbl-wrap scroll"><table id="prioTable"></table></div>
+      </div>
+      <div class="card">
+        <div class="card-h">
+          <div><h2 data-i18n="logTitle"></h2><p class="hint" id="logCount"></p></div>
+          <label class="search"><input id="logSearch" type="search" autocomplete="off" /></label>
+        </div>
+        <div class="tbl-wrap scroll"><table id="logTable"></table></div>
+      </div>
+    </section>
+
+    <footer data-i18n="footer"></footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+  <script>
+  (function () {
+    "use strict";
+
+    /* ---------------- i18n ---------------- */
+    const I18N = {
+      ar: {
+        title: "لوحة معلومات شبكة الصرف الصحي",
+        subtitle: "مراقبة حالة الشبكة، البلاغات، محطات الضخ وأولويات التأهيل",
+        back: "← المحفظة",
+        exportPipes: "تصدير الخطوط CSV",
+        exportInc: "تصدير البلاغات CSV",
+        print: "طباعة / PDF",
+        sampleNote: "جميع الأرقام والمواقع في هذه اللوحة بيانات تجريبية لأغراض العرض، ولا تمثل سجلات بلدية حقيقية ولا مواقع بنية تحتية فعلية.",
+        fDistrict: "المنطقة", fMaterial: "مادة الخط", fCondition: "الحالة الإنشائية", fPeriod: "الفترة",
+        all: "الكل", reset: "إعادة الضبط",
+        months: (n) => n === 12 ? "12 شهراً" : n + " أشهر",
+        mapTitle: "خريطة الشبكة التشغيلية",
+        mapHint: "انقر على خط أو محطة لعرض التفاصيل، وعلى منطقة لتصفية اللوحة بها.",
+        lDistricts: "المناطق", lPipes: "الخطوط", lManholes: "غرف التفتيش", lPumps: "محطات الضخ", lIncidents: "البلاغات",
+        legCond: "حالة الخط:", legInc: "البلاغات:", legPs: "محطة ضخ", legWwtp: "محطة المعالجة",
+        pumpsTitle: "محطات الضخ",
+        insightsTitle: "قراءات تحليلية",
+        cMonthly: "البلاغات الشهرية حسب النوع", cMonthlyHint: "عدد البلاغات المسجلة على الخطوط المختارة",
+        cCondition: "الحالة الإنشائية حسب المنطقة", cConditionHint: "طول الخطوط (كم) لكل درجة حالة",
+        cMaterial: "طول الشبكة حسب المادة", cMaterialHint: "كم",
+        cAge: "عمر الشبكة حسب عقد التركيب", cAgeHint: "كم من الخطوط المركّبة في كل عقد",
+        prioTitle: "أولويات التأهيل", prioHint: "أعلى 15 مقطعاً حسب مؤشر الخطورة (احتمال الفشل × الأثر)",
+        logTitle: "سجل البلاغات", logCountTpl: (a, b) => `يعرض ${a} من ${b} بلاغ`,
+        searchPh: "ابحث برقم البلاغ أو المنطقة…",
+        footer: "لوحة تجريبية · نظم المعلومات الجغرافية للبلديات · م. محمد عبد الهادي",
+        kLen: "طول الشبكة", kLenSub: (n) => `${n} مقطعاً`,
+        kPoor: "خطوط سيئة/حرجة", kPoorSub: (km) => `${km} كم تحتاج تأهيلاً`,
+        kInc: "البلاغات", kIncSub: (r) => `${r} لكل 100 كم`,
+        kOpen: "بلاغات مفتوحة", kOpenSub: (n) => `${n} منها طفح`,
+        kResp: "وسيط زمن الاستجابة", kRespSub: "الهدف ≤ 6 ساعات",
+        kPumps: "محطات تعمل", kPumpsSub: (a) => a ? `${a} في حالة إنذار` : "لا إنذارات",
+        kCov: "تغطية الخدمة", kCovSub: (n) => `${n} أسرة موصولة`,
+        kPlant: "تحميل محطة المعالجة", kPlantSub: (a, b) => `${a} / ${b} م³/يوم`,
+        km: "كم", hr: "س",
+        cond: { good: "جيدة", fair: "متوسطة", poor: "سيئة", critical: "حرجة" },
+        type: { blockage: "انسداد", overflow: "طفح", collapse: "هبوط إنشائي" },
+        status: { open: "مفتوح", progress: "قيد المعالجة", closed: "مغلق" },
+        psStatus: { ok: "يعمل", maint: "صيانة", alarm: "إنذار" },
+        mhStatus: { ok: "سليمة", silted: "مترسبة", damaged: "متضررة" },
+        mat: { Concrete: "خرسانة", AC: "أسبستوس إسمنتي", uPVC: "uPVC", HDPE: "HDPE", GRP: "GRP" },
+        dist: { N: "الحي الشمالي", W: "الحي الغربي", C: "وسط المدينة", E: "الحي الشرقي", S: "الحي الجنوبي" },
+        action: { 5: "استبدال", 4: "تبطين CIPP", 3: "فحص CCTV وتنظيف", 2: "صيانة دورية", 1: "صيانة دورية" },
+        th: { id: "المقطع", dist: "المنطقة", dia: "القطر مم", mat: "المادة", age: "العمر", cond: "الحالة", inc: "بلاغات", risk: "الخطورة", act: "الإجراء المقترح",
+              iid: "رقم البلاغ", date: "التاريخ", type: "النوع", status: "الحالة", resp: "الاستجابة (س)" },
+        pop: { dia: "القطر", mat: "المادة", year: "سنة التركيب", cond: "الحالة", len: "الطول", inc: "بلاغات (12 شهراً)", dist: "المنطقة",
+               cap: "السعة", flow: "التدفق الحالي", level: "منسوب البئر", pumps: "المضخات", status: "الحالة", pipe: "الخط", resp: "زمن الاستجابة", date: "التاريخ", mh: "غرفة تفتيش" },
+        wwtp: "محطة معالجة المياه العادمة", wwtpCap: "السعة التصميمية", wwtpIn: "التدفق الداخل",
+        ins: {
+          rate: (d, r) => `<b>${d}</b> تسجّل أعلى معدل بلاغات: <b>${r}</b> بلاغ لكل 100 كم خلال الفترة.`,
+          mat: (m, p) => `خطوط <b>${m}</b> هي الأسوأ حالة: <b>${p}%</b> من طولها مصنّف سيئاً أو حرجاً.`,
+          season: (x) => `بلاغات الطفح في أشهر الشتاء أعلى بـ <b>${x}×</b> من بقية العام — مؤشر على تسرّب مياه الأمطار للشبكة.`,
+          top: (id, d, s) => `المقطع <b>${id}</b> في ${d} يتصدر أولويات التأهيل بمؤشر خطورة <b>${s}</b>.`,
+          alarm: (n) => `محطة <b>${n}</b> في حالة إنذار — يلزم تدخل فوري لتجنب الطفح.`,
+          old: (p) => `<b>${p}%</b> من طول الشبكة المختارة تجاوز عمره 30 عاماً.`,
+          none: "لا توجد بيانات كافية للفلاتر الحالية."
+        }
+      },
+      en: {
+        title: "Sanitation Network Dashboard",
+        subtitle: "Network condition, incidents, pump stations and rehabilitation priorities",
+        back: "← Portfolio",
+        exportPipes: "Export pipes CSV",
+        exportInc: "Export incidents CSV",
+        print: "Print / PDF",
+        sampleNote: "All figures and locations on this dashboard are sample data for demonstration only. They do not represent real municipal records or actual infrastructure locations.",
+        fDistrict: "District", fMaterial: "Pipe material", fCondition: "Structural condition", fPeriod: "Period",
+        all: "All", reset: "Reset",
+        months: (n) => n + " months",
+        mapTitle: "Operational network map",
+        mapHint: "Click a pipe or station for details; click a district to filter the dashboard.",
+        lDistricts: "Districts", lPipes: "Pipes", lManholes: "Manholes", lPumps: "Pump stations", lIncidents: "Incidents",
+        legCond: "Pipe condition:", legInc: "Incidents:", legPs: "Pump station", legWwtp: "Treatment plant",
+        pumpsTitle: "Pump stations",
+        insightsTitle: "Insights",
+        cMonthly: "Monthly incidents by type", cMonthlyHint: "Incidents recorded on the selected pipes",
+        cCondition: "Structural condition by district", cConditionHint: "Pipe length (km) per condition grade",
+        cMaterial: "Network length by material", cMaterialHint: "km",
+        cAge: "Network age by install decade", cAgeHint: "km of pipe installed per decade",
+        prioTitle: "Rehabilitation priorities", prioHint: "Top 15 segments by risk score (likelihood of failure × consequence)",
+        logTitle: "Incident log", logCountTpl: (a, b) => `Showing ${a} of ${b} incidents`,
+        searchPh: "Search by incident ID or district…",
+        footer: "Demo dashboard · Municipal GIS · Eng. Mohammad Abdelhadi",
+        kLen: "Network length", kLenSub: (n) => `${n} segments`,
+        kPoor: "Poor / critical pipes", kPoorSub: (km) => `${km} km need rehabilitation`,
+        kInc: "Incidents", kIncSub: (r) => `${r} per 100 km`,
+        kOpen: "Open incidents", kOpenSub: (n) => `Overflows: ${n}`,
+        kResp: "Median response time", kRespSub: "Target ≤ 6 h",
+        kPumps: "Pumps operational", kPumpsSub: (a) => a ? `${a} in alarm` : "No alarms",
+        kCov: "Service coverage", kCovSub: (n) => `${n} households connected`,
+        kPlant: "Treatment plant load", kPlantSub: (a, b) => `${a} / ${b} m³/day`,
+        km: "km", hr: "h",
+        cond: { good: "Good", fair: "Fair", poor: "Poor", critical: "Critical" },
+        type: { blockage: "Blockage", overflow: "Overflow", collapse: "Structural collapse" },
+        status: { open: "Open", progress: "In progress", closed: "Closed" },
+        psStatus: { ok: "Running", maint: "Maintenance", alarm: "Alarm" },
+        mhStatus: { ok: "Sound", silted: "Silted", damaged: "Damaged" },
+        mat: { Concrete: "Concrete", AC: "Asbestos cement", uPVC: "uPVC", HDPE: "HDPE", GRP: "GRP" },
+        dist: { N: "North District", W: "West District", C: "City Center", E: "East District", S: "South District" },
+        action: { 5: "Replace", 4: "CIPP relining", 3: "CCTV + cleaning", 2: "Routine maintenance", 1: "Routine maintenance" },
+        th: { id: "Segment", dist: "District", dia: "Dia. mm", mat: "Material", age: "Age", cond: "Condition", inc: "Inc.", risk: "Risk", act: "Proposed action",
+              iid: "Incident", date: "Date", type: "Type", status: "Status", resp: "Response (h)" },
+        pop: { dia: "Diameter", mat: "Material", year: "Installed", cond: "Condition", len: "Length", inc: "Incidents (12 mo)", dist: "District",
+               cap: "Capacity", flow: "Current flow", level: "Wet-well level", pumps: "Pumps", status: "Status", pipe: "Pipe", resp: "Response time", date: "Date", mh: "Manhole" },
+        wwtp: "Wastewater treatment plant", wwtpCap: "Design capacity", wwtpIn: "Inflow",
+        ins: {
+          rate: (d, r) => `<b>${d}</b> has the highest incident rate: <b>${r}</b> per 100 km in the period.`,
+          mat: (m, p) => `<b>${m}</b> pipes are in the worst shape: <b>${p}%</b> of their length is poor or critical.`,
+          season: (x) => `Winter overflows run <b>${x}×</b> higher than the rest of the year — a sign of stormwater inflow into the network.`,
+          top: (id, d, s) => `Segment <b>${id}</b> in ${d} tops the rehabilitation list with a risk score of <b>${s}</b>.`,
+          alarm: (n) => `<b>${n}</b> is in alarm — immediate action needed to prevent overflows.`,
+          old: (p) => `<b>${p}%</b> of the selected network is more than 30 years old.`,
+          none: "Not enough data for the current filters."
+        }
+      }
+    };
+
+    const store = {
+      get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+      set(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+    };
+    let lang = store.get("san-lang") || "ar";
+    const savedTheme = store.get("san-theme");
+    if (savedTheme) document.documentElement.setAttribute("data-theme", savedTheme);
+    const T = () => I18N[lang];
+    const nf = (n, d = 0) => new Intl.NumberFormat(lang === "ar" ? "ar-u-nu-latn" : "en-US", { maximumFractionDigits: d, minimumFractionDigits: d }).format(n);
+    const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+    const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+    /* ---------------- Sample data (seeded, deterministic) ---------------- */
+    function mulberry32(a) {
+      return function () {
+        a |= 0; a = (a + 0x6d2b79f5) | 0;
+        let t = Math.imul(a ^ (a >>> 15), 1 | a);
+        t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+      };
+    }
+    const R = mulberry32(20261123);
+    const rnd = (a, b) => a + R() * (b - a);
+    const rint = (a, b) => Math.floor(rnd(a, b + 1));
+    const wpick = (items, weights) => {
+      const s = weights.reduce((x, y) => x + y, 0); let r = R() * s;
+      for (let i = 0; i < items.length; i++) { r -= weights[i]; if (r <= 0) return items[i]; }
+      return items[items.length - 1];
+    };
+
+    const W = 1000, H = 700, COLS = 16, ROWS = 11, NOW_YEAR = 2026;
+    const DISTRICTS = ["N", "W", "C", "E", "S"];
+    const DIST_POLY = {
+      N: [[20, 20], [980, 20], [980, 260], [20, 260]],
+      W: [[20, 260], [350, 260], [350, 500], [20, 500]],
+      C: [[350, 260], [650, 260], [650, 500], [350, 500]],
+      E: [[650, 260], [980, 260], [980, 500], [650, 500]],
+      S: [[20, 500], [980, 500], [980, 680], [20, 680]]
+    };
+    const HOUSEHOLDS = { N: [9850, 9120], W: [7420, 6380], C: [11260, 10930], E: [8140, 7010], S: [9630, 7540] };
+    const districtOf = (x, y) => y < 260 ? "N" : y > 500 ? "S" : x < 350 ? "W" : x < 650 ? "C" : "E";
+    const MATERIALS = ["Concrete", "AC", "uPVC", "HDPE", "GRP"];
+    const CONDS = ["good", "fair", "poor", "critical"];
+    const condOf = (g) => g <= 2 ? "good" : g === 3 ? "fair" : g === 4 ? "poor" : "critical";
+    const COND_VAR = { good: "--good", fair: "--warn", poor: "--serious", critical: "--crit" };
+    const TYPES = ["blockage", "overflow", "collapse"];
+    const TYPE_VAR = { blockage: "--s1", overflow: "--s2", collapse: "--s3" };
+
+    // Nodes (junction manholes)
+    const nodes = [];
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        const x = 60 + c * (880 / (COLS - 1)) + rnd(-10, 10);
+        const y = 50 + r * 60 + rnd(-9, 9);
+        nodes.push({ id: r * COLS + c, r, c, x, y, d: districtOf(x, y) });
+      }
+    }
+    const node = (r, c) => nodes[r * COLS + c];
+    const TRUNK_ROW = 6, TRUNK_COLS = [2, 7, 12];
+
+    const allStreets = [];
+    const edges = [];
+    function addEdge(a, b, kind) {
+      const mx = (a.x + b.x) / 2, my = (a.y + b.y) / 2;
+      const d = districtOf(mx, my);
+      const yearBase = { C: [1976, 1998], N: [1984, 2010], W: [1986, 2012], E: [1994, 2022], S: [1996, 2023] }[d];
+      let year = kind === "main" ? rint(1988, 2004) : rint(yearBase[0], yearBase[1]);
+      let dia;
+      if (kind === "main") dia = Math.min(1000, 600 + Math.round(a.c / 3) * 100);
+      else if (kind === "sub") dia = wpick([400, 500, 600], [3, 3, 2]);
+      else dia = wpick([200, 250, 315], [4, 4, 2]);
+      let mat;
+      if (year < 1992) mat = wpick(["Concrete", "AC"], [55, 45]);
+      else if (year < 2008) mat = dia >= 500 ? wpick(["Concrete", "GRP"], [6, 4]) : wpick(["Concrete", "uPVC"], [35, 65]);
+      else mat = dia >= 500 ? wpick(["GRP", "HDPE"], [6, 4]) : wpick(["uPVC", "HDPE"], [6, 4]);
+      const age = NOW_YEAR - year;
+      const matF = { AC: 0.7, Concrete: 0.35, uPVC: 0, HDPE: -0.35, GRP: -0.25 }[mat];
+      const grade = Math.max(1, Math.min(5, Math.round(0.8 + age / 14 + matF + rnd(-0.9, 0.9))));
+      edges.push({ a, b, d, kind, year, dia, mat, grade, cond: condOf(grade), px: Math.hypot(a.x - b.x, a.y - b.y) });
+    }
+    for (let r = 0; r < ROWS; r++) {
+      for (let c = 0; c < COLS; c++) {
+        if (c < COLS - 1) {
+          allStreets.push([node(r, c), node(r, c + 1)]);
+          if (r === TRUNK_ROW) addEdge(node(r, c), node(r, c + 1), "main");
+          else if (R() < 0.9) addEdge(node(r, c), node(r, c + 1), "lat");
+        }
+        if (r < ROWS - 1) {
+          allStreets.push([node(r, c), node(r + 1, c)]);
+          if (TRUNK_COLS.includes(c)) addEdge(node(r, c), node(r + 1, c), "sub");
+          else if (R() < 0.72) addEdge(node(r, c), node(r + 1, c), "lat");
+        }
+      }
+    }
+    const WWTP = { x: 975, y: 410, cap: 60000, inflow: 48600 };
+    const wwtpNode = { x: WWTP.x, y: WWTP.y, c: COLS, r: TRUNK_ROW };
+    addEdge(node(TRUNK_ROW, COLS - 1), wwtpNode, "main");
+
+    // scale pixel lengths so the network totals 315 km
+    const pxTotal = edges.reduce((s, e) => s + e.px, 0);
+    const counters = { N: 0, W: 0, C: 0, E: 0, S: 0 };
+    edges.forEach((e, i) => {
+      e.km = (e.px / pxTotal) * 315;
+      e.idx = i;
+      e.id = `SW-${e.d}-${String(++counters[e.d]).padStart(3, "0")}`;
+      e.inc12 = 0;
+    });
+
+    // manhole status
+    nodes.forEach((n) => {
+      const adj = edges.filter((e) => e.a === n || e.b === n);
+      const g = adj.length ? Math.max(...adj.map((e) => e.grade)) : 1;
+      n.status = wpick(["ok", "silted", "damaged"], [80 - g * 6, 10 + g * 2, 2 + g * 3]);
+    });
+
+    // pump stations
+    const PS_DEF = [
+      { code: "PS-01", r: 2, c: 3, ar: "محطة الشمال الغربي", en: "North-West PS", cap: 900, flow: 640, level: 48, pumps: "2/3", status: "ok" },
+      { code: "PS-02", r: 2, c: 11, ar: "محطة الشمال الشرقي", en: "North-East PS", cap: 1100, flow: 1015, level: 86, pumps: "3/3", status: "alarm" },
+      { code: "PS-03", r: 5, c: 1, ar: "محطة الغرب", en: "West PS", cap: 750, flow: 410, level: 39, pumps: "2/2", status: "ok" },
+      { code: "PS-04", r: 9, c: 4, ar: "محطة الجنوب", en: "South PS", cap: 950, flow: 0, level: 64, pumps: "0/3", status: "maint" },
+      { code: "PS-05", r: 9, c: 11, ar: "محطة الجنوب الشرقي", en: "South-East PS", cap: 800, flow: 575, level: 55, pumps: "2/3", status: "ok" },
+      { code: "PS-06", r: 6, c: 14, ar: "محطة الرفع الرئيسية", en: "Main Lift PS", cap: 2600, flow: 2025, level: 61, pumps: "3/4", status: "ok" }
+    ];
+    const pumps = PS_DEF.map((p) => { const n = node(p.r, p.c); return { ...p, x: n.x, y: n.y, d: n.d }; });
+    const PS_VAR = { ok: "--good", maint: "--warn", alarm: "--crit" };
+
+    // incidents over 12 months (Dec 2025 – Nov 2026)
+    const START = new Date(2025, 11, 1);
+    const incidents = [];
+    const edgeW = edges.map((e) => Math.pow(e.grade, 2.2) * e.km);
+    let incSeq = 0;
+    for (let m = 0; m < 12; m++) {
+      const monthDate = new Date(START.getFullYear(), START.getMonth() + m, 1);
+      const mon = monthDate.getMonth();
+      const rainy = [11, 0, 1, 2].includes(mon);
+      const counts = {
+        blockage: rint(22, 32) + (mon >= 6 && mon <= 8 ? 4 : 0),
+        overflow: rainy ? rint(12, 18) : rint(3, 6),
+        collapse: rint(1, 3) + (rainy ? 1 : 0)
+      };
+      const daysIn = new Date(monthDate.getFullYear(), mon + 1, 0).getDate();
+      const maxDay = m === 11 ? 22 : daysIn;
+      TYPES.forEach((type) => {
+        for (let k = 0; k < counts[type]; k++) {
+          const e = wpick(edges, edgeW);
+          const day = rint(1, maxDay);
+          const date = new Date(monthDate.getFullYear(), mon, day);
+          let status = "closed";
+          if (m === 11) status = wpick(["open", "progress", "closed"], [40, 30, 30]);
+          else if (m === 10) status = wpick(["open", "progress", "closed"], [8, 14, 78]);
+          const base = type === "collapse" ? rnd(12, 60) : type === "overflow" ? rnd(1, 7) : rnd(2, 11);
+          const distF = { N: 1, W: 1.15, C: 0.9, E: 1.1, S: 1.35 }[e.d];
+          const t = rnd(0.2, 0.8);
+          incidents.push({
+            id: `INC-${String(26000 + ++incSeq)}`, m, date, type, status, edge: e, d: e.d,
+            resp: Math.round(base * distF * 10) / 10,
+            x: e.a.x + (e.b.x - e.a.x) * t, y: e.a.y + (e.b.y - e.a.y) * t
+          });
+          e.inc12++;
+        }
+      });
+    }
+    incidents.sort((a, b) => b.date - a.date);
+
+    edges.forEach((e) => {
+      const cons = e.dia <= 250 ? 1 : e.dia <= 315 ? 2 : e.dia <= 500 ? 3 : e.dia <= 800 ? 4 : 5;
+      e.risk = Math.round((e.grade * (cons + Math.min(3, e.inc12 * 0.5))) / 40 * 100);
+    });
+
+    /* ---------------- State & filtering ---------------- */
+    const DEFAULT = { district: "all", material: "all", condition: "all", period: 12 };
+    const state = { ...DEFAULT, search: "" };
+
+    function filtered() {
+      const pipes = edges.filter((e) =>
+        (state.district === "all" || e.d === state.district) &&
+        (state.material === "all" || e.mat === state.material) &&
+        (state.condition === "all" || e.cond === state.condition));
+      const set = new Set(pipes);
+      const from = 12 - state.period;
+      const inc = incidents.filter((i) => i.m >= from && set.has(i.edge));
+      const ps = pumps.filter((p) => state.district === "all" || p.d === state.district);
+      return { pipes, inc, ps, set };
+    }
+
+    /* ---------------- Map ---------------- */
+    const ll = (x, y) => [H - y, x];
+    const map = L.map("map", { crs: L.CRS.Simple, minZoom: -1.5, maxZoom: 3, zoomSnap: 0.25, attributionControl: false });
+    map.fitBounds([[0, 0], [H, W]], { padding: [10, 10] });
+    [["streets", 300], ["districts", 350], ["pipes", 400], ["manholes", 420], ["incidents", 440]].forEach(([n, z]) => { map.createPane(n).style.zIndex = z; });
+    const groups = {
+      streets: L.layerGroup().addTo(map),
+      districts: L.layerGroup().addTo(map),
+      pipes: L.layerGroup().addTo(map),
+      manholes: L.layerGroup(),
+      incidents: L.layerGroup().addTo(map),
+      pumps: L.layerGroup().addTo(map)
+    };
+    const pipeLayers = new Map();
+
+    function popPipe(e) {
+      const t = T();
+      return `<div class="pop"><h3>${e.id}</h3><dl>
+        <dt>${t.pop.dist}</dt><dd>${t.dist[e.d]}</dd>
+        <dt>${t.pop.dia}</dt><dd>${nf(e.dia)} mm</dd>
+        <dt>${t.pop.mat}</dt><dd>${t.mat[e.mat]}</dd>
+        <dt>${t.pop.year}</dt><dd>${e.year}</dd>
+        <dt>${t.pop.cond}</dt><dd>${condBadge(e.cond)}</dd>
+        <dt>${t.pop.len}</dt><dd>${nf(e.km, 2)} ${t.km}</dd>
+        <dt>${t.pop.inc}</dt><dd>${nf(e.inc12)}</dd>
+      </dl></div>`;
+    }
+
+    function drawStatic() {
+      groups.streets.clearLayers();
+      groups.districts.clearLayers();
+      allStreets.forEach(([a, b]) => L.polyline([ll(a.x, a.y), ll(b.x, b.y)], { pane: "streets", color: css("--road"), weight: 7, interactive: false, lineCap: "round" }).addTo(groups.streets));
+      DISTRICTS.forEach((d) => {
+        const sel = state.district === d;
+        const poly = L.polygon(DIST_POLY[d].map(([x, y]) => ll(x, y)), {
+          pane: "districts",
+          color: css("--district-line"), weight: sel ? 2 : 1, dashArray: sel ? null : "4 4",
+          fillColor: css("--accent"), fillOpacity: sel ? 0.08 : 0.02
+        }).addTo(groups.districts);
+        poly.bindTooltip(T().dist[d], { permanent: true, direction: "center", className: "dist-label", opacity: 1 });
+        poly.on("click", () => { state.district = state.district === d ? "all" : d; syncControls(); render(); });
+      });
+    }
+
+    function drawDynamic(f) {
+      const t = T();
+      groups.pipes.clearLayers(); groups.manholes.clearLayers(); groups.incidents.clearLayers(); groups.pumps.clearLayers();
+      pipeLayers.clear();
+      const surface = css("--panel");
+      edges.forEach((e) => {
+        const on = f.set.has(e);
+        const w = 1.6 + (e.dia / 1000) * 5;
+        const line = L.polyline([ll(e.a.x, e.a.y), ll(e.b.x, e.b.y)], {
+          pane: "pipes",
+          color: on ? css(COND_VAR[e.cond]) : css("--ghost"), weight: on ? w : 1.5, opacity: on ? 0.95 : 1, lineCap: "round",
+          interactive: on
+        }).addTo(groups.pipes);
+        if (on) {
+          line.bindPopup(popPipe(e));
+          line.on("mouseover", () => line.setStyle({ weight: w + 3 }));
+          line.on("mouseout", () => line.setStyle({ weight: w }));
+          pipeLayers.set(e.id, line);
+        }
+      });
+      nodes.forEach((n) => {
+        if (state.district !== "all" && n.d !== state.district) return;
+        const col = n.status === "ok" ? css("--manhole") : n.status === "silted" ? css("--warn") : css("--crit");
+        L.circleMarker(ll(n.x, n.y), { pane: "manholes", radius: n.status === "ok" ? 3 : 4.5, color: surface, weight: 1.5, fillColor: col, fillOpacity: 1 })
+          .bindPopup(`<div class="pop"><h3>${t.pop.mh} MH-${String(n.id + 1).padStart(4, "0")}</h3><dl><dt>${t.pop.dist}</dt><dd>${t.dist[n.d]}</dd><dt>${t.pop.status}</dt><dd>${t.mhStatus[n.status]}</dd></dl></div>`)
+          .addTo(groups.manholes);
+      });
+      f.inc.forEach((i) => {
+        L.circleMarker(ll(i.x, i.y), { pane: "incidents", radius: 5, color: surface, weight: 2, fillColor: css(TYPE_VAR[i.type]), fillOpacity: i.status === "closed" ? 0.55 : 1 })
+          .bindPopup(`<div class="pop"><h3>${i.id}</h3><dl>
+            <dt>${t.th.type}</dt><dd>${t.type[i.type]}</dd>
+            <dt>${t.pop.date}</dt><dd>${fmtDate(i.date)}</dd>
+            <dt>${t.pop.status}</dt><dd>${t.status[i.status]}</dd>
+            <dt>${t.pop.pipe}</dt><dd>${i.edge.id}</dd>
+            <dt>${t.pop.resp}</dt><dd>${nf(i.resp, 1)} ${t.hr}</dd></dl></div>`)
+          .addTo(groups.incidents);
+      });
+      f.ps.forEach((p) => {
+        const icon = L.divIcon({ className: "", html: `<div class="ps-icon" style="background:${css(PS_VAR[p.status])}">P</div>`, iconSize: [22, 22], iconAnchor: [11, 11] });
+        L.marker(ll(p.x, p.y), { icon, title: p.code }).bindPopup(popPump(p)).addTo(groups.pumps);
+      });
+      const wicon = L.divIcon({ className: "", html: `<div class="wwtp-icon">WWTP</div>`, iconSize: [34, 34], iconAnchor: [17, 17] });
+      L.marker(ll(WWTP.x, WWTP.y), { icon: wicon }).bindPopup(`<div class="pop"><h3>${t.wwtp}</h3><dl>
+        <dt>${t.wwtpCap}</dt><dd>${nf(WWTP.cap)} m³/d</dd><dt>${t.wwtpIn}</dt><dd>${nf(WWTP.inflow)} m³/d</dd></dl></div>`).addTo(groups.pumps);
+    }
+
+    function popPump(p) {
+      const t = T();
+      return `<div class="pop"><h3>${p.code} · ${p[lang]}</h3><dl>
+        <dt>${t.pop.status}</dt><dd>${psBadge(p.status)}</dd>
+        <dt>${t.pop.cap}</dt><dd>${nf(p.cap)} m³/h</dd>
+        <dt>${t.pop.flow}</dt><dd>${nf(p.flow)} m³/h</dd>
+        <dt>${t.pop.level}</dt><dd>${p.level}%</dd>
+        <dt>${t.pop.pumps}</dt><dd>${p.pumps}</dd></dl></div>`;
+    }
+
+    document.querySelectorAll("#layers input").forEach((cb) => {
+      cb.addEventListener("change", () => {
+        const g = groups[cb.dataset.layer];
+        if (cb.checked) map.addLayer(g); else map.removeLayer(g);
+      });
+    });
+
+    /* ---------------- Helpers ---------------- */
+    function condBadge(c) { return `<span class="badge"><i style="background:${css(COND_VAR[c])}"></i>${T().cond[c]}</span>`; }
+    function psBadge(s) { return `<span class="badge"><i style="background:${css(PS_VAR[s])}"></i>${T().psStatus[s]}</span>`; }
+    function statusBadge(s) {
+      const v = s === "open" ? "--crit" : s === "progress" ? "--warn" : "--good";
+      return `<span class="badge"><i style="background:${css(v)}"></i>${T().status[s]}</span>`;
+    }
+    function fmtDate(d) { return new Intl.DateTimeFormat(lang === "ar" ? "ar-u-nu-latn" : "en-GB", { day: "2-digit", month: "short", year: "numeric" }).format(d); }
+    function monthLabel(m) { const d = new Date(START.getFullYear(), START.getMonth() + m, 1); return new Intl.DateTimeFormat(lang === "ar" ? "ar-u-nu-latn" : "en-US", { month: "short", year: "2-digit" }).format(d); }
+    const median = (arr) => { if (!arr.length) return 0; const s = [...arr].sort((a, b) => a - b); const h = s.length >> 1; return s.length % 2 ? s[h] : (s[h - 1] + s[h]) / 2; };
+
+    /* ---------------- KPIs ---------------- */
+    function renderKpis(f) {
+      const t = T();
+      const km = f.pipes.reduce((s, e) => s + e.km, 0);
+      const poorKm = f.pipes.filter((e) => e.grade >= 4).reduce((s, e) => s + e.km, 0);
+      const open = f.inc.filter((i) => i.status !== "closed");
+      const ds = state.district === "all" ? DISTRICTS : [state.district];
+      const hh = ds.reduce((s, d) => s + HOUSEHOLDS[d][0], 0), con = ds.reduce((s, d) => s + HOUSEHOLDS[d][1], 0);
+      const okPs = f.ps.filter((p) => p.status === "ok").length, alarm = f.ps.filter((p) => p.status === "alarm").length;
+      const resp = median(f.inc.filter((i) => i.type !== "collapse").map((i) => i.resp));
+      const tiles = [
+        [t.kLen, nf(km, 1), t.km, t.kLenSub(nf(f.pipes.length))],
+        [t.kPoor, km ? nf((poorKm / km) * 100, 1) : "0", "%", t.kPoorSub(nf(poorKm, 1))],
+        [t.kInc, nf(f.inc.length), "", t.kIncSub(km ? nf((f.inc.length / km) * 100, 1) : "0")],
+        [t.kOpen, nf(open.length), "", t.kOpenSub(nf(open.filter((i) => i.type === "overflow").length))],
+        [t.kResp, nf(resp, 1), t.hr, t.kRespSub],
+        [t.kPumps, `${okPs}/${f.ps.length}`, "", t.kPumpsSub(alarm)],
+        [t.kCov, nf((con / hh) * 100, 1), "%", t.kCovSub(nf(con))],
+        [t.kPlant, nf((WWTP.inflow / WWTP.cap) * 100, 0), "%", t.kPlantSub(nf(WWTP.inflow), nf(WWTP.cap))]
+      ];
+      document.getElementById("kpis").innerHTML = tiles.map(([l, v, u, s]) =>
+        `<div class="kpi"><div class="lbl">${l}</div><div class="val">${v}${u ? `<small>${u}</small>` : ""}</div><div class="sub">${s}</div></div>`).join("");
+    }
+
+    /* ---------------- Pumps ---------------- */
+    function renderPumps(f) {
+      const t = T();
+      document.getElementById("pumps").innerHTML = f.ps.length ? f.ps.map((p) => {
+        const u = Math.round((p.flow / p.cap) * 100);
+        return `<div class="pump" data-code="${p.code}">
+          <div class="pump-top"><div><div class="pump-name">${p.code} · ${esc(p[lang])}</div>
+          <div class="pump-meta">${t.pop.flow}: ${nf(p.flow)} / ${nf(p.cap)} m³/h · ${t.pop.level} ${p.level}% · ${t.pop.pumps} ${p.pumps}</div></div>${psBadge(p.status)}</div>
+          <div class="meter" title="${u}%"><i style="width:${u}%;background:${u >= 90 ? css("--crit") : css("--s1")}"></i></div></div>`;
+      }).join("") : `<div class="empty">—</div>`;
+      document.querySelectorAll(".pump").forEach((el) => el.addEventListener("click", () => {
+        const p = pumps.find((x) => x.code === el.dataset.code);
+        map.flyTo(ll(p.x, p.y), 1.5, { duration: 0.6 });
+        L.popup().setLatLng(ll(p.x, p.y)).setContent(popPump(p)).openOn(map);
+      }));
+    }
+
+    /* ---------------- Insights ---------------- */
+    function renderInsights(f) {
+      const t = T(), out = [];
+      if (!f.pipes.length) { document.getElementById("insights").innerHTML = `<li>${t.ins.none}</li>`; return; }
+      const byD = {};
+      f.pipes.forEach((e) => { (byD[e.d] = byD[e.d] || { km: 0, n: 0 }).km += e.km; });
+      f.inc.forEach((i) => { byD[i.d].n++; });
+      const worstD = Object.entries(byD).filter(([, v]) => v.km > 5).sort((a, b) => b[1].n / b[1].km - a[1].n / a[1].km)[0];
+      if (worstD && state.district === "all") out.push(t.ins.rate(t.dist[worstD[0]], nf((worstD[1].n / worstD[1].km) * 100, 1)));
+      const byM = {};
+      f.pipes.forEach((e) => { const o = (byM[e.mat] = byM[e.mat] || { km: 0, bad: 0 }); o.km += e.km; if (e.grade >= 4) o.bad += e.km; });
+      const worstM = Object.entries(byM).filter(([, v]) => v.km > 5).sort((a, b) => b[1].bad / b[1].km - a[1].bad / a[1].km)[0];
+      if (worstM && state.material === "all") out.push(t.ins.mat(t.mat[worstM[0]], nf((worstM[1].bad / worstM[1].km) * 100, 0)));
+      const ov = incidents.filter((i) => i.type === "overflow" && f.set.has(i.edge));
+      const wn = ov.filter((i) => [11, 0, 1, 2].includes(i.date.getMonth())).length / 4;
+      const rest = ov.filter((i) => ![11, 0, 1, 2].includes(i.date.getMonth())).length / 8;
+      if (rest > 0 && wn / rest > 1.4) out.push(t.ins.season(nf(wn / rest, 1)));
+      const oldKm = f.pipes.filter((e) => NOW_YEAR - e.year > 30).reduce((s, e) => s + e.km, 0);
+      const km = f.pipes.reduce((s, e) => s + e.km, 0);
+      if (oldKm / km >= 0.05) out.push(t.ins.old(nf((oldKm / km) * 100, 0)));
+      const top = [...f.pipes].sort((a, b) => b.risk - a.risk)[0];
+      if (top) out.push(t.ins.top(top.id, t.dist[top.d], top.risk));
+      f.ps.filter((p) => p.status === "alarm").forEach((p) => out.push(t.ins.alarm(`${p.code} · ${esc(p[lang])}`)));
+      document.getElementById("insights").innerHTML = out.map((s) => `<li>${s}</li>`).join("");
+    }
+
+    /* ---------------- Charts ---------------- */
+    const charts = {};
+    const FONT = "'IBM Plex Sans Arabic', 'Segoe UI', system-ui, sans-serif";
+    Chart.defaults.font.family = FONT;
+    function baseOpts(extra) {
+      const text = css("--muted"), grid = css("--grid");
+      return Object.assign({
+        responsive: true, maintainAspectRatio: false, animation: { duration: 300 },
+        plugins: {
+          legend: { display: false, rtl: lang === "ar", labels: { color: text, usePointStyle: true, pointStyle: "rectRounded", boxWidth: 10, boxHeight: 10, padding: 14, font: { family: FONT, size: 12 } } },
+          tooltip: {
+            rtl: lang === "ar", backgroundColor: css("--panel"), titleColor: css("--text"), bodyColor: css("--text"),
+            borderColor: css("--border"), borderWidth: 1, padding: 10, boxPadding: 4, usePointStyle: true,
+            titleFont: { family: FONT, weight: "600" }, bodyFont: { family: FONT }
+          }
+        },
+        scales: {
+          x: { grid: { display: false }, border: { color: grid }, ticks: { color: text, font: { family: FONT, size: 11 } } },
+          y: { grid: { color: grid }, border: { display: false }, ticks: { color: text, font: { family: FONT, size: 11 } }, beginAtZero: true }
+        }
+      }, extra || {});
+    }
+    function mk(id, cfg) { if (charts[id]) charts[id].destroy(); charts[id] = new Chart(document.getElementById(id), cfg); }
+
+    function renderCharts(f) {
+      const t = T(), surface = css("--panel"), rtl = lang === "ar";
+      // monthly stacked by type
+      const from = 12 - state.period;
+      const months = Array.from({ length: state.period }, (_, k) => from + k);
+      const mDs = TYPES.map((type, ti) => ({
+        label: t.type[type], backgroundColor: css(TYPE_VAR[type]), borderColor: surface, borderWidth: { top: 2 }, borderSkipped: "bottom",
+        borderRadius: ti === TYPES.length - 1 ? { topLeft: 4, topRight: 4 } : 0, maxBarThickness: 34,
+        data: months.map((m) => f.inc.filter((i) => i.m === m && i.type === type).length)
+      }));
+      const o1 = baseOpts();
+      o1.plugins.legend.display = true; o1.plugins.legend.position = "top"; o1.plugins.legend.align = "start";
+      o1.interaction = { mode: "index", intersect: false };
+      o1.scales.x.stacked = true; o1.scales.y.stacked = true; o1.scales.x.reverse = rtl;
+      o1.scales.y.position = rtl ? "right" : "left";
+      o1.plugins.tooltip.callbacks = { footer: (items) => `Σ ${items.reduce((s, i) => s + i.parsed.y, 0)}` };
+      mk("chMonthly", { type: "bar", data: { labels: months.map(monthLabel), datasets: mDs }, options: o1 });
+
+      // condition by district (km), horizontal stacked
+      const ds = state.district === "all" ? DISTRICTS : [state.district];
+      const cDs = CONDS.map((c, ci) => ({
+        label: t.cond[c], backgroundColor: css(COND_VAR[c]), borderColor: surface, borderWidth: rtl ? { left: 2 } : { right: 2 }, borderSkipped: false,
+        borderRadius: 0, maxBarThickness: 26,
+        data: ds.map((d) => +f.pipes.filter((e) => e.d === d && e.cond === c).reduce((s, e) => s + e.km, 0).toFixed(1))
+      }));
+      const o2 = baseOpts({ indexAxis: "y" });
+      o2.plugins.legend.display = true; o2.plugins.legend.position = "top"; o2.plugins.legend.align = "start";
+      o2.interaction = { mode: "index", intersect: false, axis: "y" };
+      o2.scales.x.stacked = true; o2.scales.y.stacked = true; o2.scales.x.reverse = rtl; o2.scales.y.position = rtl ? "right" : "left";
+      o2.scales.x.grid = { color: css("--grid") }; o2.scales.y.grid = { display: false };
+      o2.plugins.tooltip.callbacks = { label: (c) => ` ${c.dataset.label}: ${nf(c.parsed.x, 1)} ${t.km}` };
+      mk("chCondition", { type: "bar", data: { labels: ds.map((d) => t.dist[d]), datasets: cDs }, options: o2 });
+
+      // material
+      const mats = MATERIALS.map((m) => ({ m, km: f.pipes.filter((e) => e.mat === m).reduce((s, e) => s + e.km, 0) })).filter((x) => x.km > 0).sort((a, b) => b.km - a.km);
+      const o3 = baseOpts({ indexAxis: "y" });
+      o3.scales.x.reverse = rtl; o3.scales.y.position = rtl ? "right" : "left";
+      o3.scales.x.grid = { color: css("--grid") }; o3.scales.y.grid = { display: false };
+      o3.plugins.tooltip.callbacks = { label: (c) => ` ${nf(c.parsed.x, 1)} ${t.km}` };
+      mk("chMaterial", { type: "bar", data: { labels: mats.map((x) => t.mat[x.m]), datasets: [{ data: mats.map((x) => +x.km.toFixed(1)), backgroundColor: css("--s1"), borderRadius: 4, borderSkipped: false, maxBarThickness: 24 }] }, options: o3 });
+
+      // age by decade
+      const decades = [1970, 1980, 1990, 2000, 2010, 2020];
+      const o4 = baseOpts();
+      o4.scales.x.reverse = rtl; o4.scales.y.position = rtl ? "right" : "left";
+      o4.plugins.tooltip.callbacks = { label: (c) => ` ${nf(c.parsed.y, 1)} ${t.km}` };
+      mk("chAge", { type: "bar", data: { labels: decades.map((d) => `${d}s`), datasets: [{ data: decades.map((d) => +f.pipes.filter((e) => e.year >= d && e.year < d + 10).reduce((s, e) => s + e.km, 0).toFixed(1)), backgroundColor: css("--s1"), borderRadius: { topLeft: 4, topRight: 4 }, borderSkipped: "bottom", maxBarThickness: 46 }] }, options: o4 });
+    }
+
+    /* ---------------- Tables ---------------- */
+    function focusPipe(id) {
+      const e = edges.find((x) => x.id === id), layer = pipeLayers.get(id);
+      if (!e || !layer) return;
+      map.flyTo(ll((e.a.x + e.b.x) / 2, (e.a.y + e.b.y) / 2), 1.75, { duration: 0.6 });
+      setTimeout(() => layer.openPopup(), 650);
+      document.getElementById("map").scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function renderPrio(f) {
+      const t = T();
+      const rows = [...f.pipes].sort((a, b) => b.risk - a.risk).slice(0, 15);
+      const tbl = document.getElementById("prioTable");
+      tbl.innerHTML = `<thead><tr><th>${t.th.id}</th><th>${t.th.dist}</th><th class="num">${t.th.dia}</th><th>${t.th.mat}</th><th class="num">${t.th.age}</th><th>${t.th.cond}</th><th class="num">${t.th.inc}</th><th>${t.th.risk}</th><th>${t.th.act}</th></tr></thead>
+        <tbody>${rows.length ? rows.map((e) => `<tr data-id="${e.id}"><td><b>${e.id}</b></td><td>${t.dist[e.d]}</td><td class="num">${nf(e.dia)}</td><td>${t.mat[e.mat]}</td><td class="num">${NOW_YEAR - e.year}</td><td>${condBadge(e.cond)}</td><td class="num">${e.inc12}</td>
+        <td><span class="risk"><span class="risk-bar"><i style="width:${e.risk}%"></i></span>${e.risk}</span></td><td>${t.action[e.grade]}</td></tr>`).join("") : `<tr><td colspan="9" class="empty">—</td></tr>`}</tbody>`;
+      tbl.querySelectorAll("tbody tr[data-id]").forEach((tr) => tr.addEventListener("click", () => focusPipe(tr.dataset.id)));
+    }
+
+    function renderLog(f) {
+      const t = T();
+      const q = state.search.trim().toLowerCase();
+      const rows = f.inc.filter((i) => !q || [i.id, i.edge.id, t.dist[i.d], t.type[i.type], t.status[i.status]].join(" ").toLowerCase().includes(q));
+      const shown = rows.slice(0, 120);
+      document.getElementById("logCount").textContent = t.logCountTpl(nf(shown.length), nf(rows.length));
+      const tbl = document.getElementById("logTable");
+      tbl.innerHTML = `<thead><tr><th>${t.th.iid}</th><th>${t.th.date}</th><th>${t.th.dist}</th><th>${t.th.type}</th><th>${t.th.status}</th><th class="num">${t.th.resp}</th></tr></thead>
+        <tbody>${shown.length ? shown.map((i) => `<tr data-id="${i.edge.id}"><td><b>${i.id}</b></td><td>${fmtDate(i.date)}</td><td>${t.dist[i.d]}</td>
+        <td><span class="badge"><i style="background:${css(TYPE_VAR[i.type])}"></i>${t.type[i.type]}</span></td><td>${statusBadge(i.status)}</td><td class="num">${nf(i.resp, 1)}</td></tr>`).join("") : `<tr><td colspan="6" class="empty">—</td></tr>`}</tbody>`;
+      tbl.querySelectorAll("tbody tr[data-id]").forEach((tr) => tr.addEventListener("click", () => focusPipe(tr.dataset.id)));
+    }
+
+    function renderLegend() {
+      const t = T();
+      document.getElementById("legend").innerHTML =
+        `<span><b>${t.legCond}</b></span>` + CONDS.map((c) => `<span><i class="sw-line" style="background:${css(COND_VAR[c])}"></i>${t.cond[c]}</span>`).join("") +
+        `<span><b>${t.legInc}</b></span>` + TYPES.map((x) => `<span><i class="sw-dot" style="background:${css(TYPE_VAR[x])}"></i>${t.type[x]}</span>`).join("") +
+        `<span><i class="sw-sq" style="background:${css("--good")}"></i>${t.legPs}</span><span><i class="sw-sq" style="background:${css("--accent")}"></i>${t.legWwtp}</span>`;
+    }
+
+    /* ---------------- Controls ---------------- */
+    const selD = document.getElementById("fDistrict"), selM = document.getElementById("fMaterial"), selC = document.getElementById("fCondition");
+    function fillSelects() {
+      const t = T();
+      selD.innerHTML = `<option value="all">${t.all}</option>` + DISTRICTS.map((d) => `<option value="${d}">${t.dist[d]}</option>`).join("");
+      selM.innerHTML = `<option value="all">${t.all}</option>` + MATERIALS.map((m) => `<option value="${m}">${t.mat[m]}</option>`).join("");
+      selC.innerHTML = `<option value="all">${t.all}</option>` + CONDS.map((c) => `<option value="${c}">${t.cond[c]}</option>`).join("");
+      document.querySelectorAll("#fPeriod button").forEach((b) => { b.textContent = t.months(+b.dataset.p); });
+      syncControls();
+    }
+    function syncControls() {
+      selD.value = state.district; selM.value = state.material; selC.value = state.condition;
+      document.querySelectorAll("#fPeriod button").forEach((b) => b.setAttribute("aria-pressed", String(+b.dataset.p === state.period)));
+    }
+    selD.addEventListener("change", () => { state.district = selD.value; render(); });
+    selM.addEventListener("change", () => { state.material = selM.value; render(); });
+    selC.addEventListener("change", () => { state.condition = selC.value; render(); });
+    document.querySelectorAll("#fPeriod button").forEach((b) => b.addEventListener("click", () => { state.period = +b.dataset.p; syncControls(); render(); }));
+    document.getElementById("btnReset").addEventListener("click", () => { Object.assign(state, DEFAULT); syncControls(); render(); map.fitBounds([[0, 0], [H, W]], { padding: [10, 10] }); });
+    document.getElementById("logSearch").addEventListener("input", (ev) => { state.search = ev.target.value; renderLog(filtered()); });
+
+    function applyStaticText() {
+      const t = T();
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === "ar" ? "rtl" : "ltr";
+      document.title = t.title;
+      document.querySelectorAll("[data-i18n]").forEach((el) => { const v = t[el.dataset.i18n]; if (typeof v === "string") el.textContent = v; });
+      document.getElementById("btnLang").textContent = lang === "ar" ? "EN" : "عربي";
+      document.getElementById("logSearch").placeholder = t.searchPh;
+      fillSelects();
+    }
+    document.getElementById("btnLang").addEventListener("click", () => {
+      lang = lang === "ar" ? "en" : "ar"; store.set("san-lang", lang); applyStaticText(); render(true);
+    });
+    document.getElementById("btnTheme").addEventListener("click", () => {
+      const cur = document.documentElement.getAttribute("data-theme") || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      const next = cur === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next); store.set("san-theme", next); render(true);
+    });
+    matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => render(true));
+    document.getElementById("btnPrint").addEventListener("click", () => window.print());
+
+    /* ---------------- CSV ---------------- */
+    function download(name, rows) {
+      const csv = "﻿" + rows.map((r) => r.map((v) => { const s = String(v ?? ""); return /[",\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; }).join(",")).join("\n");
+      const url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
+      const a = document.createElement("a"); a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+    document.getElementById("btnPipesCsv").addEventListener("click", () => {
+      const f = filtered();
+      download("sanitation_pipes_sample.csv", [["segment_id", "district", "diameter_mm", "material", "install_year", "condition_grade", "condition", "length_km", "incidents_12m", "risk_score"],
+        ...f.pipes.map((e) => [e.id, e.d, e.dia, e.mat, e.year, e.grade, e.cond, e.km.toFixed(3), e.inc12, e.risk])]);
+    });
+    document.getElementById("btnIncCsv").addEventListener("click", () => {
+      const f = filtered();
+      download("sanitation_incidents_sample.csv", [["incident_id", "date", "district", "type", "status", "segment_id", "response_hours"],
+        ...f.inc.map((i) => [i.id, i.date.toISOString().slice(0, 10), i.d, i.type, i.status, i.edge.id, i.resp])]);
+    });
+
+    /* ---------------- Render ---------------- */
+    function render(full) {
+      const f = filtered();
+      drawStatic();
+      drawDynamic(f);
+      renderKpis(f); renderPumps(f); renderInsights(f); renderCharts(f); renderPrio(f); renderLog(f);
+      if (full) renderLegend();
+    }
+    applyStaticText();
+    render(true);
+  })();
+  </script>
+</body>
+</html>
